@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/off_white"
+    tools:context=".onboarding.screens.OnboardingScreen">
+
+    <LinearLayout
+        android:id="@+id/top_layout_fss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/next_fss"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/skip_fss"
+        app:layout_constraintVertical_bias="0.377">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <ImageView
+                android:id="@+id/green_background_fss"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:contentDescription="@string/green_background"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="20dp"
+                android:src="@drawable/img_background_two"
+                tools:ignore="ImageContrastCheck" />
+
+            <ImageView
+                android:id="@+id/gif_fss"
+                android:layout_width="240dp"
+                android:layout_height="270dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/gif_image"
+                android:paddingBottom="30dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ImageContrastCheck" />
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/title_fss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/title_fss"
+            android:textAlignment="center"
+            android:textColor="@color/heading_black"
+            android:textSize="28sp" />
+
+        <TextView
+            android:id="@+id/sub_title_fss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:fontFamily="@font/roboto_regular"
+            android:paddingEnd="20dp"
+            android:paddingStart="20dp"
+            android:text="@string/sub_title_fss"
+            android:textAlignment="center"
+            android:textColor="@color/text_gray"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/back_fss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center_vertical"
+        android:text="@string/back_caps"
+        android:textColor="@color/secondary"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top_layout_fss"
+        app:layout_constraintVertical_bias="0.502"
+        tools:ignore="UseCompatTextViewDrawableXml" />
+
+    <TextView
+        android:id="@+id/next_fss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="56dp"
+        android:drawableEnd="@drawable/icon_arrow"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center_vertical"
+        android:text="@string/next_caps"
+        android:textColor="@color/secondary"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top_layout_fss"
+        tools:ignore="UseCompatTextViewDrawableXml" />
+
+    <TextView
+        android:id="@+id/skip_fss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="312dp"
+        android:layout_marginTop="76dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/skip_caps"
+        android:textColor="@color/secondary"
+        android:textSize="16sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

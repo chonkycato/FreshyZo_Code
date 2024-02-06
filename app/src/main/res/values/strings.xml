@@ -1,0 +1,46 @@
+<resources>
+
+    <!-- App Name -->
+    <string name="app_name">FreshyZo</string>
+    <string name="FreshyZo">FreshyZo</string>
+
+    <!-- General Content-->
+    <string name="Home">Home</string>
+    <string name="image">image</string>
+
+    <!-- Onboarding Content -->
+    <string name="onboarding_image">onboarding_image</string>
+    <string name="green_background">green_background</string>
+    <string name="gif_image">gif_image</string>
+
+    <string name="back_caps">BACK</string>
+    <string name="next_caps">NEXT\ </string>
+    <string name="skip_caps">SKIP</string>
+    <string name="finish_caps">FINISH\ </string>
+
+    <string name="title_ffs">Door-step delivery</string>
+    <string name="sub_title_ffs">Get our freshly produced milk delivered quickly at your door-step.</string>
+
+    <string name="title_fss">Subscription service</string>
+    <string name="sub_title_fss">Subscribe and schedule deliveries for products you need everyday.</string>
+
+    <string name="title_fts">Quality assurance</string>
+    <string name="sub_title_fts">We are dedicated to provide you only the best-quality milk and milk products.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="login_subtitle">Please login with your credentials</string>
+    <string name="phone">Phone</string>
+    <string name="phoneHint">Phone Number</string>
+    <string name="otp">One-Time Password</string>
+    <string name="otpHint">6 digit OTP</string>
+    <string name="remember_me">Remember me</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="login">Login</string>
+    <string name="loginButton">loginButton</string>
+    <string name="getOTP">GET OTP</string>
+    <string name="full_name">Full Name</string>
+    <string name="signup">SIGN UP</string>
+    <string name="signupButton">Sign up Button</string>
+    <string name="no_account">Don\'t have an account?</string>
+    <string name="have_account">Already have an account?\ </string>
+</resources>
