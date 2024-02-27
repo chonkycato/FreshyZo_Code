@@ -18,16 +18,28 @@ class SplashFragment : Fragment() {
     ): View? {
 
         Handler(Looper.getMainLooper()).postDelayed({
-            if (onBoardingFinished()) {
+
+            if ((activity as MainActivity).loginState()){
                 findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
-            } else {
+            }
+            else if (!(activity as MainActivity).loginState() && onBoardingFinished()){
+                findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
+            }
+            else if (!(activity as MainActivity).loginState() && !onBoardingFinished()){
                 findNavController().navigate(R.id.action_splashFragment_to_viewPagerFragment)
             }
+//
+//            if (onBoardingFinished()) {
+//                findNavController().navigate(R.id.action_splashFragment_to_homeFragment)4
+//            } else {
+//                findNavController().navigate(R.id.action_splashFragment_to_viewPagerFragment)
+//            }
         }, 1000)
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_splash, container, false)
     }
+
 
     private fun onBoardingFinished(): Boolean {
         val sharedPref = requireActivity().getSharedPreferences("onBoarding", Context.MODE_PRIVATE)

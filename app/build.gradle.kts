@@ -39,6 +39,7 @@ android {
     }
     buildFeatures {
         compose = true
+        viewBinding = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
@@ -57,12 +58,15 @@ dependencies {
 
     //Navigation and Fragment
     implementation("androidx.fragment:fragment-ktx:1.6.2")
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.6")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.6")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
 
     //GIF
     implementation("com.github.bumptech.glide:glide:4.9.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.11.0")
+
+    //Volley
+    implementation ("com.android.volley:volley:1.2.1")
 
     //Compose
     implementation("androidx.activity:activity-compose:1.8.2")

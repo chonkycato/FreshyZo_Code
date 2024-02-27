@@ -12,9 +12,23 @@ class MainActivity : AppCompatActivity() {
 
     fun onBoardingFinished() {
         val sharedPref = getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
-        val editor = sharedPref.edit()
-        editor.putBoolean("Finished", true)
-        editor.apply()
+        sharedPref.edit().putBoolean("Finished", true).apply()
     }
-}
 
+    fun loginState(loginState : Boolean) {
+        val sharedPref = getSharedPreferences("loggedIn", Context.MODE_PRIVATE)
+        sharedPref.edit().putBoolean("isLoggedIn", loginState).apply()
+    }
+
+    fun loginState(): Boolean {
+        val sharedPref = getSharedPreferences("loggedIn", Context.MODE_PRIVATE)
+        sharedPref.edit().putBoolean("isLoggedIn", false).apply()
+        return sharedPref.getBoolean("isLoggedIn", false)
+    }
+
+    fun generateOTP() : Long{
+        return (Math.random() * 900000).toLong() + 100000
+    }
+
+
+}

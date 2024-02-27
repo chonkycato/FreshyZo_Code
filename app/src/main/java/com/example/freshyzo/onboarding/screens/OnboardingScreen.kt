@@ -44,6 +44,7 @@ class OnboardingScreen : Fragment() {
                 navCount,
                 imageViewGIF,
                 imageViewBG,
+                nextArrow,
                 backArrow,
                 skip,
                 titleTextView,
@@ -57,6 +58,7 @@ class OnboardingScreen : Fragment() {
                 navCount,
                 imageViewGIF,
                 imageViewBG,
+                nextArrow,
                 backArrow,
                 skip,
                 titleTextView,
@@ -66,7 +68,7 @@ class OnboardingScreen : Fragment() {
         }
 
         skip.setOnClickListener {
-            findNavController().navigate(R.id.action_viewPagerFragment_to_homeFragment)
+            findNavController().navigate(R.id.action_viewPagerFragment_to_loginFragment)
             (activity as MainActivity?)!!.onBoardingFinished()
         }
 
@@ -77,6 +79,7 @@ class OnboardingScreen : Fragment() {
         navCount: Int,
         imageView: ImageView,
         imageViewBG: ImageView,
+        next: ImageView,
         back: ImageView,
         skip: ImageView,
         title: TextView,
@@ -118,6 +121,11 @@ class OnboardingScreen : Fragment() {
 
                 Glide.with(this).load(R.drawable.gif_onboarding_three).override(830, 726)
                     .into(imageView)
+
+                next.setOnClickListener {
+                    findNavController().navigate(R.id.action_viewPagerFragment_to_loginFragment)
+                    (activity as MainActivity?)!!.onBoardingFinished()
+                }
             }
         }
     }

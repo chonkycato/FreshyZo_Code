@@ -36,7 +36,7 @@ class ThirdScreen : Fragment() {
         }
 
         view.findViewById<TextView>(R.id.finish_fts).setOnClickListener {
-            findNavController().navigate(R.id.action_viewPagerFragment_to_homeFragment)
+            findNavController().navigate(R.id.action_viewPagerFragment_to_loginFragment)
             (activity as MainActivity?)!!.onBoardingFinished()
         }
         return view

@@ -1,14 +1,16 @@
 package com.example.freshyzo.login
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.freshyzo.MainActivity
 import com.example.freshyzo.R
 
 /**
@@ -32,14 +34,69 @@ class LoginFragment : Fragment() {
         val mGetOtp = view.findViewById<TextView>(R.id.getOTP)
         val mSignUpInstead = view.findViewById<TextView>(R.id.signUpInstead)
 
-        var mPhoneNumber = mPhoneInput.text.toString()
-        var mOtpEntered = mOtpInput.text.toString()
 
-        Log.d("Phone Number:", mPhoneNumber)
-        Log.d("OTP:", mOtpEntered)
+        mLoginButton.setOnClickListener {
+            val sampleOTP: Long = 123456
 
+            val phoneString = mPhoneInput.text.toString()
+            val otpString = mOtpInput.text.toString()
 
+            if ((phoneString.isNotEmpty() && otpString.isNotEmpty()) && (phoneString.length == 10 && otpString.length == 6)) {
+                try {
+                    val mPhoneNumber = phoneString.toLong()
+                    val mOtpEntered = otpString.toLong()
+                    if (mOtpEntered == sampleOTP) {
+                        (activity as MainActivity).loginState(true)
+                        findNavController().navigate(R.id.action_loginFragment_to_homeFragment2)
+                    } else {
+                        Toast.makeText(
+                            requireContext(),
+                            "Invalid OTP or Phone Number!",
+                            Toast.LENGTH_LONG)
+                            .show()
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    Toast.makeText(
+                        requireContext(),
+                        "Login failed, please try again later.",
+                        Toast.LENGTH_SHORT)
+                        .show()
+                }
+            }
+            else if (phoneString.isEmpty()){
+                Toast.makeText(
+                    requireContext(),
+                    "Please enter the phone number",
+                    Toast.LENGTH_SHORT)
+                    .show()
+            }
+            else if(otpString.isEmpty()){
+                Toast.makeText(
+                    requireContext(),
+                    "Please enter the OTP",
+                    Toast.LENGTH_SHORT).show()
+            }
+            else if ((phoneString.length != 10) || (otpString.length != 6)) {
+                Toast.makeText(
+                    requireContext(),
+                    "Invalid OTP or Phone Number",
+                    Toast.LENGTH_SHORT)
+                    .show()
+            }
+        }
+
+        mSignUpInstead.setOnClickListener{
+            findNavController().navigate(R.id.action_loginFragment_to_signupFragment)
+        }
+
+        mGetOtp.setOnClickListener {
+            val otp = (activity as MainActivity).generateOTP()
+            Toast.makeText(context, "Your OTP is $otp", Toast.LENGTH_LONG).show()
+        }
         return view
     }
+
+
 
 }

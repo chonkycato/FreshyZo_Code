@@ -9,13 +9,13 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="off_white">#F0F0F0</color>
+    <color name="off_white">#EEEEEE</color>
     <color name="heading_black">#1A1A1A</color>
     <color name="text_gray">#625B5B</color>
 
 
     <color name="primary">#28B256</color>
-    <color name="secondary">#27A444</color>
+    <color name="secondary">#2F2F2F</color>
     <color name="accent">#52C077</color>
     <color name="alert">#D0342C</color>
     <color name="warning">#EED202</color>
