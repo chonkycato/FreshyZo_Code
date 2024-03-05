@@ -65,6 +65,9 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.9.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.11.0")
 
+    //Carousel
+    implementation ("com.synnapps:carouselview:0.1.5")
+
     //Volley
     implementation ("com.android.volley:volley:1.2.1")
 

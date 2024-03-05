@@ -21,4 +21,9 @@
     <color name="warning">#EED202</color>
     <color name="disabled">#7E8183</color>
 
+    <color name="item_color_active">#28B256</color>
+    <color name="item_color_inactive">#2F2F2F</color>
+
+
+
 </resources>

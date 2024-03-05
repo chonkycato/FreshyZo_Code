@@ -51,4 +51,9 @@
     <string name="freshyzo_login">FreshyZo Login</string>
     <string name="cow">Image of a black and white cow in the background\n</string>
     <string name="log_out">Log Out</string>
+    <string name="cart">Cart</string>
+    <string name="search_icon">Search Icon</string>
+    <string name="home">Home</string>
+    <string name="notifications">Notifications</string>
+    <string name="account">Account</string>
 </resources>
