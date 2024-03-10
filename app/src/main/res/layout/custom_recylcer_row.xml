@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/background_white"
+    android:layout_marginHorizontal="12dp"
+    android:layout_marginTop="18dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/image"
+            android:src="@drawable/img_paneer"
+            android:contentDescription="@string/image"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:scaleType="fitXY"/>
+
+        <TextView
+            android:id="@+id/title"
+            android:text="@string/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginVertical="10dp"
+            android:textSize="16sp"
+            android:textColor="@color/heading_black"
+            android:fontFamily="@font/poppins_medium"/>
+
+        <TextView
+            android:id="@+id/quantity_text"
+            android:text="@string/quantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="4dp"
+            android:textSize="14sp"
+            android:textColor="@color/disabled"
+            android:fontFamily="@font/roboto_regular"
+            />
+
+        <TextView
+            android:id="@+id/price_text"
+            android:text="@string/price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:textSize="14sp"
+            android:textColor="@color/heading_black"
+            android:fontFamily="@font/roboto_medium"
+            />
+
+        <Button
+            android:id="@+id/add_to_cart_btn"
+            android:contentDescription="@string/add_to_cart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/add_to_cart"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/primary"
+            android:background="@drawable/custom_transparent_btn"/>
+
+    </LinearLayout>
+</LinearLayout>

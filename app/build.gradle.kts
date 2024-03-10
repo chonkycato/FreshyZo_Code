@@ -71,6 +71,10 @@ dependencies {
     //Volley
     implementation ("com.android.volley:volley:1.2.1")
 
+    //Other
+    implementation ("androidx.recyclerview:recyclerview:1.3.2")
+    implementation ("androidx.cardview:cardview:1.0.0")
+
     //Compose
     implementation("androidx.activity:activity-compose:1.8.2")
     implementation(platform("androidx.compose:compose-bom:2023.08.00"))

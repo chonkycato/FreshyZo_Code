@@ -56,4 +56,19 @@
     <string name="home">Home</string>
     <string name="notifications">Notifications</string>
     <string name="account">Account</string>
+    <string name="hvs_item_text_1">Milk</string>
+    <string name="hvs_item_text_2">Ghee</string>
+    <string name="hvs_item_text_3">Buffalo Milk</string>
+    <string name="hvs_item_text_4">Paneer</string>
+    <string name="milk">Milk</string>
+    <string name="buffalo_milk">Buffalo Milk</string>
+    <string name="paneer">Paneer</string>
+    <string name="ghee">Ghee</string>
+    <string name="categories">Categories</string>
+    <string name="popular_items">Popular Items</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="quantity">Quantity</string>
+    <string name="price">Price</string>
+    <string name="add_to_cart">Add to Cart</string>
 </resources>
