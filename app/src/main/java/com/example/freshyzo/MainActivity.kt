@@ -2,6 +2,7 @@ package com.example.freshyzo
 
 import android.content.Context
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -14,34 +15,47 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //Bottom Navigation
-        loadFragment(HomeFragment())
+        val fragmentManager = supportFragmentManager
+        val fragments = fragmentManager.fragments
+
+
         bottomNav = findViewById(R.id.bottomNav)
-        bottomNav.setOnItemSelectedListener {
-            when (it.itemId){
-                R.id.home_icon -> {
-                    loadFragment(HomeFragment())
-                    true
-                }
 
-                R.id.notification_icon -> {
-                    loadFragment(NotificationsFragment())
-                    true
-                }
+        val currentFragment = fragments.firstOrNull { it.isVisible }
 
-                R.id.account_icon -> {
-                    loadFragment(AccountFragment())
-                    true
-                }
+        if (currentFragment is ProductFragment) {
+            bottomNav.visibility = View.INVISIBLE
+        }
+        else {
+            //Bottom Navigation
+            bottomNav.visibility = View.VISIBLE
+            loadFragment(HomeFragment())
+            bottomNav.setOnItemSelectedListener {
+                when (it.itemId){
+                    R.id.home_icon -> {
+                        loadFragment(HomeFragment())
+                        true
+                    }
 
-                R.id.cart_icon -> {
-                    loadFragment(CartFragment())
-                    true
-                }
+                    R.id.notification_icon -> {
+                        loadFragment(NotificationsFragment())
+                        true
+                    }
 
-                else -> {
-                    loadFragment(HomeFragment())
-                    true
+                    R.id.account_icon -> {
+                        loadFragment(AccountFragment())
+                        true
+                    }
+
+                    R.id.cart_icon -> {
+                        loadFragment(CartFragment())
+                        true
+                    }
+
+                    else -> {
+                        loadFragment(HomeFragment())
+                        true
+                    }
                 }
             }
         }
@@ -54,11 +68,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun bottomNav() {
-
-    }
-
-    fun onBoardingFinished() {
+     fun onBoardingFinished() {
         val sharedPref = getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
         sharedPref.edit().putBoolean("Finished", true).apply()
     }

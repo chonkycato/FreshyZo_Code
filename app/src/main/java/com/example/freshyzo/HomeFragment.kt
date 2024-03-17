@@ -54,6 +54,7 @@ class HomeFragment : Fragment() {
         carouselView!!.pageCount = carouselArray.size
         carouselView!!.setImageListener(imageListener)
 
+
         recyclerView.layoutManager = GridLayoutManager(context,2)
         recyclerAdapter = RecyclerAdapter(requireContext())
         recyclerView.adapter = recyclerAdapter
