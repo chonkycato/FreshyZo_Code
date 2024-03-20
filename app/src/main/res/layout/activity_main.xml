@@ -24,20 +24,26 @@
         android:layout_above="@+id/bottomNav"
         />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.5">
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:background="@color/off_white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav"
         app:itemTextColor="@color/bottom_nav_item_color"
         app:itemIconTint="@color/bottom_nav_item_color"
         app:labelVisibilityMode="labeled"
         android:soundEffectsEnabled="false"
         />
+
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,7 +13,7 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/image"
+            android:id="@+id/productItemImage"
             android:src="@drawable/img_paneer"
             android:contentDescription="@string/image"
             android:layout_width="match_parent"

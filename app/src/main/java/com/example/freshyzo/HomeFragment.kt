@@ -1,6 +1,7 @@
 package com.example.freshyzo
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,17 +10,19 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.freshyzo.model.ButtonClickListener
 import com.example.freshyzo.model.DataModel
 import com.example.freshyzo.model.RecyclerAdapter
 import com.synnapps.carouselview.CarouselView
 import com.synnapps.carouselview.ImageListener
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), ButtonClickListener {
 
     private var carouselArray : ArrayList<Int> = ArrayList()
     private var carouselView: CarouselView? = null
     private lateinit var  recyclerAdapter: RecyclerAdapter
     private var dataList = mutableListOf<DataModel>()
+    private lateinit var recyclerView : RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,9 +31,9 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         val mLogOutButton = view.findViewById<Button>(R.id.logoutButton)
-        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
 
-        //Horizontal Scroll View
+
+        //Populate Horizontal Scroll View dynamically
 //        val imageList = listOf<Int>(R.drawable.img_milk, R.drawable.img_ghee, R.drawable.img_milk_buff, R.drawable.img_paneer)
 //        val textList = listOf<Int>(R.string.hvs_item_text_1, R.string.hvs_item_text_2, R.string.hvs_item_text_3, R.string.hvs_item_text_4)
 //        val itemContainer = view.findViewById<LinearLayout>(R.id.hvs_container)
@@ -55,9 +58,6 @@ class HomeFragment : Fragment() {
         carouselView!!.setImageListener(imageListener)
 
 
-        recyclerView.layoutManager = GridLayoutManager(context,2)
-        recyclerAdapter = RecyclerAdapter(requireContext())
-        recyclerView.adapter = recyclerAdapter
 
         //add data
         dataList.add(DataModel("FreshyZo Ghee Butter","200 ml","₹25",R.drawable.img_ghee))
@@ -66,14 +66,12 @@ class HomeFragment : Fragment() {
         dataList.add(DataModel("FreshyZo Ghee Butter","200 ml","₹25",R.drawable.img_ghee))
         dataList.add(DataModel("FreshyZo Ghee Butter","200 ml","₹25",R.drawable.img_ghee))
         dataList.add(DataModel("FreshyZo Ghee Butter","200 ml","₹25",R.drawable.img_ghee))
-        dataList.add(DataModel("FreshyZo Ghee Butter","200 ml","₹25",R.drawable.img_ghee))
-        dataList.add(DataModel("FreshyZo Ghee Butter","200 ml","₹25",R.drawable.img_ghee))
-        dataList.add(DataModel("FreshyZo Ghee Butter","200 ml","₹25",R.drawable.img_ghee))
-        dataList.add(DataModel("FreshyZo Ghee Butter","200 ml","₹25",R.drawable.img_ghee))
-        dataList.add(DataModel("FreshyZo Ghee Butter","200 ml","₹25",R.drawable.img_ghee))
-        dataList.add(DataModel("FreshyZo Ghee Butter","200 ml","₹25",R.drawable.img_ghee))
-        dataList.add(DataModel("FreshyZo Ghee Butter","200 ml","₹25",R.drawable.img_ghee))
-        dataList.add(DataModel("FreshyZo Ghee Butter","200 ml","₹25",R.drawable.img_ghee))
+
+        //Initialize RecyclerView
+        recyclerView = view.findViewById(R.id.recyclerView)
+        recyclerView.layoutManager = GridLayoutManager(context,2)
+        recyclerAdapter = RecyclerAdapter(requireContext(), this)
+        recyclerView.adapter = recyclerAdapter
 
 
         recyclerAdapter.setDataList(dataList)
@@ -83,6 +81,10 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.action_homeFragment_to_loginFragment)
         }
         return view
+    }
+
+    override fun onButtonClicked(position : Int, dataModel: DataModel){
+        Log.d("Position", position.toString())
     }
 
     private var imageListener = ImageListener { position, imageView -> imageView.setImageResource(carouselArray[position]) }

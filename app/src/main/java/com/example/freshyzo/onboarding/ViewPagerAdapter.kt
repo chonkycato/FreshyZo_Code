@@ -13,12 +13,14 @@ class ViewPagerAdapter(
     lifeCycle: Lifecycle
 ) : FragmentStateAdapter(fragmentManager, lifeCycle) {
 
-    private val fragmentList: ArrayList<OnboardingScreen> = list
+
+/*   For single fragment, use the below code. */
+   private val fragmentList: ArrayList<OnboardingScreen> = list
 
     /*    For multiple fragments, change type of below ArrayList to <Fragment> here and use multiple Screen Constructors [ex- FirstScreen(), SecondScreen()..
           and so on in fragmentList arrayList in ViewPagerFragment */
 
-    /*      private val fragmentList: ArrayList<Fragment> = list */
+//         private val fragmentList: ArrayList<Fragment> = list
 
     override fun getItemCount(): Int {
         return fragmentList.size

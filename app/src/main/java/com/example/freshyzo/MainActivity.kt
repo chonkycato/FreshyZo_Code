@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.freshyzo.login.LoginFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -43,7 +44,7 @@ class MainActivity : AppCompatActivity() {
                     }
 
                     R.id.account_icon -> {
-                        loadFragment(AccountFragment())
+                        loadFragment(LoginFragment())
                         true
                     }
 

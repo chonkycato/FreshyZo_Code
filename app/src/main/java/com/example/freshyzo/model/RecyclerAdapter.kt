@@ -7,10 +7,11 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.freshyzo.R
 
-class RecyclerAdapter(var context: Context) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
+class RecyclerAdapter(var context: Context, val listener : ButtonClickListener) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
     private var dataList = emptyList<DataModel>()
 
@@ -26,7 +27,7 @@ class RecyclerAdapter(var context: Context) : RecyclerView.Adapter<RecyclerAdapt
         var price: TextView
 
         init {
-            image = itemView.findViewById(R.id.image)
+            image = itemView.findViewById(R.id.productItemImage)
             title = itemView.findViewById(R.id.title)
             quantity = itemView.findViewById(R.id.quantity_text)
             price = itemView.findViewById(R.id.price_text)
@@ -45,20 +46,29 @@ class RecyclerAdapter(var context: Context) : RecyclerView.Adapter<RecyclerAdapt
      override fun onBindViewHolder(holder: RecyclerAdapter.ViewHolder, position: Int) {
 
         // Get the data model based on position
-        var data = dataList[position]
+        var item = dataList[position]
         val addToCartBtn = holder.itemView.findViewById<Button>(R.id.add_to_cart_btn)
+        val image = holder.itemView.findViewById<ImageView>(R.id.productItemImage)
 
         // Set item views based on your views and data model
-        holder.title.text = data.title
-        holder.quantity.text = data.quantity
-        holder.price.text = data.price
+        holder.title.text = item.title
+        holder.quantity.text = item.quantity
+        holder.price.text = item.price
 
-        holder.image.setImageResource(data.image)
+        holder.image.setImageResource(item.image)
 
-//            addToCartBtn.setOnClickListener{
-//                Toast.makeText(context, "Hello", Toast.LENGTH_SHORT).show()
-//            }
+            addToCartBtn.setOnClickListener{
+                listener.onButtonClicked(position, dataList[position])
+            }
+
+            image.setOnClickListener{
+                var imageId = dataList[position]
+                Toast.makeText(context, imageId.toString(), Toast.LENGTH_SHORT).show()
+            }
+
+
      }
      //  total count of items in the list
     override fun getItemCount() = dataList.size
+
 }
