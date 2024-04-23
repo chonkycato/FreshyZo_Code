@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ProductFragment"
-    android:background="@color/background_white">
+    android:background="@color/background">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/topNav_prod"
@@ -23,13 +23,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="72dp"
                 android:theme="?actionBarTheme"
-                android:background="@color/background_white"
+                android:background="@color/background"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
             <ImageView
-                android:id="@+id/back_icon"
+                android:id="@+id/back_icon_prod"
                 android:contentDescription="@string/back_icon"
                 android:src="@drawable/icon_pointer"
                 android:layout_width="wrap_content"
@@ -61,7 +61,7 @@
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/cart_icon"
-                app:layout_constraintStart_toEndOf="@+id/back_icon"
+                app:layout_constraintStart_toEndOf="@+id/back_icon_prod"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
@@ -107,7 +107,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/freshyzo_malai_dahi"
         android:textSize="18sp"
-        android:textColor="@color/heading_black"
+        android:textColor="@color/heading"
         android:fontFamily="@font/roboto_medium"/>
 
     <LinearLayout
@@ -126,7 +126,7 @@
             android:layout_height="wrap_content"
             android:text="@string/mrp"
             android:textSize="14sp"
-            android:textColor="@color/heading_black"
+            android:textColor="@color/heading"
             android:fontFamily="@font/roboto_medium"/>
 
         <TextView
@@ -158,7 +158,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:text="@string/selected_size"
         android:textSize="16sp"
-        android:textColor="@color/heading_black"
+        android:textColor="@color/heading"
         android:fontFamily="@font/roboto_medium"
         android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="20dp"/>
@@ -238,7 +238,7 @@
         android:layout_margin="20dp"
         android:text="@string/product_details"
         android:textSize="18sp"
-        android:textColor="@color/heading_black"
+        android:textColor="@color/heading"
         android:fontFamily="@font/poppins_medium"
         android:includeFontPadding="false"
         />
@@ -253,7 +253,7 @@
         android:layout_margin="20dp"
         android:text="@string/product_desc"
         android:textSize="14sp"
-        android:textColor="@color/heading_black"
+        android:textColor="@color/heading"
         android:fontFamily="@font/roboto_regular"
         android:lineHeight="22dp"
         android:includeFontPadding="false"

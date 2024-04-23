@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.freshyzo.model.BottomNavVisibilityListener
+
 class CartFragment : Fragment() {
 
     override fun onCreateView(
@@ -12,6 +14,16 @@ class CartFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        (activity as BottomNavVisibilityListener).setBottomNavVisibility(true)
         return inflater.inflate(R.layout.fragment_cart, container, false)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as BottomNavVisibilityListener).setBottomNavVisibility(true)
+    }
+
+    override fun onPause() {
+        super.onPause()
     }
 }

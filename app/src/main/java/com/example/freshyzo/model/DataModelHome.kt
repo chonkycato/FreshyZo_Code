@@ -1,6 +1,6 @@
 package com.example.freshyzo.model
 
-class DataModel (
+class DataModelHome (
     var title : String,
     var quantity : String,
     var price : String,

@@ -13,9 +13,9 @@ import com.example.freshyzo.R
 
 class RecyclerAdapter(var context: Context, val listener : ButtonClickListener) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
-    private var dataList = emptyList<DataModel>()
+    private var dataList: List<DataModelHome> = emptyList<DataModelHome>()
 
-    internal fun setDataList(dataList: List<DataModel>) {
+    internal fun setDataList(dataList: List<DataModelHome>) {
         this.dataList = dataList
     }
 
@@ -36,9 +36,9 @@ class RecyclerAdapter(var context: Context, val listener : ButtonClickListener) 
     }
 
         /* Usually involves inflating a layout from XML and returning the holder */
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         // Inflate the custom layout
-        var view = LayoutInflater.from(parent.context).inflate(R.layout.custom_recylcer_row, parent, false)
+        var view = LayoutInflater.from(parent.context).inflate(R.layout.custom_recylcer_row_products, parent, false)
         return ViewHolder(view)
     }
 

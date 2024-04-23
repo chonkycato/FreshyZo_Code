@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import com.example.freshyzo.model.BottomNavVisibilityListener
 
 /**
  * A simple [Fragment] subclass.
@@ -21,11 +21,14 @@ class ProductFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_product, container, false)
+        (activity as BottomNavVisibilityListener).setBottomNavVisibility(false)
 
-        var backIcon = view.findViewById<ImageView>(R.id.back_icon)
+        var backIcon = view.findViewById<ImageView>(R.id.back_icon_prod)
+        /* TODO("implement a proper back navigation") */
         backIcon.setOnClickListener {
             try {
-                findNavController().navigate(R.id.action_productFragment_to_homeFragment)
+//                findNavController().navigate(R.id.action_productFragment_to_homeFragment)
+                (activity as MainActivity).loadFragment(HomeFragment(), false)
             }
             catch (e : Exception){
                 e.printStackTrace()
@@ -33,6 +36,15 @@ class ProductFragment : Fragment() {
         }
 
         return view
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as BottomNavVisibilityListener).setBottomNavVisibility(false)
+    }
+
+    override fun onPause() {
+        super.onPause()
     }
 
 }

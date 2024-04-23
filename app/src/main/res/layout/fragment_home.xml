@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_white"
+    android:background="@color/background"
     tools:context=".HomeFragment">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="86dp"
                 android:theme="?actionBarTheme"
-                android:background="@color/background_white"
+                android:background="@color/background"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -94,7 +94,7 @@
                 android:layout_marginStart="22dp"
                 android:layout_marginTop="28dp"
                 android:fontFamily="@font/poppins_medium"
-                android:textColor="@color/heading_black"
+                android:textColor="@color/heading"
                 android:textSize="20sp"
                 android:letterSpacing="0.02"/>
 
@@ -258,13 +258,12 @@
                 android:layout_marginStart="22dp"
                 android:layout_marginTop="28dp"
                 android:fontFamily="@font/poppins_medium"
-                android:textColor="@color/heading_black"
+                android:textColor="@color/heading"
                 android:textSize="20sp"
                 android:letterSpacing="0.02"/>
 
-
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
+                android:id="@+id/recyclerViewHome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/popular_items_text"
@@ -272,8 +271,8 @@
                 android:layout_marginHorizontal="12dp"
                 android:layout_marginBottom="80dp"
                 android:nestedScrollingEnabled="true">
-
             </androidx.recyclerview.widget.RecyclerView>
+
             <Button
                 android:id="@+id/logoutButton"
                 android:layout_width="wrap_content"
@@ -286,9 +285,6 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="100dp"/>
-
-
-
 
         </LinearLayout>
 

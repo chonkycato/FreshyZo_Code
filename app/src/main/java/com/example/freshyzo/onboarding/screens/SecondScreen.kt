@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.example.freshyzo.MainActivity
 import com.example.freshyzo.R
+import com.example.freshyzo.login.LoginFragment
 
 
 class SecondScreen : Fragment() {
@@ -40,7 +40,8 @@ class SecondScreen : Fragment() {
         }
 
         view.findViewById<TextView>(R.id.skip_fss).setOnClickListener {
-            findNavController().navigate(R.id.action_viewPagerFragment_to_loginFragment)
+//            findNavController().navigate(R.id.action_viewPagerFragment_to_loginFragment)
+            (activity as MainActivity).loadFragment(LoginFragment(), true)
             (activity as MainActivity?)!!.onBoardingFinished()
         }
 

@@ -9,9 +9,10 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import com.example.freshyzo.HomeFragment
 import com.example.freshyzo.MainActivity
 import com.example.freshyzo.R
+import com.example.freshyzo.model.BottomNavVisibilityListener
 
 /**
  * A simple [Fragment] subclass.
@@ -27,6 +28,7 @@ class LoginFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_login, container, false)
+        (activity as BottomNavVisibilityListener).setBottomNavVisibility(false)
 
         val mPhoneInput = view.findViewById<EditText>(R.id.phoneInput)
         val mOtpInput = view.findViewById<EditText>(R.id.otpInput)
@@ -46,8 +48,9 @@ class LoginFragment : Fragment() {
                     val mPhoneNumber = phoneString.toLong()
                     val mOtpEntered = otpString.toLong()
                     if (mOtpEntered == sampleOTP) {
-                        (activity as MainActivity).loginState(true)
-                        findNavController().navigate(R.id.action_loginFragment_to_homeFragment2)
+                        (activity as MainActivity).changeLoginState(true)
+                        (activity as MainActivity).loadFragment(HomeFragment(), true)
+//                        findNavController().navigate(R.id.action_loginFragment_to_homeFragment2)
                     } else {
                         Toast.makeText(
                             requireContext(),
@@ -87,8 +90,10 @@ class LoginFragment : Fragment() {
         }
 
         mSignUpInstead.setOnClickListener{
-            findNavController().navigate(R.id.action_loginFragment_to_signupFragment)
+//            findNavController().navigate(R.id.action_loginFragment_to_signupFragment)
+            (activity as MainActivity).loadFragment(SignupFragment(), false)
         }
+
 
         mGetOtp.setOnClickListener {
             val otp = (activity as MainActivity).generateOTP()

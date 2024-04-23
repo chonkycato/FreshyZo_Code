@@ -97,7 +97,7 @@
             android:fontFamily="@font/roboto_medium"
             android:text="@string/title_ffs"
             android:textAlignment="center"
-            android:textColor="@color/heading_black"
+            android:textColor="@color/heading"
             android:textSize="28sp" />
 
         <TextView

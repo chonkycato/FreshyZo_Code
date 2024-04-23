@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="size_dropdown">
+        <item>Size: 200ml</item>
+        <item>Size: 500ml</item>
+        <item>Size: 1kg</item>
+    </string-array>
+</resources>

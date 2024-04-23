@@ -40,7 +40,7 @@
                 android:inputType="textPersonName"
                 android:padding="14dp"
                 android:textSize="15sp"
-                android:textColor="@color/heading_black"
+                android:textColor="@color/heading"
                 android:textColorHint="@color/disabled"
                 tools:ignore="TextContrastCheck" />
 
@@ -55,7 +55,7 @@
                 android:inputType="phone"
                 android:padding="14dp"
                 android:textSize="15sp"
-                android:textColor="@color/heading_black"
+                android:textColor="@color/heading"
                 android:textColorHint="@color/disabled"
                 tools:ignore="TextContrastCheck" />
 
@@ -130,7 +130,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_regular"
                     android:text="@string/have_account"
-                    android:textColor="@color/heading_black"
+                    android:textColor="@color/heading"
                     android:textSize="14sp" />
 
                 <TextView

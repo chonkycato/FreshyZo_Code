@@ -6,12 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.freshyzo.login.LoginFragment
+import com.example.freshyzo.model.BottomNavVisibilityListener
 import com.example.freshyzo.model.ButtonClickListener
-import com.example.freshyzo.model.DataModel
+import com.example.freshyzo.model.DataModelHome
 import com.example.freshyzo.model.RecyclerAdapter
 import com.synnapps.carouselview.CarouselView
 import com.synnapps.carouselview.ImageListener
@@ -20,8 +22,9 @@ class HomeFragment : Fragment(), ButtonClickListener {
 
     private var carouselArray : ArrayList<Int> = ArrayList()
     private var carouselView: CarouselView? = null
+
     private lateinit var  recyclerAdapter: RecyclerAdapter
-    private var dataList = mutableListOf<DataModel>()
+    private var dataList = mutableListOf<DataModelHome>()
     private lateinit var recyclerView : RecyclerView
 
     override fun onCreateView(
@@ -30,7 +33,9 @@ class HomeFragment : Fragment(), ButtonClickListener {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
+        (activity as BottomNavVisibilityListener).setBottomNavVisibility(true)
         val mLogOutButton = view.findViewById<Button>(R.id.logoutButton)
+        Toast.makeText(context, (activity as MainActivity).isLoggedIn().toString(), Toast.LENGTH_SHORT).show()
 
 
         //Populate Horizontal Scroll View dynamically
@@ -60,15 +65,15 @@ class HomeFragment : Fragment(), ButtonClickListener {
 
 
         //add data
-        dataList.add(DataModel("FreshyZo Ghee Butter","200 ml","₹25",R.drawable.img_ghee))
-        dataList.add(DataModel("FreshyZo Ghee Butter","200 ml","₹25",R.drawable.img_ghee))
-        dataList.add(DataModel("FreshyZo Ghee Butter","200 ml","₹25",R.drawable.img_ghee))
-        dataList.add(DataModel("FreshyZo Ghee Butter","200 ml","₹25",R.drawable.img_ghee))
-        dataList.add(DataModel("FreshyZo Ghee Butter","200 ml","₹25",R.drawable.img_ghee))
-        dataList.add(DataModel("FreshyZo Ghee Butter","200 ml","₹25",R.drawable.img_ghee))
+        dataList.add(DataModelHome("FreshyZo Ghee Butter","200 ml","₹25",R.drawable.img_ghee))
+        dataList.add(DataModelHome("FreshyZo Ghee Butter","200 ml","₹25",R.drawable.img_ghee))
+        dataList.add(DataModelHome("FreshyZo Ghee Butter","200 ml","₹25",R.drawable.img_ghee))
+        dataList.add(DataModelHome("FreshyZo Ghee Butter","200 ml","₹25",R.drawable.img_ghee))
+        dataList.add(DataModelHome("FreshyZo Ghee Butter","200 ml","₹25",R.drawable.img_ghee))
+        dataList.add(DataModelHome("FreshyZo Ghee Butter","200 ml","₹25",R.drawable.img_ghee))
 
         //Initialize RecyclerView
-        recyclerView = view.findViewById(R.id.recyclerView)
+        recyclerView = view.findViewById(R.id.recyclerViewHome)
         recyclerView.layoutManager = GridLayoutManager(context,2)
         recyclerAdapter = RecyclerAdapter(requireContext(), this)
         recyclerView.adapter = recyclerAdapter
@@ -77,14 +82,24 @@ class HomeFragment : Fragment(), ButtonClickListener {
         recyclerAdapter.setDataList(dataList)
 
         mLogOutButton.setOnClickListener{
-            (activity as MainActivity).loginState(false)
-            findNavController().navigate(R.id.action_homeFragment_to_loginFragment)
+            (activity as MainActivity).changeLoginState(false)
+//            findNavController().navigate(R.id.action_homeFragment_to_productFragment)
+            (activity as MainActivity).loadFragment(LoginFragment(), false)
         }
         return view
     }
 
-    override fun onButtonClicked(position : Int, dataModel: DataModel){
+    override fun onButtonClicked(position : Int, dataModelHome: DataModelHome){
         Log.d("Position", position.toString())
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as BottomNavVisibilityListener).setBottomNavVisibility(true)
+    }
+
+    override fun onPause() {
+        super.onPause()
     }
 
     private var imageListener = ImageListener { position, imageView -> imageView.setImageResource(carouselArray[position]) }

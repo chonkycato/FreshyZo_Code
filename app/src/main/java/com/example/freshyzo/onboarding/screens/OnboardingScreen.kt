@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.freshyzo.MainActivity
 import com.example.freshyzo.R
+import com.example.freshyzo.login.LoginFragment
 
 
 class OnboardingScreen : Fragment() {
@@ -68,10 +68,10 @@ class OnboardingScreen : Fragment() {
         }
 
         skip.setOnClickListener {
-            findNavController().navigate(R.id.action_viewPagerFragment_to_loginFragment)
+//            findNavController().navigate(R.id.action_viewPagerFragment_to_loginFragment)
+            (activity as MainActivity).loadFragment(LoginFragment(), true)
             (activity as MainActivity?)!!.onBoardingFinished()
         }
-
         return view
     }
 
@@ -123,7 +123,8 @@ class OnboardingScreen : Fragment() {
                     .into(imageView)
 
                 next.setOnClickListener {
-                    findNavController().navigate(R.id.action_viewPagerFragment_to_loginFragment)
+//                    findNavController().navigate(R.id.action_viewPagerFragment_to_loginFragment)
+                    (activity as MainActivity).loadFragment(LoginFragment(), clearBackStack = true)
                     (activity as MainActivity?)!!.onBoardingFinished()
                 }
             }

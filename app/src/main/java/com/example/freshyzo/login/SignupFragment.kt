@@ -9,9 +9,10 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import com.example.freshyzo.HomeFragment
 import com.example.freshyzo.MainActivity
 import com.example.freshyzo.R
+import com.example.freshyzo.model.BottomNavVisibilityListener
 
 /**
  * A simple [Fragment] subclass.
@@ -26,6 +27,7 @@ class SignupFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_signup, container, false)
+        (activity as BottomNavVisibilityListener).setBottomNavVisibility(false)
 
         val mNameInput = view.findViewById<EditText>(R.id.nameInput)
         val mPhoneInput = view.findViewById<EditText>(R.id.phoneInput)
@@ -40,7 +42,8 @@ class SignupFragment : Fragment() {
             val mOTPEntered = mOTPInput.text.toString().toLong()
             val mSampleOTP = 123456.toLong()
             if (mSampleOTP == mOTPEntered){
-                findNavController().navigate(R.id.action_signupFragment_to_homeFragment)
+//              findNavController().navigate(R.id.action_signupFragment_to_homeFragment)
+                (activity as MainActivity).loadFragment(HomeFragment(), true)
                 Toast.makeText(requireContext(), "$mUserName $mPhoneNumber $mOTPEntered", Toast.LENGTH_SHORT).show()
             }
             else{
@@ -49,8 +52,11 @@ class SignupFragment : Fragment() {
         }
 
         mLoginInstead.setOnClickListener{
-            findNavController().navigate(R.id.action_signupFragment_to_loginFragment)
+//          findNavController().navigate(R.id.action_signupFragment_to_loginFragment)
+            (activity as MainActivity).loadFragment(LoginFragment(), false)
+
         }
+
 
         mGetOTP.setOnClickListener{
             val otp = (activity as MainActivity).generateOTP()

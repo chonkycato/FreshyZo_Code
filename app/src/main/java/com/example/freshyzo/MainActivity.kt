@@ -5,10 +5,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.freshyzo.login.LoginFragment
+import com.example.freshyzo.model.BottomNavVisibilityListener
+import com.example.freshyzo.onboarding.screens.OnboardingScreen
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), BottomNavVisibilityListener {
 
     private lateinit var bottomNav : BottomNavigationView
 
@@ -16,72 +17,72 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val fragmentManager = supportFragmentManager
-        val fragments = fragmentManager.fragments
-
+        if (!checkOnBoarding()) {
+            loadFragment(OnboardingScreen(), true)
+        }
 
         bottomNav = findViewById(R.id.bottomNav)
 
-        val currentFragment = fragments.firstOrNull { it.isVisible }
+        //Bottom Navigation
+        bottomNav.visibility = View.VISIBLE
+        //loadFragment(HomeFragment(), true)
+        bottomNav.setOnItemSelectedListener {
+            when (it.itemId){
+                R.id.home_icon -> {
+                    loadFragment(HomeFragment(), false)
+                    true
+                }
 
-        if (currentFragment is ProductFragment) {
-            bottomNav.visibility = View.INVISIBLE
-        }
-        else {
-            //Bottom Navigation
-            bottomNav.visibility = View.VISIBLE
-            loadFragment(HomeFragment())
-            bottomNav.setOnItemSelectedListener {
-                when (it.itemId){
-                    R.id.home_icon -> {
-                        loadFragment(HomeFragment())
-                        true
-                    }
+                R.id.notification_icon -> {
+                    loadFragment(NotificationsFragment(), false)
+                    true
+                }
 
-                    R.id.notification_icon -> {
-                        loadFragment(NotificationsFragment())
-                        true
-                    }
+                R.id.account_icon -> {
+                    loadFragment(ProductFragment(), false)
+                    true
+                }
 
-                    R.id.account_icon -> {
-                        loadFragment(LoginFragment())
-                        true
-                    }
+                R.id.cart_icon -> {
+                    loadFragment(CartFragment(), false)
+                    true
+                }
 
-                    R.id.cart_icon -> {
-                        loadFragment(CartFragment())
-                        true
-                    }
-
-                    else -> {
-                        loadFragment(HomeFragment())
-                        true
-                    }
+                else -> {
+                    loadFragment(HomeFragment(), false)
+                    true
                 }
             }
         }
     }
+//    }
 
-    private fun loadFragment(fragment: Fragment){
+    fun loadFragment(fragment: Fragment, clearBackStack: Boolean){
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.container,fragment)
         transaction.commit()
-
+        val fragmentManager = supportFragmentManager
+        if (clearBackStack){
+            fragmentManager.popBackStackImmediate()
+        }
     }
 
-     fun onBoardingFinished() {
+    fun onBoardingFinished() {
         val sharedPref = getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
         sharedPref.edit().putBoolean("Finished", true).apply()
     }
 
-    fun loginState(loginState : Boolean) {
+    private fun checkOnBoarding() : Boolean{
+        return getSharedPreferences("onBoarding", Context.MODE_PRIVATE).getBoolean("Finished", true)
+    }
+
+    fun changeLoginState(loginState : Boolean) {
         val sharedPref = getSharedPreferences("loggedIn", Context.MODE_PRIVATE)
         sharedPref.edit().putBoolean("isLoggedIn", loginState).apply()
     }
 
-    fun loginState(): Boolean {
+    fun isLoggedIn(): Boolean {
         val sharedPref = getSharedPreferences("loggedIn", Context.MODE_PRIVATE)
-        sharedPref.edit().putBoolean("isLoggedIn", false).apply()
         return sharedPref.getBoolean("isLoggedIn", false)
     }
 
@@ -89,5 +90,21 @@ class MainActivity : AppCompatActivity() {
         return (Math.random() * 900000).toLong() + 100000
     }
 
+    override fun setBottomNavVisibility(isVisible: Boolean) {
+        if (isVisible){
+            try{
+                bottomNav.visibility = View.VISIBLE
+            } catch (e: Exception){
+                e.printStackTrace()
+            }
+        }
+        else{
+            try{
+                bottomNav.visibility = View.GONE
+            } catch (e: Exception){
+                e.printStackTrace()
+            }
+        }
+    }
 
 }
