@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/background"
+    android:layout_marginHorizontal="4dp"
+    android:layout_marginTop="8dp"
+    android:background="@drawable/custom_recycler_view_border">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="12dp"
+        android:paddingHorizontal="4dp">
+
+        <ImageView
+            android:id="@+id/productItemIv"
+            android:src="@drawable/img_paneer"
+            android:contentDescription="@string/image"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:scaleType="fitXY"/>
+
+        <TextView
+            android:id="@+id/productTitleTv"
+            android:text="@string/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/productItemIv"
+            android:layout_marginStart="16dp"
+            android:textSize="15sp"
+            android:textColor="@color/heading"
+            android:fontFamily="@font/roboto_medium"/>
+
+        <TextView
+            android:id="@+id/quantity_text"
+            android:text="@string/quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/productTitleTv"
+            app:layout_constraintStart_toEndOf="@id/productItemIv"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:textSize="12sp"
+            android:textColor="@color/disabled"
+            android:fontFamily="@font/roboto_regular"
+            />
+
+        <TextView
+            android:id="@+id/price_text"
+            android:text="@string/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/quantity_text"
+            app:layout_constraintStart_toEndOf="@id/productItemIv"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:textSize="18sp"
+            android:textColor="@color/body"
+            android:fontFamily="@font/roboto_medium"
+            />
+
+        <Button
+            android:id="@+id/subscribe_btn_home"
+            android:contentDescription="@string/subscribe"
+            android:background="@drawable/custom_rounded_corner_dark"
+            android:layout_width="110dp"
+            android:layout_height="36dp"
+            app:layout_constraintTop_toBottomOf="@id/price_text"
+            app:layout_constraintStart_toEndOf="@id/addtocart_btn_home"
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="6dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/subscribe"
+            android:textSize="12sp"
+            android:textAllCaps="true"
+            android:textColor="@color/off_white"
+            android:fontFamily="@font/roboto_medium"
+            android:letterSpacing="0.04"
+            android:includeFontPadding="false"
+           />
+
+        <Button
+            android:id="@+id/addtocart_btn_home"
+            android:contentDescription="@string/add_to_cart"
+            android:background="@drawable/custom_rounded_corner_dark_transparent"
+            android:layout_width="110dp"
+            android:layout_height="36dp"
+            app:layout_constraintTop_toBottomOf="@id/price_text"
+            app:layout_constraintStart_toEndOf="@id/productItemIv"
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="6dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/add_to_cart"
+            android:textSize="12sp"
+            android:textAllCaps="true"
+            android:textColor="@color/secondary"
+            android:fontFamily="@font/roboto_medium"
+            android:letterSpacing="0.04"
+            android:includeFontPadding="false"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

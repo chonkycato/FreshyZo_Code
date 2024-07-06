@@ -39,7 +39,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:text="@string/date"
+                android:text="@string/today"
                 android:textSize="15sp"
                 android:textColor="@color/text_gray"
                 android:fontFamily="@font/roboto_medium"

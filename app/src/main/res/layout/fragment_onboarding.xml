@@ -4,61 +4,72 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginEnd="16dp"
-    android:layout_marginStart="16dp"
+    android:paddingHorizontal="22dp"
     android:background="@color/off_white"
     tools:context=".onboarding.screens.OnboardingScreen">
 
-    <ImageView
+    <TextView
         android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="100dp"
         android:contentDescription="@string/back_caps"
-        android:src="@drawable/icon_pointer"
         android:visibility="visible"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/top_layout"
-        app:layout_constraintVertical_bias="0.502" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/back_caps"
+        android:textColor="@color/primary"
+        android:textSize="14sp"
+        android:textAllCaps="true"
+        android:fontFamily="@font/poppins_semibold"
+        android:includeFontPadding="false"/>
 
-    <ImageView
+    <TextView
         android:id="@+id/next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="36dp"
-        android:layout_marginTop="100dp"
         android:contentDescription="@string/next_caps"
-        android:scaleX="-1"
-        android:src="@drawable/icon_pointer"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/top_layout" />
+        app:layout_constraintTop_toBottomOf="@id/top_layout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/next_caps"
+        android:textColor="@color/primary"
+        android:textSize="14sp"
+        android:textAllCaps="true"
+        android:fontFamily="@font/poppins_semibold"
+        android:includeFontPadding="false"/>
 
 
-    <ImageView
+    <TextView
         android:id="@+id/skip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="36dp"
         android:layout_marginTop="70dp"
         android:contentDescription="@string/next_caps"
-        android:scaleX="-1"
-        android:src="@drawable/icon_cross"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/top_layout"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/skip_caps"
+        android:textColor="@color/primary"
+        android:textSize="14sp"
+        android:textAllCaps="true"
+        android:fontFamily="@font/poppins_semibold"
+        android:includeFontPadding="false"/>
 
     <LinearLayout
         android:id="@+id/top_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/skip"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteY="182dp">
 
         <FrameLayout
@@ -98,7 +109,7 @@
             android:text="@string/title_ffs"
             android:textAlignment="center"
             android:textColor="@color/heading"
-            android:textSize="28sp" />
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/sub_title"
@@ -106,12 +117,11 @@
             android:layout_height="wrap_content"
             android:layout_margin="10sp"
             android:fontFamily="@font/roboto_regular"
-            android:paddingEnd="20dp"
-            android:paddingStart="20dp"
+            android:paddingHorizontal="20dp"
             android:text="@string/sub_title_ffs"
             android:textAlignment="center"
             android:textColor="@color/text_gray"
-            android:textSize="15sp" />
+            android:textSize="14sp" />
     </LinearLayout>
 
 

@@ -79,12 +79,11 @@
     <string name="mrp">MRP. ₹25/- </string>
     <string name="price_per_unit">(@₹100/kg)</string>
     <string name="selected_size">Selected Size - 250gm</string>
-    <string name="select_quantity">250 gm</string>
+    <string name="quantity_selected">250 gm</string>
     <string name="_1_kg">1 kg</string>
     <string name="_500_gm">500 gm</string>
     <string name="product_details">Product Details</string>
     <string name="nutritional_value">Nutritional Value</string>
-
 
 
     <string name="product_desc">FreshyZo Malai Dahi is 100% natural dahi, containing no added preservatives or harmful chemicals.
@@ -102,7 +101,7 @@
     Calcium 243 mg, Phosphorus 89 mg</string>
     <string name="subscribe">Subscribe</string>
     <string name="new_text">New</string>
-    <string name="date">Today</string>
+    <string name="today">Today</string>
     <string name="notification_title">Hurray!</string>
     <string name="notification_title_one">Credit Successful!</string>
     <string name="notification_title_two">Discount!</string>
@@ -115,8 +114,88 @@
     <string name="freshyzo_ghee_butter">FreshyZo Ghee Butter</string>
     <string name="change">Change</string>
     <string name="_100_pure_desi_ghee">100% Pure Desi Ghee</string>
-    <string name="_300">₹300</string>
+    <string name="itemPrice">₹300</string>
     <string name="delivery_by_today_5_pm">Delivery by Today, 5 PM</string>
     <string name="item_quantity">Item Quantity</string>
     <string name="qty_1">Qty: 1</string>
+    <string name="size_500_gm">Size: 500 gm</string>
+    <string name="cart_total">Cart Total</string>
+    <string name="total_price">₹380</string>
+    <string name="proceed_to_checkout">Proceed to Checkout</string>
+    <string name="place_order">Place Order</string>
+    <string name="subscribe_button">Subscribe Button</string>
+    <string name="add_to_cart_button">Add To Cart Button</string>
+
+
+    <string name="welcome_user">Welcome, user!</string>
+    <string name="orders_icon">orders icon</string>
+    <string name="my_orders">My Orders</string>
+    <string name="subscriptions">Subscriptions</string>
+    <string name="profile">Profile</string>
+    <string name="payments_and_wallet">Payments and Wallet</string>
+    <string name="saved_addresses">Saved Addresses</string>
+    <string name="refer_and_earn">Refer and Earn</string>
+    <string name="language">Language</string>
+    <string name="faqs">FAQs</string>
+    <string name="about_us">About Us</string>
+    <string name="terms_and_conditions">Terms and Conditions</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="return_policy">Return Policy</string>
+    <string name="address">Address</string>
+    <string name="add_new_address_button">Add new address button</string>
+    <string name="no_addresses_found">No addresses found</string>
+    <string name="add">Add</string>
+    <string name="sample_name_one">Manali Sharma</string>
+    <string name="sample_address">Opposite SBI, 288, Sadar Bazar Road, beside Central Book, Sadar Bazar, Raipur, Chhattisgarh 492001</string>
+    <string name="default_string">Default</string>
+    <string name="sample_delivery">Delivered on 15th May, 2024</string>
+    <string name="address_description">Add new address field</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="sample_first_name">John</string>
+    <string name="sample_last_name">Smith</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="sample_phone_num">+91 7987615010</string>
+    <string name="email">Email Address</string>
+    <string name="sample_email">johnsmith@example.com</string>
+    <string name="submit">Submit</string>
+    <string name="edit">EDIT</string>
+    <string name="back_button">Back Button</string>
+    <string name="subscription">Subscription</string>
+    <string name="date">Date</string>
+    <string name="daily">Daily</string>
+    <string name="weekly">Weekly</string>
+    <string name="monthly">Monthly</string>
+    <string name="select_quantity">Select quantity</string>
+    <string name="morning">Morning</string>
+    <string name="zero">0</string>
+    <string name="plus_sign">+</string>
+    <string name="minus_sign">-</string>
+    <string name="delivery_type">Delivery Type</string>
+    <string name="select_start_date">Select Start Date</string>
+    <string name="enter_date">Enter Date</string>
+    <string name="monday">MON</string>
+    <string name="sun">Sun</string>
+    <string name="sat">Sat</string>
+    <string name="fri">Fri</string>
+    <string name="thu">Thu</string>
+    <string name="wed">Wed</string>
+    <string name="tue">Tue</string>
+    <string name="select_week_days_title">Select Week Days</string>
+    <string name="days">Days</string>
+    <string name="add_delivery_days_title">Add Delivery Days</string>
+    <string name="add_quantity">Add Quantity</string>
+
+
+    <!-- String Arrays -->
+
+    <string-array name="DeliveryTypeArray">
+        <item>Everyday</item>
+        <item>Everyday after 1 day</item>
+        <item>Everyday after 2 days</item>
+        <item>Everyday after 3 days</item>
+    </string-array>
+
 </resources>

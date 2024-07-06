@@ -3,6 +3,7 @@ package com.example.freshyzo
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.freshyzo.model.BottomNavVisibilityListener
@@ -39,7 +40,7 @@ class MainActivity : AppCompatActivity(), BottomNavVisibilityListener {
                 }
 
                 R.id.account_icon -> {
-                    loadFragment(ProductFragment(), false)
+                    loadFragment(AccountFragment(), false)
                     true
                 }
 
@@ -55,11 +56,22 @@ class MainActivity : AppCompatActivity(), BottomNavVisibilityListener {
             }
         }
     }
-//    }
+
+    private fun checkOnBoarding() : Boolean{
+        return getSharedPreferences("onBoarding", Context.MODE_PRIVATE).getBoolean("Finished", true)
+    }
+
+    fun unInitialise(){
+        getSharedPreferences("initialized", Context.MODE_PRIVATE).edit()
+            .putBoolean("isInitialized", false)
+    }
 
     fun loadFragment(fragment: Fragment, clearBackStack: Boolean){
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.container,fragment)
+        if(!clearBackStack){
+            transaction.addToBackStack(null)
+        }
         transaction.commit()
         val fragmentManager = supportFragmentManager
         if (clearBackStack){
@@ -72,9 +84,7 @@ class MainActivity : AppCompatActivity(), BottomNavVisibilityListener {
         sharedPref.edit().putBoolean("Finished", true).apply()
     }
 
-    private fun checkOnBoarding() : Boolean{
-        return getSharedPreferences("onBoarding", Context.MODE_PRIVATE).getBoolean("Finished", true)
-    }
+
 
     fun changeLoginState(loginState : Boolean) {
         val sharedPref = getSharedPreferences("loggedIn", Context.MODE_PRIVATE)
@@ -86,8 +96,27 @@ class MainActivity : AppCompatActivity(), BottomNavVisibilityListener {
         return sharedPref.getBoolean("isLoggedIn", false)
     }
 
+    fun isInitialized(): Boolean {
+        getSharedPreferences("initialized", Context.MODE_PRIVATE).edit()
+            .putBoolean("isInitialized", true).apply()
+        return true
+    }
+
     fun generateOTP() : Long{
         return (Math.random() * 900000).toLong() + 100000
+    }
+
+    fun addToCart(productId: Int){
+        val sharedPref = getSharedPreferences("cart", Context.MODE_PRIVATE)
+        sharedPref.edit().putInt("productId", productId).apply()
+        var value = sharedPref.getInt("productId", 0)
+        Toast.makeText( applicationContext, value.toString(), Toast.LENGTH_SHORT).show()
+    }
+
+    fun displayCartItems(): Int {
+        val sharedPref = getSharedPreferences("cart", Context.MODE_PRIVATE)
+        return sharedPref.getInt("productId", 0)
+
     }
 
     override fun setBottomNavVisibility(isVisible: Boolean) {
@@ -106,5 +135,11 @@ class MainActivity : AppCompatActivity(), BottomNavVisibilityListener {
             }
         }
     }
+
+    override fun onStop() {
+        unInitialise()
+        super.onStop()
+    }
+
 
 }

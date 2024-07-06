@@ -17,7 +17,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:elevation="10dp">
 
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
@@ -28,23 +29,22 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
-            <ImageView
-                android:id="@+id/back_icon_cart"
-                android:contentDescription="@string/back_icon"
-                android:src="@drawable/icon_pointer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <Button
+                android:id="@+id/back_icon_not"
+                android:background="@drawable/icon_pointer"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginHorizontal="18dp"
-                android:padding="2dp"/>
+                android:padding="4dp"/>
 
             <TextView
-                android:id="@+id/cart_title"
+                android:id="@+id/not_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@id/back_icon_cart"
+                app:layout_constraintStart_toEndOf="@id/back_icon_not"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginStart="20dp"
@@ -67,17 +67,35 @@
                 android:layout_marginHorizontal="18dp"
                 android:padding="2dp"/>
 
-            <ImageView
-                android:id="@+id/search_icon_not"
-                android:contentDescription="@string/search_icon"
-                android:src="@drawable/icon_search"
-                android:layout_width="wrap_content"
+            <View
+                android:id="@+id/spacer"
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/not_title"
+                />
+
+            <FrameLayout
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/cart_icon_not"
-                android:layout_marginHorizontal="6dp"
-                android:padding="2dp"/>
+                app:layout_constraintEnd_toStartOf="@id/cart_icon_not">
+
+                <android.widget.SearchView
+                    android:id="@+id/searchView_not"
+                    android:contentDescription="@string/search_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:outlineAmbientShadowColor="@color/secondary"
+                    android:padding="4dp"
+                    android:queryHint="Search"
+                    android:iconifiedByDefault="true"
+                    android:searchIcon="@drawable/icon_search"
+                    />
+            </FrameLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

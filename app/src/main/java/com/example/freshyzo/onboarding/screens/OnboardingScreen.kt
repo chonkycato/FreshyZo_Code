@@ -24,11 +24,11 @@ class OnboardingScreen : Fragment() {
 
         val imageViewGIF = view.findViewById<ImageView>(R.id.imageView_gif)
         val imageViewBG = view.findViewById<ImageView>(R.id.green_background)
-        val backArrow = view.findViewById<ImageView>(R.id.back)
-        val nextArrow = view.findViewById<ImageView>(R.id.next)
-        val skip = view.findViewById<ImageView>(R.id.skip)
-        val titleTextView = view.findViewById<TextView>(R.id.title_heading)
-        val subTitleTextView = view.findViewById<TextView>(R.id.sub_title)
+        val backTv = view.findViewById<TextView>(R.id.back)
+        val nextTv = view.findViewById<TextView>(R.id.next)
+        val skipTv = view.findViewById<TextView>(R.id.skip)
+        val titleTv = view.findViewById<TextView>(R.id.title_heading)
+        val subTitleTv = view.findViewById<TextView>(R.id.sub_title)
 
         var navCount = 0
 
@@ -38,36 +38,36 @@ class OnboardingScreen : Fragment() {
             .override(830, 726)
             .into(imageViewGIF)
 
-        nextArrow.setOnClickListener {
+        nextTv.setOnClickListener {
             navCount += 1
             navigateOnboarding(
                 navCount,
                 imageViewGIF,
                 imageViewBG,
-                nextArrow,
-                backArrow,
-                skip,
-                titleTextView,
-                subTitleTextView
+                nextTv,
+                backTv,
+                skipTv,
+                titleTv,
+                subTitleTv
             )
         }
 
-        backArrow.setOnClickListener {
+        backTv.setOnClickListener {
             navCount -= 1
             navigateOnboarding(
                 navCount,
                 imageViewGIF,
                 imageViewBG,
-                nextArrow,
-                backArrow,
-                skip,
-                titleTextView,
-                subTitleTextView
+                nextTv,
+                backTv,
+                skipTv,
+                titleTv,
+                subTitleTv
             )
 
         }
 
-        skip.setOnClickListener {
+        skipTv.setOnClickListener {
 //            findNavController().navigate(R.id.action_viewPagerFragment_to_loginFragment)
             (activity as MainActivity).loadFragment(LoginFragment(), true)
             (activity as MainActivity?)!!.onBoardingFinished()
@@ -79,9 +79,9 @@ class OnboardingScreen : Fragment() {
         navCount: Int,
         imageView: ImageView,
         imageViewBG: ImageView,
-        next: ImageView,
-        back: ImageView,
-        skip: ImageView,
+        next: TextView,
+        back: TextView,
+        skip: TextView,
         title: TextView,
         subTitle: TextView
     ) {

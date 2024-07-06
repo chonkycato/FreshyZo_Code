@@ -21,39 +21,45 @@ class SplashFragment : Fragment() {
 
         val mainActivity: MainActivity = requireActivity() as MainActivity
 
-        (mainActivity).setBottomNavVisibility(false)
+        do {
 
-        Handler(Looper.getMainLooper()).postDelayed({
-            Toast.makeText(context, "HELLO", Toast.LENGTH_LONG).show()
+            (mainActivity).setBottomNavVisibility(false)
 
-            if(!onBoardingFinished()){
-                Toast.makeText(context, "View Pager", Toast.LENGTH_SHORT).show()
-                (mainActivity).loadFragment(ViewPagerFragment(), true)
-            }
-            else {
+            Handler(Looper.getMainLooper()).postDelayed({
+                Toast.makeText(context, "HELLO", Toast.LENGTH_LONG).show()
 
-                if ((mainActivity).isLoggedIn()) {
-                    Toast.makeText(
-                        context,
-                        mainActivity.isLoggedIn().toString(),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    (mainActivity).loadFragment(HomeFragment(), true)
-                    // findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
-                } else if (!mainActivity.isLoggedIn()) {
-                    Toast.makeText(
-                        context,
-                        (mainActivity).isLoggedIn().toString(),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    (mainActivity).loadFragment(LoginFragment(), true)
-                    //  findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
+                if (!onBoardingFinished()) {
+                    Toast.makeText(context, "View Pager", Toast.LENGTH_SHORT).show()
+                    (mainActivity).loadFragment(ViewPagerFragment(), true)
+                } else {
+
+                    if ((mainActivity).isLoggedIn()) {
+                        Toast.makeText(
+                            context,
+                            mainActivity.isLoggedIn().toString(),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        (mainActivity).loadFragment(HomeFragment(), true)
+                        // findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
+                    } else if (!mainActivity.isLoggedIn()) {
+                        Toast.makeText(
+                            context,
+                            (mainActivity).isLoggedIn().toString(),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        (mainActivity).loadFragment(LoginFragment(), true)
+                        //  findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
+                    }
                 }
-            }
-        }, 1000)
+            }, 1000)
 
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_splash, container, false)
+            mainActivity.unInitialise()
+
+            // Inflate the layout for this fragment
+            return inflater.inflate(R.layout.fragment_splash, container, false)
+
+        } while (mainActivity.isInitialized())
+
     }
 
 
@@ -61,4 +67,6 @@ class SplashFragment : Fragment() {
         val sharedPref = requireActivity().getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
         return sharedPref.getBoolean("Finished", false)
     }
+
+
 }

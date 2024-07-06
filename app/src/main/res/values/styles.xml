@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="rounded_corner_shape">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">10dp</item>
@@ -9,4 +10,10 @@
     <style name="SpinnerStyle" parent="Widget.AppCompat.Light.DropDownItem.Spinner">
         <item name="android:textColor">@color/body</item>
     </style>
+
+    <style name="Widget.Theme.AppCompat.NoActionBar.ButtonBar.Fullscreen" parent="">
+        <item name="android:background">@color/black_overlay</item>
+        <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
+    </style>
+
 </resources>

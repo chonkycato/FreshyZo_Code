@@ -15,7 +15,7 @@
         android:paddingVertical="16dp">
 
         <ImageView
-            android:id="@+id/cartItemImage"
+            android:id="@+id/orderItemImage"
             android:src="@drawable/img_ghee"
             android:contentDescription="@string/image"
             android:layout_width="120dp"
@@ -27,7 +27,7 @@
 
         <ImageView
             android:id="@+id/deleteCartItem"
-            android:src="@drawable/icon_cross"
+            android:src="@drawable/icon_delete"
             android:contentDescription="@string/delete_item"
             android:layout_width="28dp"
             android:layout_height="28dp"
@@ -36,10 +36,10 @@
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <TextView
-            android:id="@+id/cartItemName"
+            android:id="@+id/orderItemName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/cartItemImage"
+            app:layout_constraintStart_toEndOf="@id/orderItemImage"
             app:layout_constraintTop_toTopOf="parent"
             android:paddingVertical="6dp"
             android:text="@string/freshyzo_ghee_butter"
@@ -48,11 +48,11 @@
             android:fontFamily="@font/roboto_medium"/>
 
         <TextView
-            android:id="@+id/cartItemDetails"
+            android:id="@+id/orderItemDetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/cartItemImage"
-            app:layout_constraintTop_toBottomOf="@id/cartItemName"
+            app:layout_constraintStart_toEndOf="@id/orderItemImage"
+            app:layout_constraintTop_toBottomOf="@id/orderItemName"
             android:text="@string/_100_pure_desi_ghee"
             android:textColor="@color/body"
             android:textSize="15sp"
@@ -63,23 +63,34 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintStart_toEndOf="@id/cartItemImage"
-            app:layout_constraintTop_toBottomOf="@id/cartItemDetails"
+            app:layout_constraintStart_toEndOf="@id/orderItemImage"
+            app:layout_constraintTop_toBottomOf="@id/orderItemDetails"
             android:layout_marginTop="8dp">
 
-            <Spinner
-                android:id="@+id/itemSizeSpinner"
+            <TextView
+                android:id="@+id/orderItemSize"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:entries="@array/size_dropdown"
-                android:popupBackground="@color/off_white"
-                android:popupElevation="4dp"
-                android:popupTheme="@style/SpinnerStyle"
-                android:spinnerMode="dropdown"
-                android:padding="4dp"/>
+                android:text="@string/size_500_gm"
+                android:textSize="16sp"
+                android:paddingEnd="16dp"
+                android:textColor="@color/body"
+                android:fontFamily="@font/roboto_medium"
+                android:includeFontPadding="false"/>
+
+<!--            <Spinner-->
+<!--                android:id="@+id/itemSizeSpinner"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:entries="@array/size_dropdown"-->
+<!--                android:popupBackground="@color/off_white"-->
+<!--                android:popupElevation="4dp"-->
+<!--                android:popupTheme="@style/SpinnerStyle"-->
+<!--                android:spinnerMode="dropdown"-->
+<!--                android:padding="4dp"/>-->
 
             <TextView
-                android:id="@+id/cartItemQty"
+                android:id="@+id/orderItemQty"
                 android:contentDescription="@string/item_quantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -92,14 +103,14 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/cartItemPrice"
+            android:id="@+id/orderItemPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/cartItemImage"
+            app:layout_constraintStart_toEndOf="@id/orderItemImage"
             app:layout_constraintTop_toBottomOf="@id/sizeQtyLayout"
             android:paddingVertical="6dp"
             android:layout_marginVertical="8dp"
-            android:text="@string/_300"
+            android:text="@string/itemPrice"
             android:textColor="@color/body"
             android:textSize="15sp"
             android:fontFamily="@font/roboto_bold"/>

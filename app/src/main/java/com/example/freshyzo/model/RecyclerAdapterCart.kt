@@ -8,9 +8,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.freshyzo.R
 
+
 class RecyclerAdapterCart : RecyclerView.Adapter<RecyclerAdapterCart.ViewHolder>() {
 
-        private var dataListCart: List<DataModelCart> = emptyList<DataModelCart>()
+    private var dataListCart: List<DataModelCart> = emptyList<DataModelCart>()
+    var onItemClicked : ((DataModelCart) -> Unit)? = null
 
     internal fun setDataList(dataList: List<DataModelCart>) {
         this.dataListCart = dataList
@@ -18,7 +20,7 @@ class RecyclerAdapterCart : RecyclerView.Adapter<RecyclerAdapterCart.ViewHolder>
 
     // Provide a direct reference to each of the views with data items
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var itemTitle: TextView
+        var title: TextView
         var itemDetail: TextView
         var itemPrice: TextView
         var itemSize: TextView
@@ -27,12 +29,12 @@ class RecyclerAdapterCart : RecyclerView.Adapter<RecyclerAdapterCart.ViewHolder>
 
 
         init {
-            itemTitle = itemView.findViewById(R.id.cartItemName)
-            itemDetail = itemView.findViewById(R.id.cartItemDetails)
-            itemPrice = itemView.findViewById(R.id.cartItemPrice)
-            itemSize = itemView.findViewById(R.id.itemSizeSpinner)
-            itemQty = itemView.findViewById(R.id.cartItemQty)
-            itemImage = itemView.findViewById(R.id.cartItemImage)
+            title = itemView.findViewById(R.id.orderItemName)
+            itemDetail = itemView.findViewById(R.id.orderItemDetails)
+            itemPrice = itemView.findViewById(R.id.orderItemPrice)
+            itemSize = itemView.findViewById(R.id.orderItemSize)
+            itemQty = itemView.findViewById(R.id.orderItemQty)
+            itemImage = itemView.findViewById(R.id.orderItemImage)
         }
 
     }
@@ -40,7 +42,7 @@ class RecyclerAdapterCart : RecyclerView.Adapter<RecyclerAdapterCart.ViewHolder>
     /* Usually involves inflating a layout from XML and returning the holder */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         // Inflate the custom layout
-        var view = LayoutInflater.from(parent.context).inflate(R.layout.custom_recycler_row_notifications, parent, false)
+        var view = LayoutInflater.from(parent.context).inflate(R.layout.custom_recycler_row_cart, parent, false)
         return ViewHolder(view)
     }
 
@@ -51,12 +53,16 @@ class RecyclerAdapterCart : RecyclerView.Adapter<RecyclerAdapterCart.ViewHolder>
         var item = dataListCart[position]
 
         // Set item views based on your views and data model
-        holder.itemTitle.text = item.itemTitle
+        holder.title.text = item.title
         holder.itemDetail.text = item.itemDetail
         holder.itemSize.text = item.itemSize
         holder.itemQty.text = item.itemQty.toString()
         holder.itemPrice.text = item.itemPrice
-        holder.itemImage.setImageResource(item.itemImage)
+        holder.itemImage.setImageResource(item.image)
+
+        holder.itemView.setOnClickListener {
+            onItemClicked?.invoke(item)
+        }
     }
 
     //  total count of items in the list

@@ -13,7 +13,7 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/productItemImage"
+            android:id="@+id/productItemIv"
             android:src="@drawable/img_paneer"
             android:contentDescription="@string/image"
             android:layout_width="match_parent"
@@ -21,7 +21,7 @@
             android:scaleType="fitXY"/>
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/productTitleTv"
             android:text="@string/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -56,15 +56,41 @@
             android:fontFamily="@font/roboto_medium"
             />
 
-        <Button
-            android:id="@+id/add_to_cart_btn"
-            android:contentDescription="@string/add_to_cart"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/add_to_cart"
-            android:fontFamily="@font/poppins_semibold"
-            android:textColor="@color/primary"
-            android:background="@drawable/custom_transparent_btn"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/subscribe_btn"
+                android:contentDescription="@string/add_to_cart"
+                android:layout_width="140dp"
+                android:layout_height="40dp"
+                android:text="@string/subscribe"
+                android:fontFamily="@font/poppins_semibold"
+                android:includeFontPadding="false"
+                android:textColor="@color/primary"
+                android:background="@drawable/custom_transparent_btn"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="4dp"
+                android:layout_marginHorizontal="20dp"/>
+
+            <Button
+                android:id="@+id/subscribe_btn_home"
+                android:contentDescription="@string/add_to_cart"
+                android:layout_width="140dp"
+                android:layout_height="40dp"
+                android:text="@string/add_to_cart"
+                android:fontFamily="@font/poppins_semibold"
+                android:includeFontPadding="false"
+                android:textColor="@color/primary"
+                android:background="@drawable/custom_transparent_btn"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="4dp"
+                android:layout_marginHorizontal="20dp"/>
+
+
+
+        </LinearLayout>
 
     </LinearLayout>
 </LinearLayout>

@@ -12,6 +12,7 @@
     <color name="off_white">#EEEEEE</color>
     <color name="background">#FDFDFD</color>
     <color name="hr_white">#F3EEEE</color>
+    <color name="border_white">#E0DBDB</color>
     <color name="heading">#1A1A1A</color>
     <color name="body">#3E3E3E</color>
     <color name="text_gray">#625B5B</color>
@@ -21,12 +22,17 @@
     <color name="secondary">#2F2F2F</color>
     <color name="accent">#52C077</color>
     <color name="alert">#D0342C</color>
+    <color name="alert_light">#FF726A</color>
     <color name="warning">#EED202</color>
     <color name="disabled">#7E8183</color>
 
     <color name="item_color_active">#28B256</color>
     <color name="item_color_inactive">#2F2F2F</color>
-
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
+    <color name="light_blue_A200">#FF40C4FF</color>
+    <color name="light_blue_A400">#FF00B0FF</color>
+    <color name="black_overlay">#66000000</color>
 
 
 </resources>

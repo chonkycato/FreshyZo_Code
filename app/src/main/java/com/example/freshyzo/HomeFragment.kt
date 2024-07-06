@@ -1,5 +1,6 @@
 package com.example.freshyzo
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,13 +9,13 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.freshyzo.login.LoginFragment
 import com.example.freshyzo.model.BottomNavVisibilityListener
 import com.example.freshyzo.model.ButtonClickListener
-import com.example.freshyzo.model.DataModelHome
-import com.example.freshyzo.model.RecyclerAdapter
+import com.example.freshyzo.model.DataModelProduct
+import com.example.freshyzo.model.RecyclerAdapterHome
 import com.synnapps.carouselview.CarouselView
 import com.synnapps.carouselview.ImageListener
 
@@ -23,9 +24,9 @@ class HomeFragment : Fragment(), ButtonClickListener {
     private var carouselArray : ArrayList<Int> = ArrayList()
     private var carouselView: CarouselView? = null
 
-    private lateinit var  recyclerAdapter: RecyclerAdapter
-    private var dataList = mutableListOf<DataModelHome>()
     private lateinit var recyclerView : RecyclerView
+    private lateinit var  mRecyclerAdapterHome: RecyclerAdapterHome
+    private var productDataList = mutableListOf<DataModelProduct>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,23 +38,6 @@ class HomeFragment : Fragment(), ButtonClickListener {
         val mLogOutButton = view.findViewById<Button>(R.id.logoutButton)
         Toast.makeText(context, (activity as MainActivity).isLoggedIn().toString(), Toast.LENGTH_SHORT).show()
 
-
-        //Populate Horizontal Scroll View dynamically
-//        val imageList = listOf<Int>(R.drawable.img_milk, R.drawable.img_ghee, R.drawable.img_milk_buff, R.drawable.img_paneer)
-//        val textList = listOf<Int>(R.string.hvs_item_text_1, R.string.hvs_item_text_2, R.string.hvs_item_text_3, R.string.hvs_item_text_4)
-//        val itemContainer = view.findViewById<LinearLayout>(R.id.hvs_container)
-//
-//        for(i in imageList.indices){
-//            val itemLayout = LayoutInflater.from(context).inflate(R.layout.fragment_home, itemContainer, false) as ConstraintLayout
-//            val itemImageView = itemLayout.findViewById<ImageView>(R.id.item_image_hsv)
-//            val itemTextView = itemLayout.findViewById<TextView>(R.id.item_text_hsv)
-//
-//            itemImageView.setImageResource(imageList[i])
-//            itemTextView.setText(textList[i])
-//
-//            itemContainer.addView(itemLayout)
-//        }
-
         //Carousel View
         carouselView = view.findViewById(R.id.carouselView)
         carouselArray.add(R.drawable.carousel_one)
@@ -62,24 +46,29 @@ class HomeFragment : Fragment(), ButtonClickListener {
         carouselView!!.pageCount = carouselArray.size
         carouselView!!.setImageListener(imageListener)
 
-
-
         //add data
-        dataList.add(DataModelHome("FreshyZo Ghee Butter","200 ml","₹25",R.drawable.img_ghee))
-        dataList.add(DataModelHome("FreshyZo Ghee Butter","200 ml","₹25",R.drawable.img_ghee))
-        dataList.add(DataModelHome("FreshyZo Ghee Butter","200 ml","₹25",R.drawable.img_ghee))
-        dataList.add(DataModelHome("FreshyZo Ghee Butter","200 ml","₹25",R.drawable.img_ghee))
-        dataList.add(DataModelHome("FreshyZo Ghee Butter","200 ml","₹25",R.drawable.img_ghee))
-        dataList.add(DataModelHome("FreshyZo Ghee Butter","200 ml","₹25",R.drawable.img_ghee))
+        productDataList.add(DataModelProduct("FreshyZo Ghee Butter","250 gms","₹350",R.drawable.img_ghee))
+        productDataList.add(DataModelProduct("FreshyZo Cow Milk","200 ml","₹25",R.drawable.img_milk))
+        productDataList.add(DataModelProduct("FreshyZo Buffalo Milk","200 ml","₹25",R.drawable.img_milk_buff))
+        productDataList.add(DataModelProduct("FreshyZo Malai Dahi","250 ml","₹35",R.drawable.img_dahi))
+        productDataList.add(DataModelProduct("FreshyZo Paneer","250 gms","₹250",R.drawable.img_paneer))
 
         //Initialize RecyclerView
         recyclerView = view.findViewById(R.id.recyclerViewHome)
-        recyclerView.layoutManager = GridLayoutManager(context,2)
-        recyclerAdapter = RecyclerAdapter(requireContext(), this)
-        recyclerView.adapter = recyclerAdapter
+//        recyclerView.layoutManager = GridLayoutManager(context,2)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        mRecyclerAdapterHome = RecyclerAdapterHome(requireContext(), this)
+        recyclerView.adapter = mRecyclerAdapterHome
+
+        mRecyclerAdapterHome.onItemClick = {
+            val intentHome = Intent(activity, ProductActivity::class.java)
+            intentHome.putExtra("product", it)
+            Toast.makeText(context, "Item clicked", Toast.LENGTH_SHORT).show()
+            (activity as MainActivity).startActivity(intentHome)
+        }
 
 
-        recyclerAdapter.setDataList(dataList)
+        mRecyclerAdapterHome.setDataList(productDataList)
 
         mLogOutButton.setOnClickListener{
             (activity as MainActivity).changeLoginState(false)
@@ -89,7 +78,7 @@ class HomeFragment : Fragment(), ButtonClickListener {
         return view
     }
 
-    override fun onButtonClicked(position : Int, dataModelHome: DataModelHome){
+    override fun onButtonClicked(position : Int, dataModelProduct: DataModelProduct){
         Log.d("Position", position.toString())
     }
 

@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.freshyzo"
-        minSdk = 24
+        minSdk = 28
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -19,7 +19,6 @@ android {
             useSupportLibrary = true
         }
     }
-
 
     buildTypes {
         release {
@@ -55,6 +54,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
+    implementation ("com.android.support:support-v4:23.4.0")
 
     //Navigation and Fragment
     implementation("androidx.fragment:fragment-ktx:1.6.2")
@@ -63,6 +63,9 @@ dependencies {
 
     //GIF
     implementation("com.github.bumptech.glide:glide:4.9.0")
+    implementation("com.google.android.material:material:1.11.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("com.android.car.ui:car-ui-lib:2.6.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.11.0")
 
     //Carousel
