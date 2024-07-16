@@ -17,13 +17,11 @@ class RecyclerAdapterNot : RecyclerView.Adapter<RecyclerAdapterNot.ViewHolder>()
 
     // Provide a direct reference to each of the views with data items
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var update: TextView
         var date: TextView
         var title: TextView
         var body: TextView
 
         init {
-            update = itemView.findViewById(R.id.update_text)
             date = itemView.findViewById(R.id.update_date)
             title = itemView.findViewById(R.id.notification_title)
             body = itemView.findViewById(R.id.notification_body)
@@ -45,7 +43,6 @@ class RecyclerAdapterNot : RecyclerView.Adapter<RecyclerAdapterNot.ViewHolder>()
         var item = dataListNot[position]
 
         // Set item views based on your views and data model
-        holder.update.text = item.update
         holder.date.text = item.date
         holder.title.text = item.title_not
         holder.body.text = item.body_not

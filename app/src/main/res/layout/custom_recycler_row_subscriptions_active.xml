@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background"
+    android:paddingHorizontal="12dp"
+    android:layout_marginBottom="8sp"
+    android:elevation="2dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="18dp">
+
+    <FrameLayout
+        android:id="@+id/activeSubFrameLayout"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/custom_outline_super_light">
+
+        <ImageView
+            android:id="@+id/activeSubProductIV"
+            android:src="@drawable/img_milk_buff"
+            android:layout_width="68dp"
+            android:layout_height="68dp"
+            android:layout_gravity="center"/>
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/productNameASubTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/activeSubFrameLayout"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="16dp"
+        android:paddingVertical="2dp"
+        android:text="@string/buffalo_milk"
+        android:textColor="@color/body"
+        android:textSize="16sp"
+        android:fontFamily="@font/roboto_medium"
+        android:includeFontPadding="false" />
+
+    <TextView
+        android:id="@+id/productPriceASubTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/activeSubFrameLayout"
+        app:layout_constraintTop_toBottomOf="@id/productNameASubTV"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:paddingVertical="1dp"
+        android:text="@string/itemPrice"
+        android:textColor="@color/primary"
+        android:textSize="15sp"
+        android:fontFamily="@font/roboto_bold"
+        android:includeFontPadding="false"/>
+
+    <LinearLayout
+        android:id="@+id/deliveryTypeLLAS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/activeSubFrameLayout"
+        app:layout_constraintTop_toBottomOf="@id/productPriceASubTV"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:paddingVertical="1dp">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="@string/delivery_type"
+            android:textColor="@color/body"
+            android:textSize="14sp"
+            android:fontFamily="@font/roboto_medium"
+            android:includeFontPadding="false"/>
+
+        <TextView
+            android:id="@+id/deliveryTypeTVASub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/everyday"
+            android:textColor="@color/body"
+            android:textSize="13sp"
+            android:textAllCaps="false"
+            android:fontFamily="@font/roboto_regular"
+            tools:ignore="SmallSp" />
+
+    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/subStatusLLAS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/activeSubFrameLayout"
+            app:layout_constraintTop_toBottomOf="@id/deliveryTypeLLAS"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:paddingVertical="1dp">
+
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/status"
+                android:textColor="@color/body"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto_medium"
+                android:includeFontPadding="false" />
+
+            <TextView
+                android:id="@+id/subStatusSubTVASub"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/active"
+                android:textColor="@color/primary"
+                android:textSize="13sp"
+                android:fontFamily="@font/roboto_bold"
+                android:textAllCaps="true"
+                tools:ignore="SmallSp" />
+
+
+        </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/startDateLLAS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/activeSubFrameLayout"
+        app:layout_constraintTop_toBottomOf="@id/subStatusLLAS"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:paddingVertical="1dp">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="@string/start_date"
+            android:textColor="@color/body"
+            android:textSize="14sp"
+            android:fontFamily="@font/roboto_medium"
+            android:includeFontPadding="false"/>
+
+        <TextView
+            android:id="@+id/startDateSubTVASub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sample_start_date"
+            android:textColor="@color/body"
+            android:textSize="13sp"
+            android:fontFamily="@font/roboto_regular"
+            android:includeFontPadding="false"
+            tools:ignore="SmallSp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/endDateLLAS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/activeSubFrameLayout"
+        app:layout_constraintTop_toBottomOf="@id/startDateLLAS"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:paddingVertical="1dp">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="@string/end_date"
+            android:textColor="@color/body"
+            android:textSize="14sp"
+            android:fontFamily="@font/roboto_medium"
+            android:includeFontPadding="false"/>
+
+        <TextView
+            android:id="@+id/endDateSubTVASub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sample_start_date"
+            android:textColor="@color/body"
+            android:textSize="13sp"
+            android:fontFamily="@font/roboto_regular"
+            android:includeFontPadding="false"
+            tools:ignore="SmallSp" />
+
+
+    </LinearLayout>
+
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/deliveryLLAS"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintStart_toEndOf="@id/activeSubFrameLayout"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/subStatusLLAS"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:gravity="center_vertical"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:paddingVertical="1dp">-->
+
+<!--        <TextView-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/location"-->
+<!--            android:textColor="@color/body"-->
+<!--            android:textSize="14sp"-->
+<!--            android:fontFamily="@font/roboto_medium"-->
+<!--            android:includeFontPadding="false"/>-->
+
+
+<!--        <TextView-->
+<!--            android:id="@+id/deliveryLocationTVASub"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/address_body"-->
+<!--            android:textColor="@color/body"-->
+<!--            android:textSize="13sp"-->
+<!--            android:fontFamily="@font/roboto_regular"-->
+<!--            android:includeFontPadding="false"-->
+<!--            tools:ignore="SmallSp"-->
+<!--            android:textAlignment="gravity"/>-->
+
+<!--    </LinearLayout>-->
+
+    <View
+        android:id="@+id/horizontalRule"
+        android:layout_width="match_parent"
+        android:layout_height="1.5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/endDateLLAS"
+        android:background="@color/background_dark"
+        android:layout_marginTop="16dp"
+        android:paddingVertical="4dp"/>
+
+        <LinearLayout
+            android:id="@+id/subActionLLAS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/horizontalRule"
+            android:layout_marginTop="12dp">
+
+            <Button
+                android:id="@+id/pauseSubButton"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/custom_rounded_corner_secondary_transparent"
+                android:text="@string/pause"
+                android:textColor="@color/secondary_lighter"
+                android:textSize="12sp"
+                android:textAllCaps="true"
+                android:fontFamily="@font/roboto_bold"
+                android:paddingHorizontal="8dp"/>
+
+            <Button
+                android:id="@+id/cancelButtonASub"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:background="@drawable/custom_outline_lighter"
+                android:text="@string/cancel"
+                android:textColor="@color/disabled"
+                android:textSize="12sp"
+                android:textAllCaps="true"
+                android:fontFamily="@font/roboto_bold"
+                android:paddingHorizontal="8dp"/>
+
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

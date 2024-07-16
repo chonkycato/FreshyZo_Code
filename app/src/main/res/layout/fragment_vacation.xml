@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/background"
+    android:paddingHorizontal="12dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/top_nav_vacation_start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:elevation="10dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:theme="?actionBarTheme"
+            android:background="@color/background"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <Button
+            android:id="@+id/back_icon_vacation_start"
+            android:contentDescription="@string/back_button"
+            android:background="@drawable/icon_pointer"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:padding="4dp"
+            tools:ignore="ButtonStyle,TouchTargetSizeCheck"/>
+
+        <TextView
+            android:id="@+id/vacation_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/back_icon_vacation_start"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="20dp"
+            android:text="@string/vacation"
+            android:textSize="18sp"
+            android:textColor="@color/body"
+            android:fontFamily="@font/roboto_medium"
+            android:includeFontPadding="false"
+            />
+
+        <ImageView
+            android:id="@+id/cart_icon_vacation_start"
+            android:contentDescription="@string/cart_icon"
+            android:src="@drawable/icon_cart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:padding="2dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/top_nav_vacation_start"
+        android:orientation="vertical"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="24dp"
+        android:background="@android:color/white">
+
+        <!-- Banner Image -->
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/vacation_banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_vacation"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/vacation_banner" />
+
+        <LinearLayout
+            android:id="@+id/layout_start_vacation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <!-- Title -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/going_on_a_vacation"
+                android:textColor="@android:color/black"
+                android:textSize="24sp"
+                android:fontFamily="@font/roboto_medium"
+                android:layout_marginTop="34dp" />
+
+            <!-- Start Date -->
+            <TextView
+                android:id="@+id/start_date_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/start_date"
+                android:textColor="@color/body"
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto_regular"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/start_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/select_start_date"
+                android:inputType="date"
+                android:padding="12dp"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="14sp"
+                android:textColorHint="@color/disabled"
+                android:textColor="@color/body"
+                android:includeFontPadding="false"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:background="@drawable/custom_outline_light"
+                android:drawableStart="@drawable/icon_calendar_one"
+                android:drawablePadding="8dp"
+                android:drawableTint="@color/primary"
+                tools:ignore="ButtonStyle,TouchTargetSizeCheck"/>
+
+            <!-- End Date (Optional) -->
+            <TextView
+                android:id="@+id/end_date_opt_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/end_date_optional"
+                android:textColor="@color/body"
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto_regular"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/end_date_opt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/select_end_date"
+                android:inputType="date"
+                android:padding="12dp"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="14sp"
+                android:textColorHint="@color/disabled"
+                android:textColor="@color/body"
+                android:includeFontPadding="false"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:background="@drawable/custom_outline_light"
+                android:drawableStart="@drawable/icon_calendar_one"
+                android:drawablePadding="8dp"
+                android:drawableTint="@color/primary"
+                tools:ignore="ButtonStyle,TouchTargetSizeCheck"/>
+
+            <!-- End Date (Optional) -->
+            <TextView
+                android:id="@+id/alert_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/vacation_alert"
+                android:textColor="@color/alert_light"
+                android:textSize="13sp"
+                android:fontFamily="@font/roboto_regular"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:visibility="gone"/>
+
+            <!-- Start Vacation Button -->
+            <Button
+                android:id="@+id/start_vacation_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/start_vacation"
+                android:textColor="@color/background"
+                android:backgroundTint="@color/primary"
+                android:background="@drawable/custom_rounded_corner_primary"
+                android:paddingVertical="16dp"
+                android:paddingHorizontal="18dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/roboto_medium"
+                android:layout_gravity="center_horizontal"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_end_vacation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/sub_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/you_re_on_vacation"
+            android:textColor="@color/body"
+            android:textSize="24sp"
+            android:fontFamily="@font/roboto_medium"
+            android:layout_marginTop="34dp" />
+
+        <TextView
+            android:id="@+id/vacation_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/back_home_end_vacation_mode"
+            android:textColor="@color/alert_light"
+            android:textSize="14sp"
+            android:fontFamily="@font/roboto_regular"
+            android:layout_marginTop="4dp" />
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/back_home_end_vacation_mode"-->
+<!--            android:textColor="@color/body"-->
+<!--            android:textSize="14sp"-->
+<!--            android:fontFamily="@font/roboto_regular"-->
+<!--            android:layout_marginTop="12dp" />-->
+
+
+
+        <!-- End Date -->
+        <TextView
+            android:id="@+id/end_date_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/end_date"
+            android:textColor="@color/body"
+            android:textSize="14sp"
+            android:fontFamily="@font/roboto_regular"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/end_date_req"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/select_end_date"
+            android:inputType="date"
+            android:padding="12dp"
+            android:fontFamily="@font/roboto_regular"
+            android:textSize="14sp"
+            android:textColorHint="@color/disabled"
+            android:textColor="@color/body"
+            android:includeFontPadding="false"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:background="@drawable/custom_outline_light"
+            android:drawableStart="@drawable/icon_calendar_one"
+            android:drawablePadding="8dp"
+            android:drawableTint="@color/primary"
+            tools:ignore="ButtonStyle,TouchTargetSizeCheck"/>
+
+
+        <!-- Cancel Vacation Button -->
+        <Button
+            android:id="@+id/cancel_vacation_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel_vacation"
+            android:textColor="@color/background"
+            android:backgroundTint="@color/alert_light"
+            android:background="@drawable/custom_rounded_corner_primary"
+            android:paddingVertical="16dp"
+            android:paddingHorizontal="18dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/roboto_medium"
+            android:layout_gravity="center_horizontal"
+            android:textSize="13sp" />
+
+        <!-- End Vacation Button -->
+        <Button
+            android:id="@+id/end_vacation_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/end_vacation"
+            android:textColor="@color/background"
+            android:backgroundTint="@color/primary"
+            android:background="@drawable/custom_rounded_corner_primary"
+            android:paddingVertical="16dp"
+            android:paddingHorizontal="18dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/roboto_medium"
+            android:layout_gravity="center_horizontal"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

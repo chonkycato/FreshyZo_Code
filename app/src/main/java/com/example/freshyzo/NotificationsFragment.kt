@@ -34,10 +34,8 @@ class NotificationsFragment : Fragment() {
         val mSearchView = view.findViewById<SearchView>(R.id.searchView_not)
         val mCartIcon = view.findViewById<ImageView>(R.id.cart_icon_not)
 
-
-        /* TODO("implement a proper back navigation") */
         mBackIcon.setOnClickListener{
-            (activity as MainActivity).loadFragment(HomeFragment(), false)
+            (activity as MainActivity).backNavigation()
         }
         setRecyclerView(view)
 
@@ -47,12 +45,20 @@ class NotificationsFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         (activity as BottomNavVisibilityListener).setBottomNavVisibility(true)
-
     }
 
     private fun setRecyclerView(view: View){
-        dataList.add(DataModelNotification("New", "Today", resources.getString(R.string.notification_title), resources.getString(R.string.notification_body)))
-        dataList.add(DataModelNotification("New", "Yesterday", resources.getString(R.string.notification_title_one), resources.getString(R.string.notification_body_one)))
+        dataList.add(DataModelNotification("1 day ago", "Hurray!", resources.getString(R.string.notification_body)))
+        dataList.add(DataModelNotification("4 days ago", "Credit Successful",  resources.getString(R.string.notification_body_one)))
+        dataList.add(DataModelNotification("7 days ago", "Hurray!", resources.getString(R.string.notification_body)))
+        dataList.add(DataModelNotification("15 days ago", "Credit Successful",  resources.getString(R.string.notification_body_one)))
+        dataList.add(DataModelNotification("18 days ago", "Hurray!", resources.getString(R.string.notification_body)))
+        dataList.add(DataModelNotification("21 days ago", "Credit Successful",  resources.getString(R.string.notification_body_one)))
+        dataList.add(DataModelNotification("22 days ago", "Hurray!", resources.getString(R.string.notification_body)))
+        dataList.add(DataModelNotification("26 days ago", "Credit Successful",  resources.getString(R.string.notification_body_one)))
+        dataList.add(DataModelNotification("28 days ago", "Hurray!", resources.getString(R.string.notification_body)))
+        dataList.add(DataModelNotification("29 days ago", "Credit Successful",  resources.getString(R.string.notification_body_one)))
+
 
         val layoutManager = LinearLayoutManager(context)
         recyclerView = view.findViewById(R.id.recyclerViewNot)

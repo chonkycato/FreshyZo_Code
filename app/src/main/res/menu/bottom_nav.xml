@@ -9,7 +9,12 @@
     <item
         android:id="@+id/notification_icon"
         android:title="@string/notifications"
-        android:icon="@drawable/icon_notification"/>
+        android:icon="@drawable/icon_notification" />
+
+    <item
+        android:id="@+id/wallet_icon"
+        android:title="@string/wallet"
+        android:icon="@drawable/icon_wallet"/>
 
     <item
         android:id="@+id/account_icon"

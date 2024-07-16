@@ -5,4 +5,13 @@
         <item>Size: 500ml</item>
         <item>Size: 1kg</item>
     </string-array>
+
+<string-array name="area_name">
+    <item>Adarsh Nagar</item>
+    <item>Daldal Seoni / Mowa</item>
+    <item>Devendra Nagar</item>
+    <item>Dubey Colony 1</item>
+    <item>Rajendra Nagar</item>
+    <item>Shankar Nagar</item>
+</string-array>
 </resources>

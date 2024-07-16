@@ -1,0 +1,72 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background"
+    android:paddingHorizontal="12dp"
+    android:paddingVertical="16dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_your_address"
+        android:textColor="@color/body"
+        android:textSize="16sp"
+        android:fontFamily="@font/roboto_medium"
+        android:includeFontPadding="false"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Address Field -->
+    <EditText
+        android:id="@+id/address_field"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:hint="@string/enter_your_address"
+        android:inputType="textPostalAddress"
+        android:padding="12dp"
+        android:background="@drawable/custom_edittext_border"
+        android:fontFamily="@font/roboto_regular"
+        android:textSize="16sp"
+        android:textColorHint="@color/disabled"
+        android:textColor="@color/body"
+        android:gravity="top|start" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/select_your_area"
+        android:textColor="@color/body"
+        android:textSize="16sp"
+        android:fontFamily="@font/roboto_medium"
+        android:includeFontPadding="false"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="22dp"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Area Selection Field -->
+    <Spinner
+        android:id="@+id/area_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:fontFamily="@font/roboto_regular"
+        android:textSize="16sp"
+        android:background="@drawable/custom_edittext_border"/>
+
+    <!-- Submit Button -->
+    <Button
+        android:id="@+id/submit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/custom_rounded_corner_primary"
+        android:text="@string/submit"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="16sp"
+        android:textColor="@android:color/white"
+        android:paddingHorizontal="16dp"
+        android:layout_gravity="center_horizontal"/>
+
+</LinearLayout>

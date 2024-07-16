@@ -41,7 +41,7 @@ class SecondScreen : Fragment() {
 
         view.findViewById<TextView>(R.id.skip_fss).setOnClickListener {
 //            findNavController().navigate(R.id.action_viewPagerFragment_to_loginFragment)
-            (activity as MainActivity).loadFragment(LoginFragment(), true)
+            (activity as MainActivity).loadFragment(LoginFragment(), true, null)
             (activity as MainActivity?)!!.onBoardingFinished()
         }
 

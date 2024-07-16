@@ -69,7 +69,7 @@ class OnboardingScreen : Fragment() {
 
         skipTv.setOnClickListener {
 //            findNavController().navigate(R.id.action_viewPagerFragment_to_loginFragment)
-            (activity as MainActivity).loadFragment(LoginFragment(), true)
+            (activity as MainActivity).loadFragment(LoginFragment(), true, null)
             (activity as MainActivity?)!!.onBoardingFinished()
         }
         return view
@@ -124,7 +124,7 @@ class OnboardingScreen : Fragment() {
 
                 next.setOnClickListener {
 //                    findNavController().navigate(R.id.action_viewPagerFragment_to_loginFragment)
-                    (activity as MainActivity).loadFragment(LoginFragment(), clearBackStack = true)
+                    (activity as MainActivity).loadFragment(LoginFragment(), clearBackStack = true, null)
                     (activity as MainActivity?)!!.onBoardingFinished()
                 }
             }

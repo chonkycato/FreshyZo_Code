@@ -1,5 +1,6 @@
 package com.example.freshyzo.model
 
+import android.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,36 +8,29 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.freshyzo.R
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 class RecyclerAdapterCart : RecyclerView.Adapter<RecyclerAdapterCart.ViewHolder>() {
 
-    private var dataListCart: List<DataModelCart> = emptyList<DataModelCart>()
+    private var dataListCart: MutableList<DataModelCart> =  mutableListOf()
     var onItemClicked : ((DataModelCart) -> Unit)? = null
 
-    internal fun setDataList(dataList: List<DataModelCart>) {
+    internal fun setDataList(dataList: MutableList<DataModelCart>) {
         this.dataListCart = dataList
     }
 
     // Provide a direct reference to each of the views with data items
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var title: TextView
-        var itemDetail: TextView
-        var itemPrice: TextView
-        var itemSize: TextView
-        var itemQty: TextView
-        var itemImage: ImageView
-
-
-        init {
-            title = itemView.findViewById(R.id.orderItemName)
-            itemDetail = itemView.findViewById(R.id.orderItemDetails)
-            itemPrice = itemView.findViewById(R.id.orderItemPrice)
-            itemSize = itemView.findViewById(R.id.orderItemSize)
-            itemQty = itemView.findViewById(R.id.orderItemQty)
-            itemImage = itemView.findViewById(R.id.orderItemImage)
-        }
-
+        var title: TextView = itemView.findViewById(R.id.orderDetailName)
+        var itemDetail: TextView = itemView.findViewById(R.id.orderItemDetails)
+        var itemPrice: TextView = itemView.findViewById(R.id.orderItemPrice)
+        var itemSize: TextView = itemView.findViewById(R.id.orderItemSize)
+        var itemQty: TextView = itemView.findViewById(R.id.orderItemQty)
+        var itemImage: ImageView = itemView.findViewById(R.id.orderDetailImage)
+        var deleteCartItem: ImageView = itemView.findViewById(R.id.deleteCartItem)
     }
 
     /* Usually involves inflating a layout from XML and returning the holder */
@@ -63,9 +57,34 @@ class RecyclerAdapterCart : RecyclerView.Adapter<RecyclerAdapterCart.ViewHolder>
         holder.itemView.setOnClickListener {
             onItemClicked?.invoke(item)
         }
+
+        holder.deleteCartItem.setOnClickListener {
+            AlertDialog.Builder(holder.itemView.context)
+                .setTitle("Delete Item")
+                .setMessage("Are you sure you want to delete this item?")
+                .setPositiveButton("Yes") { _, _ -> deleteItem(position) }
+                .setNegativeButton("No", null)
+                .show()
+        }
+    }
+
+
+
+    private fun deleteItem(position: Int) {
+        dataListCart.removeAt(position)
+        notifyItemRemoved(position)
+        notifyItemChanged(position, dataListCart.size)
+    }
+
+    fun deleteItemFromDatabase(item: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            //myDatabase.myDao().delete(item)
+        }
     }
 
     //  total count of items in the list
     override fun getItemCount() = dataListCart.size
+
+
 
 }

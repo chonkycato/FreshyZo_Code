@@ -22,7 +22,7 @@
 
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
-                android:layout_height="72dp"
+                android:layout_height="56dp"
                 android:theme="?actionBarTheme"
                 android:background="@color/background"
                 app:layout_constraintTop_toTopOf="parent"
@@ -64,7 +64,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
-                    android:outlineAmbientShadowColor="@color/secondary"
+                    android:outlineAmbientShadowColor="@color/primary"
                     android:padding="4dp"
                     android:queryHint="Search"
                     android:iconifiedByDefault="true"
@@ -72,37 +72,12 @@
                     android:theme="@style/ToolbarAppearanceOverlay"/>                  />
             </FrameLayout>
 
-
-
-<!--            <EditText-->
-<!--                android:id="@+id/products_search"-->
-<!--                android:layout_width="250dp"-->
-<!--                android:layout_height="48dp"-->
-<!--                android:background="@drawable/custom_searchbar"-->
-<!--                android:backgroundTint="@color/off_white"-->
-<!--                android:drawablePadding="8dp"-->
-<!--                android:drawableStart="@drawable/icon_search_small"-->
-<!--                android:drawableTint="@color/disabled"-->
-<!--                android:fontFamily="@font/poppins_medium"-->
-<!--                android:hint="@string/search"-->
-<!--                android:includeFontPadding="false"-->
-<!--                android:inputType="text"-->
-<!--                android:paddingHorizontal="16dp"-->
-<!--                android:paddingVertical="8dp"-->
-<!--                android:textColorHint="@color/disabled"-->
-<!--                android:textSize="14sp"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="@+id/cart_icon"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/back_icon_prod"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                android:autofillHints="" />-->
-
             <ImageView
                 android:id="@+id/cart_icon"
                 android:contentDescription="@string/cart_icon"
                 android:src="@drawable/icon_cart"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -114,55 +89,86 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/topNav_prod"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="0dp"
         android:fillViewport="true"
         android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/addToCartLayout"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/topNav_prod"
+        android:layout_marginBottom="4dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
             <ImageView
                 android:id="@+id/productImageIv"
                 android:layout_width="wrap_content"
                 android:layout_height="260dp"
-                android:layout_marginHorizontal="18dp"
-                android:layout_marginVertical="30dp"
                 android:contentDescription="@string/product_image"
                 android:paddingHorizontal="60dp"
                 android:paddingVertical="20dp"
+                android:layout_marginVertical="16dp"
                 android:src="@drawable/img_dahi"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/product_title_tv"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:layout_gravity="center_horizontal"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/background_dark"
+                app:layout_constraintTop_toBottomOf="@id/productImageIv" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp"
+                android:paddingHorizontal="12dp">
+
+                <TextView
+                    android:id="@+id/company_name_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/FreshyZo"
+                    android:textColor="@color/heading"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/product_title_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/freshyzo_malai_dahi"
+                    android:textColor="@color/heading"
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:id="@+id/product_size_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/sample_size"
+                    android:textColor="@color/heading"
+                    android:textSize="15sp"/>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/price_unit_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="8dp"
                 android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/product_title_tv">
+                app:layout_constraintTop_toBottomOf="@id/product_title_tv"
+                android:paddingHorizontal="12dp">
 
                 <TextView
                     android:id="@+id/product_price_tv"
@@ -170,7 +176,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_medium"
                     android:text="@string/mrp"
-                    android:textColor="@color/heading"
+                    android:textColor="@color/body"
                     android:textSize="14sp" />
 
                 <TextView
@@ -185,249 +191,219 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/size_btn_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginVertical="16dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/selected_size_tv">
-
-
-                <Button
-                    android:id="@+id/size_optn_one"
-                    style="?android:attr/buttonBarButtonStyle"
-                    android:layout_width="74dp"
-                    android:layout_height="32dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/custom_transparent_round_btn"
-                    android:includeFontPadding="false"
-                    android:paddingHorizontal="2dp"
-                    android:text="@string/quantity_selected"
-                    android:textAllCaps="false"
-                    android:textColor="@color/primary"
-                    tools:ignore="TouchTargetSizeCheck" />
-
-                <Button
-                    android:id="@+id/size_optn_two"
-                    style="?android:attr/buttonBarButtonStyle"
-                    android:layout_width="74dp"
-                    android:layout_height="32dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/custom_transparent_round_btn_disabled"
-                    android:includeFontPadding="false"
-                    android:paddingHorizontal="2dp"
-                    android:text="@string/_500_gm"
-                    android:textAllCaps="false"
-                    android:textColor="@color/disabled"
-                    tools:ignore="TouchTargetSizeCheck" />
-
-                <Button
-                    android:id="@+id/size_optn_three"
-                    style="?android:attr/buttonBarButtonStyle"
-                    android:layout_width="74dp"
-                    android:layout_height="32dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/custom_transparent_round_btn_disabled"
-                    android:includeFontPadding="false"
-                    android:paddingHorizontal="2dp"
-                    android:text="@string/_1_kg"
-                    android:textAllCaps="false"
-                    android:textColor="@color/disabled"
-                    tools:ignore="TouchTargetSizeCheck" />
-
-
-            </LinearLayout>
-
-            <RelativeLayout
-                android:id="@+id/addToCartLayout"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:background="@color/background"
-                android:elevation="24dp"
-                android:orientation="horizontal"
-                app:elevation="4dp"
-                app:layout_constraintTop_toBottomOf="@id/prod_desc_body_tv"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent">
-
-                <Button
-                    android:id="@+id/subscribeBtnProduct"
-                    style="?android:attr/buttonBarButtonStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="60dp"
-                    android:layout_alignEnd="@id/strut"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="0dp"
-                    android:background="@color/secondary"
-                    android:contentDescription="@string/subscribe_button"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:includeFontPadding="false"
-                    android:paddingHorizontal="50dp"
-                    android:paddingVertical="20dp"
-                    android:text="@string/subscribe"
-                    android:textColor="@color/off_white"
-                    android:textSize="16sp" />
-
-                <Button
-                    android:id="@+id/addToCartBtnProduct"
-                    style="?android:attr/buttonBarButtonStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="60dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignStart="@id/strut"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="0dp"
-                    android:background="@color/background"
-                    android:contentDescription="@string/add_to_cart_button"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:includeFontPadding="false"
-                    android:paddingHorizontal="50dp"
-                    android:paddingVertical="20dp"
-                    android:text="@string/add_to_cart"
-                    android:textColor="@color/secondary"
-                    android:textSize="16sp" />
-
-                <View
-                    android:id="@+id/strut"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_centerHorizontal="true" />
-
-            </RelativeLayout>
-
-            <TextView
-                android:id="@+id/product_title_tv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/roboto_medium"
-                android:text="@string/freshyzo_malai_dahi"
-                android:textColor="@color/heading"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/productImageIv" />
-
-            <TextView
-                android:id="@+id/selected_size_tv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginVertical="20dp"
-                android:fontFamily="@font/roboto_medium"
-                android:text="@string/selected_size"
-                android:textColor="@color/heading"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/hr_one" />
-
-            <TextView
-                android:id="@+id/prod_desc_title_tv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:fontFamily="@font/poppins_medium"
-                android:includeFontPadding="false"
-                android:text="@string/product_details"
-                android:textColor="@color/heading"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/hr_two" />
-
-            <TextView
-                android:id="@+id/prod_desc_body_tv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:fontFamily="@font/roboto_regular"
-                android:includeFontPadding="false"
-                android:lineSpacingExtra="6dp"
-                android:text="@string/product_desc"
-                android:textColor="@color/body"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/prod_desc_title_tv" />
-
-            <!-- TODO "Make CTA buttons stick to bottom and visible"-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/nutrition_title_tv"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_margin="20dp"-->
-<!--                android:fontFamily="@font/poppins_medium"-->
-<!--                android:includeFontPadding="false"-->
-<!--                android:text="@string/nutritional_value"-->
-<!--                android:textColor="@color/heading"-->
-<!--                android:textSize="18sp"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@id/hr_three" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/nutrition_desc_body_tv"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_margin="20dp"-->
-<!--                android:fontFamily="@font/roboto_regular"-->
-<!--                android:includeFontPadding="false"-->
-<!--                android:lineSpacingExtra="6dp"-->
-<!--                android:text="@string/nutrition_desc"-->
-<!--                android:textColor="@color/body"-->
-<!--                android:textSize="15sp"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@id/nutrition_title_tv" />-->
-
-<!--            <View-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="200dp"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@id/nutrition_desc_body_tv"-->
-<!--                />-->
-
             <View
-                android:id="@+id/hr_one"
                 android:layout_width="match_parent"
-                android:layout_height="2dp"
+                android:layout_height="1dp"
                 android:layout_marginVertical="20dp"
-                android:background="@color/off_white"
+                android:background="@color/background_dark"
                 app:layout_constraintTop_toBottomOf="@id/price_unit_layout" />
 
-            <View
-                android:id="@+id/hr_two"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginVertical="28dp"
-                android:background="@color/off_white"
-                app:layout_constraintTop_toBottomOf="@id/size_btn_layout" />
+<!--            <LinearLayout-->
+<!--                android:id="@+id/selected_size_layout"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical">-->
 
-            <View
-                android:id="@+id/hr_three"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginVertical="28dp"
-                android:background="@color/off_white"
-                app:layout_constraintTop_toBottomOf="@id/prod_desc_body_tv" />
+<!--                <TextView-->
+<!--                    android:id="@+id/selected_size_tv"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginVertical="12dp"-->
+<!--                    android:fontFamily="@font/roboto_medium"-->
+<!--                    android:text="@string/selected_size"-->
+<!--                    android:textColor="@color/heading"-->
+<!--                    android:textSize="16sp"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/hr_one" />-->
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/size_btn_layout"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/selected_size_tv">-->
+
+
+<!--                    <Button-->
+<!--                        android:id="@+id/size_optn_one"-->
+<!--                        style="?android:attr/buttonBarButtonStyle"-->
+<!--                        android:layout_width="74dp"-->
+<!--                        android:layout_height="32dp"-->
+<!--                        android:layout_marginEnd="8dp"-->
+<!--                        android:background="@drawable/custom_transparent_round_btn"-->
+<!--                        android:includeFontPadding="false"-->
+<!--                        android:paddingHorizontal="2dp"-->
+<!--                        android:text="@string/quantity_selected"-->
+<!--                        android:textAllCaps="false"-->
+<!--                        android:textColor="@color/primary"-->
+<!--                        tools:ignore="TouchTargetSizeCheck" />-->
+
+<!--                    <Button-->
+<!--                        android:id="@+id/size_optn_two"-->
+<!--                        style="?android:attr/buttonBarButtonStyle"-->
+<!--                        android:layout_width="74dp"-->
+<!--                        android:layout_height="32dp"-->
+<!--                        android:layout_marginEnd="8dp"-->
+<!--                        android:background="@drawable/custom_transparent_round_btn_disabled"-->
+<!--                        android:includeFontPadding="false"-->
+<!--                        android:paddingHorizontal="2dp"-->
+<!--                        android:text="@string/_500_gm"-->
+<!--                        android:textAllCaps="false"-->
+<!--                        android:textColor="@color/disabled"-->
+<!--                        tools:ignore="TouchTargetSizeCheck" />-->
+
+<!--                    <Button-->
+<!--                        android:id="@+id/size_optn_three"-->
+<!--                        style="?android:attr/buttonBarButtonStyle"-->
+<!--                        android:layout_width="74dp"-->
+<!--                        android:layout_height="32dp"-->
+<!--                        android:layout_marginEnd="8dp"-->
+<!--                        android:background="@drawable/custom_transparent_round_btn_disabled"-->
+<!--                        android:includeFontPadding="false"-->
+<!--                        android:paddingHorizontal="2dp"-->
+<!--                        android:text="@string/_1_kg"-->
+<!--                        android:textAllCaps="false"-->
+<!--                        android:textColor="@color/disabled"-->
+<!--                        tools:ignore="TouchTargetSizeCheck" />-->
+
+
+<!--                </LinearLayout>-->
+<!--                -->
+<!--            </LinearLayout>-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="12dp">
+
+                <TextView
+                    android:id="@+id/prod_desc_title_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:includeFontPadding="false"
+                    android:text="@string/product_details"
+                    android:textColor="@color/heading"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/hr_two" />
+
+                <TextView
+                    android:id="@+id/prod_desc_body_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="6dp"
+                    android:text="@string/product_desc"
+                    android:textColor="@color/body"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/prod_desc_title_tv" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginVertical="20dp"
+                    android:background="@color/background_dark"
+                    app:layout_constraintTop_toBottomOf="@id/price_unit_layout" />
+
+                <TextView
+                    android:id="@+id/nutrition_title_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:includeFontPadding="false"
+                    android:text="@string/nutritional_value"
+                    android:textColor="@color/heading"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/hr_three" />
+
+                <TextView
+                    android:id="@+id/nutrition_desc_body_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="20dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="6dp"
+                    android:text="@string/nutrition_desc"
+                    android:textColor="@color/body"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/nutrition_title_tv" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
     </ScrollView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <LinearLayout
+        android:id="@+id/addToCartLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            app:layout_constraintBottom_toTopOf="@id/addToCartLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@color/background_dark"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="8dp"
+            android:background="@color/background"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/addToCartBtnProduct"
+                android:contentDescription="@string/add_to_cart_button"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_weight="1"
+                android:background="@drawable/custom_outline_primary"
+                android:text="@string/buy_once"
+                android:textColor="@color/primary"
+                android:layout_marginEnd="6dp"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto_bold"
+                android:includeFontPadding="false"/>
+
+            <Button
+                android:id="@+id/subscribeBtnProduct"
+                android:contentDescription="@string/subscribe_button"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_weight="1"
+                android:layout_marginStart="6dp"
+                style="?android:attr/buttonBarButtonStyle"
+                android:background="@drawable/custom_rounded_corner_primary"
+                android:text="@string/subscribe"
+                android:textColor="@color/off_white"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto_bold"
+                android:includeFontPadding="false"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

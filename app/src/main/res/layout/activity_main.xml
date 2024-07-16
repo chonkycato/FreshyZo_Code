@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -34,12 +34,16 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="56dp"
         android:layout_alignParentBottom="true"
         android:background="@color/background"
         app:menu="@menu/bottom_nav"
         app:itemTextColor="@color/bottom_nav_item_color"
         app:itemIconTint="@color/bottom_nav_item_color"
+        app:itemIconSize="22dp"
+        app:itemTextAppearanceActive="@font/roboto_medium"
+        app:itemTextAppearanceInactive="@font/roboto_regular"
+        app:itemTextAppearanceActiveBoldEnabled="true"
         app:labelVisibilityMode="labeled"
         android:soundEffectsEnabled="false"
         />

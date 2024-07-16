@@ -3,8 +3,12 @@ package com.example.freshyzo.model
 import android.os.Parcel
 import android.os.Parcelable
 
-class DataModelCart(var title: String, var itemDetail: String, var itemPrice: String, var itemSize: String,
-                    var itemQty: String, var image: Int)  : Parcelable {
+class DataModelCart(var title: String,
+                    var itemDetail: String,
+                    var itemPrice: String,
+                    var itemSize: String,
+                    var itemQty: String,
+                    var image: Int)  : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString()!!,
         parcel.readString()!!,

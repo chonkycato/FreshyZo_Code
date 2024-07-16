@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background"
+    android:paddingHorizontal="12dp"
+    android:layout_marginBottom="8sp"
+    android:elevation="2dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="18dp">
+
+        <FrameLayout
+            android:id="@+id/pausedSubFrameLayout"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/custom_outline_super_light">
+
+            <ImageView
+                android:id="@+id/pausedSubProductIV"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:layout_gravity="center"
+                android:src="@drawable/img_milk_buff" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/productNamePSubTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/pausedSubFrameLayout"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="16dp"
+            android:paddingVertical="2dp"
+            android:text="@string/buffalo_milk"
+            android:textColor="@color/body"
+            android:textSize="16sp"
+            android:fontFamily="@font/roboto_medium"
+            android:includeFontPadding="false" />
+
+        <TextView
+            android:id="@+id/productPricePSubTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/pausedSubFrameLayout"
+            app:layout_constraintTop_toBottomOf="@id/productNamePSubTV"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:paddingVertical="2dp"
+            android:text="@string/itemPrice"
+            android:textColor="@color/primary"
+            android:textSize="15sp"
+            android:fontFamily="@font/roboto_bold"
+            android:includeFontPadding="false"/>
+
+        <LinearLayout
+            android:id="@+id/deliveryTypeLLPS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/pausedSubFrameLayout"
+            app:layout_constraintTop_toBottomOf="@id/productPricePSubTV"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:paddingVertical="2dp">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/delivery_type"
+                android:textColor="@color/body"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto_medium"
+                android:includeFontPadding="false"/>
+
+            <TextView
+                android:id="@+id/deliveryTypeTVPSub"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/everyday"
+                android:textColor="@color/body"
+                android:textSize="13sp"
+                android:textAllCaps="false"
+                android:fontFamily="@font/roboto_regular"
+                tools:ignore="SmallSp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/subStatusLLPS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/pausedSubFrameLayout"
+            app:layout_constraintTop_toBottomOf="@id/deliveryTypeLLPS"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:paddingVertical="2dp">
+
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/status"
+                android:textColor="@color/body"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto_medium"
+                android:includeFontPadding="false" />
+
+            <TextView
+                android:id="@+id/subStatusSubTVPSub"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/paused"
+                android:textColor="@color/secondary_light"
+                android:textSize="13sp"
+                android:textAlignment="center"
+                android:fontFamily="@font/roboto_bold"
+                android:includeFontPadding="false"
+                android:textAllCaps="true"
+                tools:ignore="SmallSp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/startDateLLPS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/pausedSubFrameLayout"
+            app:layout_constraintTop_toBottomOf="@id/subStatusLLPS"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:paddingVertical="2dp">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/paused_from"
+                android:textColor="@color/body"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto_medium"
+                android:includeFontPadding="false"/>
+
+            <TextView
+                android:id="@+id/startDateSubTVPSub"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sample_start_date"
+                android:textColor="@color/body"
+                android:textSize="13sp"
+                android:fontFamily="@font/roboto_regular"
+                android:includeFontPadding="false"
+                tools:ignore="SmallSp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/pauseDateLLPS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/pausedSubFrameLayout"
+            app:layout_constraintTop_toBottomOf="@id/startDateLLPS"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:paddingVertical="2dp">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/paused_until"
+                android:textColor="@color/body"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto_medium"
+                android:includeFontPadding="false"/>
+
+            <TextView
+                android:id="@+id/pauseDateSubTVPSub"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sample_start_date"
+                android:textColor="@color/body"
+                android:textSize="13sp"
+                android:fontFamily="@font/roboto_regular"
+                android:includeFontPadding="false"
+                tools:ignore="SmallSp" />
+
+        </LinearLayout>
+
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/deliveryLLPS"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintStart_toEndOf="@id/pausedSubFrameLayout"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/pauseDateLLPS"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:paddingVertical="2dp">-->
+
+<!--            <TextView-->
+<!--                android:layout_width="100dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/location"-->
+<!--                android:textColor="@color/body"-->
+<!--                android:textSize="14sp"-->
+<!--                android:fontFamily="@font/roboto_medium"-->
+<!--                android:includeFontPadding="false"/>-->
+
+
+<!--            <TextView-->
+<!--                android:id="@+id/deliveryLocationTVPSub"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/address_body"-->
+<!--                android:textColor="@color/body"-->
+<!--                android:textSize="13sp"-->
+<!--                android:fontFamily="@font/roboto_regular"-->
+<!--                android:includeFontPadding="false"-->
+<!--                tools:ignore="SmallSp"/>-->
+
+
+<!--        </LinearLayout>-->
+
+        <View
+            android:id="@+id/horizontalRule"
+            android:layout_width="match_parent"
+            android:layout_height="1.5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pauseDateLLPS"
+            android:background="@color/background_dark"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="4dp"/>
+
+        <LinearLayout
+            android:id="@+id/subActionLLPS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/horizontalRule"
+            android:layout_marginTop="12dp">
+
+            <Button
+                android:id="@+id/resumeSubButton"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/custom_outline_primary"
+                android:text="@string/resume"
+                android:textColor="@color/primary"
+                android:textSize="12sp"
+                android:textAllCaps="true"
+                android:fontFamily="@font/roboto_bold"
+                android:paddingHorizontal="8dp"/>
+
+            <Button
+                android:id="@+id/cancelButtonBSub"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:background="@drawable/custom_outline_lighter"
+                android:text="@string/cancel"
+                android:textColor="@color/disabled"
+                android:textSize="12sp"
+                android:textAllCaps="true"
+                android:fontFamily="@font/roboto_bold"
+                android:paddingHorizontal="8dp"/>
+
+
+        </LinearLayout>
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/subActionLLPS"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintStart_toStartOf="@id/deliveryLLPS"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/deliveryLLPS"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:paddingVertical="2dp">-->
+
+<!--            <Button-->
+<!--                android:id="@+id/resumeSubButton"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="36dp"-->
+<!--                android:layout_marginEnd="8dp"-->
+<!--                android:text="@string/resume"-->
+<!--                android:textSize="14sp"-->
+<!--                android:textColor="@color/background"-->
+<!--                android:textAllCaps="false"-->
+<!--                android:fontFamily="@font/roboto_medium"-->
+<!--                android:includeFontPadding="false"-->
+<!--                android:background="@drawable/custom_rounded_small_corner_transparent"-->
+<!--                android:backgroundTint="@color/primary"-->
+<!--                tools:ignore="SmallSp" />-->
+
+<!--            <Button-->
+<!--                android:id="@+id/cancelButtonPSub"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="36dp"-->
+<!--                android:paddingHorizontal="0dp"-->
+<!--                android:text="@string/cancel"-->
+<!--                android:textSize="14sp"-->
+<!--                android:textColor="@color/background"-->
+<!--                android:textAllCaps="false"-->
+<!--                android:fontFamily="@font/roboto_medium"-->
+<!--                android:includeFontPadding="false"-->
+<!--                android:background="@drawable/custom_rounded_small_corner_transparent"-->
+<!--                android:backgroundTint="@color/alert_light"-->
+<!--                tools:ignore="SmallSp"/>-->
+
+<!--        </LinearLayout>-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

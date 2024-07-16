@@ -3,7 +3,6 @@ package com.example.freshyzo
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.freshyzo.model.BottomNavVisibilityListener
@@ -18,41 +17,56 @@ class MainActivity : AppCompatActivity(), BottomNavVisibilityListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        if (!checkOnBoarding()) {
-            loadFragment(OnboardingScreen(), true)
+        /** Handle activity redirection **/
+        val intentData = intent.getStringExtra("returned")
+        if (intentData.equals("home")){
+            loadFragment(HomeFragment(), true, null)
         }
 
-        bottomNav = findViewById(R.id.bottomNav)
+        if (!checkOnBoarding()) {
+            loadFragment(OnboardingScreen(), true, null)
+        }
+
+        bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)
 
         //Bottom Navigation
-        bottomNav.visibility = View.VISIBLE
+        showBottomNav()
         //loadFragment(HomeFragment(), true)
         bottomNav.setOnItemSelectedListener {
+            val homeIcon = R.id.home_icon
+            val notificationIcon = R.id.notification_icon
+            val walletIcon = R.id.wallet_icon
+            val accountIcon = R.id.account_icon
+            val cartIcon = R.id.cart_icon
+
             when (it.itemId){
-                R.id.home_icon -> {
-                    loadFragment(HomeFragment(), false)
+                 homeIcon -> {
+                    loadFragment(HomeFragment(), false, null)
+
                     true
                 }
 
-                R.id.notification_icon -> {
-                    loadFragment(NotificationsFragment(), false)
+                notificationIcon -> {
+                    loadFragment(NotificationsFragment(), false, null)
                     true
                 }
 
-                R.id.account_icon -> {
-                    loadFragment(AccountFragment(), false)
+                walletIcon -> {
+                    loadFragment(WalletFragment(), false, null)
                     true
                 }
 
-                R.id.cart_icon -> {
-                    loadFragment(CartFragment(), false)
+                accountIcon -> {
+                    loadFragment(AccountFragment(), false, null)
                     true
                 }
 
-                else -> {
-                    loadFragment(HomeFragment(), false)
+                cartIcon -> {
+                    loadFragment(CartFragment(), false, null)
                     true
                 }
+
+                else -> false
             }
         }
     }
@@ -63,21 +77,36 @@ class MainActivity : AppCompatActivity(), BottomNavVisibilityListener {
 
     fun unInitialise(){
         getSharedPreferences("initialized", Context.MODE_PRIVATE).edit()
-            .putBoolean("isInitialized", false)
+            .putBoolean("isInitialized", false).apply()
     }
 
-    fun loadFragment(fragment: Fragment, clearBackStack: Boolean){
+    fun loadFragment(fragment: Fragment, clearBackStack: Boolean, searchQuery: String?){
+
+        val supportFragmentManager = supportFragmentManager
         val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.container,fragment)
+
+        if(searchQuery!=null){
+            val bundle = Bundle().apply{
+                putString("Search Query", searchQuery)
+            }
+            fragment.arguments = bundle
+        }
+
+        transaction.replace(R.id.container, fragment)
         if(!clearBackStack){
             transaction.addToBackStack(null)
         }
-        transaction.commit()
-        val fragmentManager = supportFragmentManager
-        if (clearBackStack){
-            fragmentManager.popBackStackImmediate()
+        else{
+            supportFragmentManager.popBackStackImmediate()
         }
+        transaction.commit()
     }
+
+    fun backNavigation(){
+        val supportFragmentManager = supportFragmentManager
+        supportFragmentManager?.popBackStack()
+    }
+
 
     fun onBoardingFinished() {
         val sharedPref = getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
@@ -110,30 +139,36 @@ class MainActivity : AppCompatActivity(), BottomNavVisibilityListener {
         val sharedPref = getSharedPreferences("cart", Context.MODE_PRIVATE)
         sharedPref.edit().putInt("productId", productId).apply()
         var value = sharedPref.getInt("productId", 0)
-        Toast.makeText( applicationContext, value.toString(), Toast.LENGTH_SHORT).show()
     }
 
     fun displayCartItems(): Int {
         val sharedPref = getSharedPreferences("cart", Context.MODE_PRIVATE)
         return sharedPref.getInt("productId", 0)
-
     }
 
     override fun setBottomNavVisibility(isVisible: Boolean) {
-        if (isVisible){
-            try{
-                bottomNav.visibility = View.VISIBLE
-            } catch (e: Exception){
-                e.printStackTrace()
-            }
-        }
-        else{
-            try{
-                bottomNav.visibility = View.GONE
-            } catch (e: Exception){
-                e.printStackTrace()
-            }
-        }
+//        if (isVisible){
+//            try{
+//                bottomNav.visibility = View.VISIBLE
+//            } catch (e: Exception){
+//                e.printStackTrace()
+//            }
+//        }
+//        else{
+//            try{
+//                bottomNav.visibility = View.GONE
+//            } catch (e: Exception){
+//                e.printStackTrace()
+//            }
+//        }
+    }
+
+    fun hideBottomNav(){
+        bottomNav.visibility = View.GONE
+    }
+
+    fun showBottomNav(){
+        bottomNav.visibility = View.VISIBLE
     }
 
     override fun onStop() {

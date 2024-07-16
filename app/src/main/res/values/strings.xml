@@ -61,16 +61,18 @@
     <string name="hvs_item_text_3">Buffalo Milk</string>
     <string name="hvs_item_text_4">Paneer</string>
     <string name="milk">Milk</string>
-    <string name="buffalo_milk">Buffalo Milk</string>
-    <string name="paneer">Paneer</string>
-    <string name="ghee">Ghee</string>
+    <string name="cow_milk">FreshyZo Cow Milk</string>
+    <string name="buffalo_milk">FreshyZo Buffalo Milk</string>
+    <string name="paneer">FreshyZo Paneer</string>
+    <string name="ghee">FreshyZo Desi
+        Ghee</string>
     <string name="categories">Categories</string>
     <string name="popular_items">Popular Items</string>
     <string name="title">Title</string>
     <string name="description">Description</string>
     <string name="quantity">Quantity</string>
     <string name="price">Price</string>
-    <string name="add_to_cart">Add to Cart</string>
+    <string name="buy_once">Buy Once</string>
     <string name="back_icon">Back Button</string>
     <string name="cart_icon">Cart Icon</string>
     <string name="search">Search</string>
@@ -85,7 +87,6 @@
     <string name="product_details">Product Details</string>
     <string name="nutritional_value">Nutritional Value</string>
 
-
     <string name="product_desc">FreshyZo Malai Dahi is 100% natural dahi, containing no added preservatives or harmful chemicals.
         It is made out of rich and creamy milk, with profuse amount of malai to
         give it a smooth, mouth-melting, luscious texture.
@@ -94,7 +95,6 @@
         set just like homemade curd, offering you the best of taste
         and goodness without the hassles of preparing it at home.
     </string>
-
     <string name="nutrition_desc"><b>Each 100 gm of FreshyZo Malai Dahi contains: \n </b>
         \nEnergy 62kcal, Total Fat 4 gms,
         Saturated Fat 2.8 gms, Total Carbs 3 gms, Protein 3.5 gms, Vitamin A 162 mcg,
@@ -108,17 +108,16 @@
     <string name="notification_body">Your monthly subscription for FreshyZo A-2 Cow Milk 250ml has been successfully renewed today.</string>
     <string name="notification_body_one">The amount of  ₹25 was successfully credited to your wallet.</string>
     <string name="notification_body_two">Price drop on your favorite items, SHOP NOW!</string>
-    <string name="address_title">Deliver to: Monica Sen, 492001</string>
+    <string name="address_title">Delivering to Shankar Nagar</string>
     <string name="address_body">32/675, Ram Sagar Para, Raipur Chhattisgarh...</string>
     <string name="delete_item">Delete Item</string>
     <string name="freshyzo_ghee_butter">FreshyZo Ghee Butter</string>
     <string name="change">Change</string>
     <string name="_100_pure_desi_ghee">100% Pure Desi Ghee</string>
-    <string name="itemPrice">₹300</string>
-    <string name="delivery_by_today_5_pm">Delivery by Today, 5 PM</string>
+    <string name="itemPrice">₹300.00</string>
+    <string name="delivery_by_today_5_pm">Delivered Today</string>
     <string name="item_quantity">Item Quantity</string>
-    <string name="qty_1">Qty: 1</string>
-    <string name="size_500_gm">Size: 500 gm</string>
+    <string name="sample_item_size">500 gm</string>
     <string name="cart_total">Cart Total</string>
     <string name="total_price">₹380</string>
     <string name="proceed_to_checkout">Proceed to Checkout</string>
@@ -142,7 +141,6 @@
     <string name="privacy_policy">Privacy Policy</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="return_policy">Return Policy</string>
     <string name="address">Address</string>
     <string name="add_new_address_button">Add new address button</string>
     <string name="no_addresses_found">No addresses found</string>
@@ -150,7 +148,7 @@
     <string name="sample_name_one">Manali Sharma</string>
     <string name="sample_address">Opposite SBI, 288, Sadar Bazar Road, beside Central Book, Sadar Bazar, Raipur, Chhattisgarh 492001</string>
     <string name="default_string">Default</string>
-    <string name="sample_delivery">Delivered on 15th May, 2024</string>
+    <string name="sample_delivery">\Delivered, 15th May</string>
     <string name="address_description">Add new address field</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
@@ -187,6 +185,93 @@
     <string name="days">Days</string>
     <string name="add_delivery_days_title">Add Delivery Days</string>
     <string name="add_quantity">Add Quantity</string>
+    <string name="select_end_date">Select End Date</string>
+    <string name="optional">\ (Optional)</string>
+    <string name="required">(Required)</string>
+    <string name="rupees_symbol">₹</string>
+    <string name="initial_wallet_balance">" 0.00"</string>
+    <string name="recharge">Recharge</string>
+    <string name="products">Products</string>
+    <string name="bread">Bread</string>
+    <string name="active">Active</string>
+    <string name="paused">Paused</string>
+    <string name="start_date">Start Date</string>
+    <string name="end_date">End Date</string>
+    <string name="location">Location</string>
+    <string name="status">Status</string>
+    <string name="area">Area</string>
+    <string name="sample_start_date">19/06/2024</string>
+    <string name="pause">Pause</string>
+    <string name="cancel">Cancel</string>
+    <string name="everyday">Everyday</string>
+    <string name="resume">Resume</string>
+    <string name="pause_date">Pause Date</string>
+    <string name="pause_subscription">Pause subscription?</string>
+    <string name="browse_your_order_history">Browse your order history</string>
+    <string name="check_and_manage_subscriptions">Check and manage subscriptions</string>
+    <string name="manage_your_wallet">Manage your wallet</string>
+    <string name="manage_and_update_your_profile">Manage and update your profile</string>
+    <string name="manage_your_saved_addresses">Manage your saved addresses</string>
+    <string name="browse_coupons_earn_points">Browse coupons, earn points</string>
+    <string name="manage_your_language_preferences">Manage your language preferences</string>
+    <string name="terms">Terms</string>
+    <string name="privacy">Privacy</string>
+    <string name="return_policy">Return</string>
+    <string name="app_version">App Version 1.0.0</string>
+    <string name="get_to_know_us">Get to know us</string>
+    <string name="forward">Forward</string>
+    <string name="total_products">9 products</string>
+    <string name="all">All</string>
+    <string name="all_products">All Products</string>
+    <string name="end_of_results">End of results</string>
+    <string name="back_to_top">Back To Top</string>
+    <string name="wallet">Wallet</string>
+    <string name="sample_date_time_string">2024.07.24 01:23</string>
+    <string name="all_notifications">All Notifications</string>
+    <string name="mark_undelivered">Mark Undelivered</string>
+    <string name="remark">Remark</string>
+    <string name="delivered">Delivered</string>
+    <string name="size">Size: </string>
+    <string name="continue_str">Continue</string>
+    <string name="sample_size">\ - 250gm</string>
+    <string name="payment_successful">Payment Successful!</string>
+    <string name="redirecting">Redirecting…</string>
+    <string name="go_back">Go Back</string>
+    <string name="refer_earn"><![CDATA[Refer & Earn]]></string>
+    <string name="invite_your_friends_and_earn_rewards">Invite your friends and earn rewards!</string>
+    <string name="share_with_friends">Share with Friends</string>
+    <string name="copy">Copy</string>
+    <string name="enter_your_address">Enter your address</string>
+    <string name="select_your_area">Select your area</string>
+    <string name="vacation">Vacation</string>
+    <string name="pause_all_subscriptions_during_vacations">Pause all subscriptions during vacations</string>
+    <string name="start_date_required">Start Date (Required)</string>
+    <string name="end_date_optional">End Date (Optional)</string>
+    <string name="vacation_mode_will_be_cancelled">Vacation Mode will be cancelled.</string>
+    <string name="cancel_vacation_mode">Cancel Vacation Mode</string>
+    <string name="going_on_a_vacation">Going on a vacation?</string>
+    <string name="start_vacation">Start Vacation</string>
+    <string name="you_re_on_vacation">You\'re on vacation!</string>
+    <string name="back_home_end_vacation_mode">Back home? End vacation mode.</string>
+    <string name="vacation_banner">Vacation Banner</string>
+    <string name="end_vacation">End Vacation</string>
+    <string name="view_details">View Details</string>
+    <string name="save">Save</string>
+    <string name="order_details">Order Details</string>
+    <string name="processing">Processing</string>
+    <string name="share">Share</string>
+    <string name="copy_code">Copy Code</string>
+    <string name="invite">Invite</string>
+    <string name="total_reward_points">Total Reward Points</string>
+    <string name="redeem">Redeem</string>
+    <string name="all_referral_points_will_be_automatically_redeemed_to_your_wallet">All referral points will be automatically redeemed to your wallet.</string>
+    <string name="paused_from">Paused From</string>
+    <string name="paused_until">Paused Until</string>
+    <string name="vacation_alert">*You only have 24 hours to cancel vacation once started.</string>
+    <string name="cancel_vacation">Cancel Vacation</string>
+    <string name="sample_order_id">Order ID: #123456</string>
+    <string name="sample_date">12 Aug 2024</string>
+    <string name="more_items">+2 more items</string>
 
 
     <!-- String Arrays -->

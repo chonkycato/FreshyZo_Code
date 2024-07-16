@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.ImageView
+import android.widget.EditText
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
@@ -25,26 +27,36 @@ class AddressFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_address, container, false)
+        (activity as MainActivity).hideBottomNav()
 
         parentConstraintLayout = view.findViewById(R.id.parent_constraint_layout)
 
-        val addAddress = view.findViewById<Button>(R.id.add_address)
+        /** Handle back navigation **/
+        val backNavIcon = view.findViewById<Button>(R.id.back_icon_address)
+        backNavIcon.setOnClickListener { (activity as MainActivity).backNavigation() }
 
-        val backIconAddress = view.findViewById<ImageView>(R.id.back_icon_address)
+
+        val addAddress = view.findViewById<EditText>(R.id.address_field)
+
+        /** Initialise Area Spinner and adapter **/
+        val areaSpinner = view.findViewById<Spinner>(R.id.area_spinner)
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        val adapter = ArrayAdapter.createFromResource(
+            requireContext(), // Use requireContext() to get the context in fragments
+            R.array.area_name, // The array defined in strings.xml
+            android.R.layout.simple_spinner_item // Default spinner layout
+        )
+
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        // Apply the adapter to the spinner
+        areaSpinner.adapter = adapter
 
         addAddress.setOnClickListener {
             try {
                 
             } catch (e: Exception) {
-                e.printStackTrace()
-                Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
-            }
-        }
-
-        backIconAddress.setOnClickListener {
-            try {
-                (activity as MainActivity)!!.loadFragment(HomeFragment(), false)
-            } catch (e: Exception){
                 e.printStackTrace()
                 Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
             }

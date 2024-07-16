@@ -5,7 +5,7 @@
     tools:context=".NotificationsFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/off_white">
+    android:background="@color/background">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/top_nav_not"
@@ -22,7 +22,7 @@
 
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
-                android:layout_height="72dp"
+                android:layout_height="56dp"
                 android:theme="?actionBarTheme"
                 android:background="@color/background"
                 app:layout_constraintTop_toTopOf="parent"
@@ -49,7 +49,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginStart="20dp"
                 android:text="@string/notifications"
-                android:textSize="21sp"
+                android:textSize="18sp"
                 android:textColor="@color/body"
                 android:fontFamily="@font/roboto_medium"
                 android:includeFontPadding="false"
@@ -89,7 +89,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
-                    android:outlineAmbientShadowColor="@color/secondary"
+                    android:outlineAmbientShadowColor="@color/primary"
                     android:padding="4dp"
                     android:queryHint="Search"
                     android:iconifiedByDefault="true"
@@ -101,15 +101,49 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewNot"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         app:layout_constraintTop_toBottomOf="@id/top_nav_not"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginHorizontal="12dp"
-        android:nestedScrollingEnabled="true">
-    </androidx.recyclerview.widget.RecyclerView>
+        android:layout_marginVertical="60dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/notfications_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginVertical="20dp"
+                android:text="@string/all_notifications"
+                android:textSize="17sp"
+                android:textColor="@color/body"
+                android:textAllCaps="false"
+                android:fontFamily="@font/roboto_medium"
+                android:includeFontPadding="false"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewNot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/notfications_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginHorizontal="12dp"
+                android:nestedScrollingEnabled="true">
+            </androidx.recyclerview.widget.RecyclerView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

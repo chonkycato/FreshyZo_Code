@@ -1,59 +1,65 @@
 package com.example.freshyzo
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ReferEarnFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ReferEarnFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var refCodeTextView : TextView
+    private lateinit var copyCodeTextView: TextView
+    private lateinit var shareInviteTextView: TextView
+    private lateinit var referralCode : String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_refer_earn, container, false)
+        val view = inflater.inflate(R.layout.fragment_refer_earn, container, false)
+        (activity as MainActivity).hideBottomNav()
+
+        refCodeTextView = view.findViewById(R.id.referral_code)
+        copyCodeTextView = view.findViewById(R.id.copyCodeTV)
+        shareInviteTextView = view.findViewById(R.id.inviteTV)
+        referralCode = refCodeTextView.text.toString()
+
+        copyCodeTextView.setOnClickListener {
+            copyReferralCode()
+            Toast.makeText(
+                requireContext(),
+                "Referral code copied successfully!",
+                Toast.LENGTH_SHORT
+            ).show()
+
+        }
+
+        shareInviteTextView.setOnClickListener {
+            copyReferralCode()
+            val inviteCode = "Hey! Use the code $referralCode when you join FreshyZo and avail discount on products across platform."
+            val shareIntent = Intent().apply{
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, inviteCode)
+                type = "text/plain"
+            }
+            startActivity(Intent.createChooser(shareIntent, "Share via"))
+        }
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ReferEarnFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ReferEarnFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun copyReferralCode(){
+        val clipboard =
+            requireActivity().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clip = ClipData.newPlainText("referralCode", referralCode)
+        clipboard.setPrimaryClip(clip)
     }
 }

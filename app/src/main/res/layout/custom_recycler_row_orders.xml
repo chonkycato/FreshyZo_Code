@@ -1,100 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="16dp"
     app:cardBackgroundColor="@color/background"
-    android:layout_marginHorizontal="12dp"
-    android:layout_marginTop="18dp">
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    android:layout_marginHorizontal="4dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background"
-        android:paddingHorizontal="12dp"
-        android:paddingVertical="8dp">
+        android:orientation="vertical"
+        android:layout_marginHorizontal="8dp">
 
-        <ImageView
-            android:id="@+id/orderItemImage"
-            android:src="@drawable/img_ghee"
-            android:contentDescription="@string/image"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:scaleType="fitXY"/>
-
-        <TextView
-            android:id="@+id/orderItemDelivery"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/orderItemImage"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="8dp"
-            android:text="@string/sample_delivery"
-            android:textColor="@color/text_gray"
-            android:textSize="16sp"
-            android:fontFamily="@font/roboto_regular"/>
+            android:layout_marginTop="16dp"
+            android:layout_marginVertical="16dp"
+            android:layout_marginHorizontal="4dp">
 
-        <TextView
-            android:id="@+id/orderItemName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/orderItemImage"
-            app:layout_constraintTop_toBottomOf="@id/orderItemDelivery"
-            android:layout_marginVertical="8dp"
-            android:text="@string/freshyzo_ghee_butter"
-            android:textColor="@color/body"
-            android:textSize="16sp"
-            android:fontFamily="@font/roboto_regular"/>
+            <ImageView
+                android:id="@+id/orderDetailImage"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:contentDescription="@string/image"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_ghee"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/orderItemDetails"
-            android:src="@drawable/icon_arrow_black"
-            android:contentDescription="@string/image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp"
-            android:padding="4dp"
-            android:scaleType="fitXY"/>
+            <LinearLayout
+                android:id="@+id/contentBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/orderItemDetails"
+                app:layout_constraintStart_toEndOf="@id/orderDetailImage"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/orderDetailName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/roboto_medium"
+                    android:maxLines="1"
+                    android:text="@string/freshyzo_ghee_butter"
+                    android:textColor="@color/body"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/moreOrderItems"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/roboto_regular"
+                    android:maxLines="1"
+                    android:text="@string/more_items"
+                    android:textColor="@color/disabled"
+                    android:textSize="11sp" />
+
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/orderItemDetails"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/icon_arrow_black"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="@string/view_details"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:padding="4dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <View
+            android:id="@+id/horizontalRule"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="12dp"
+            android:background="@color/background_dark" />
 
         <LinearLayout
-            android:id="@+id/sizeQtyLayoutOrders"
+            android:id="@+id/deliveryBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintStart_toEndOf="@id/orderItemImage"
-            app:layout_constraintTop_toBottomOf="@id/orderItemName"
-            android:layout_marginVertical="8dp">
+            android:layout_marginBottom="16dp"
+            android:layout_marginHorizontal="4dp">
 
             <TextView
-                android:id="@+id/orderItemSize"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/size_500_gm"
-                android:textSize="16sp"
-                android:paddingEnd="16dp"
-                android:textColor="@color/body"
-                android:fontFamily="@font/roboto_regular"
-                android:includeFontPadding="false"/>
+                android:text="@string/delivered"
+                android:textColor="@color/accent"
+                android:textSize="13sp"
+                android:fontFamily="@font/roboto_medium"
+                android:layout_marginEnd="8dp"
+                android:layout_gravity="center_vertical"/>
 
             <TextView
-                android:id="@+id/orderItemQty"
-                android:contentDescription="@string/item_quantity"
+                android:id="@+id/orderItemDeliveryDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/qty_1"
-                android:textSize="16sp"
-                android:textColor="@color/body"
-                android:fontFamily="@font/roboto_regular"
-                android:includeFontPadding="false"/>
+                android:text="@string/sample_delivery"
+                android:textColor="@color/disabled"
+                android:textSize="11sp"
+                android:fontFamily="@font/roboto_medium"
+                android:layout_gravity="center_vertical"/>
 
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/mark_undelivered"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:text="@string/mark_undelivered"
+                android:textSize="12sp"
+                android:textColor="@color/secondary_light"
+                android:fontFamily="@font/roboto_medium"
+                android:layout_gravity="center_vertical" />
         </LinearLayout>
+    </LinearLayout>
 
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</LinearLayout>
+</androidx.cardview.widget.CardView>

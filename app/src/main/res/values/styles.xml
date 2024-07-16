@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Customize your theme here -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary</item>
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorAccent">@color/accent</item>
+        <!-- Define the material calendar theme -->
+        <item name="materialCalendarTheme">@style/MaterialCalendarTheme</item>
+    </style>
+
+    <!-- Define custom material calendar theme -->
+    <style name="MaterialCalendarTheme" parent="Theme.MaterialComponents.Light.Dialog">
+        <!-- Customize your material calendar styling if needed -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorAccent">@color/accent</item>
+    </style>
+
+
     <style name="rounded_corner_shape">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">10dp</item>
@@ -11,9 +29,42 @@
         <item name="android:textColor">@color/body</item>
     </style>
 
-    <style name="Widget.Theme.AppCompat.NoActionBar.ButtonBar.Fullscreen" parent="">
-        <item name="android:background">@color/black_overlay</item>
+
+
+    <style name="Widget.App.TabLayout" parent="Theme.MaterialComponents">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorSurface">@color/background</item>
+        <item name="colorOnSurface">@color/background</item>
+        <item name="android:background">@color/background</item>
         <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
+        <item name="fontFamily">@font/roboto_regular</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textColor">@color/black_overlay</item>
     </style>
 
+    <style name="CustomAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowBackground">@color/background</item>
+        <item name="android:buttonBarButtonStyle">@style/DialogButtonStyle</item>
+
+
+    </style>
+
+    <style name="DialogTitleStyle">
+        <item name="android:textColor">@color/body</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="DialogMessageStyle">
+        <item name="android:textColor">@color/disabled</item>
+    </style>
+
+    <style name="DialogButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">@color/primary</item>
+    </style>
+
+    <!-- Rounded corner style -->
+    <style name="RoundedCornerImage" parent="Widget.MaterialComponents.ShapeableImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item> <!-- Adjust this value for the desired corner radius -->
+    </style>
 </resources>

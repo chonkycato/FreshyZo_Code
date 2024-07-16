@@ -3,9 +3,11 @@ package com.example.freshyzo.model
 import android.os.Parcel
 import android.os.Parcelable
 
-class DataModelProduct(var title: String, var quantity: String, var price: String, var image: Int) : Parcelable {
+class DataModelProduct(var category: String, var title: String, var description: String, var quantity: String, var price: String, var image: Int) : Parcelable {
 
     constructor(parcel: Parcel) : this(
+        parcel.readString()!!,
+        parcel.readString()!!,
         parcel.readString()!!,
         parcel.readString()!!,
         parcel.readString()!!,
@@ -14,7 +16,9 @@ class DataModelProduct(var title: String, var quantity: String, var price: Strin
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(category)
         parcel.writeString(title)
+        parcel.writeString(description)
         parcel.writeString(quantity)
         parcel.writeString(price)
         parcel.writeInt(image)

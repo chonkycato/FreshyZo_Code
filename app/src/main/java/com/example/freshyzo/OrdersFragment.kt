@@ -1,6 +1,5 @@
 package com.example.freshyzo
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -26,13 +25,17 @@ class OrdersFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_orders, container, false)
 
-        (activity as MainActivity).setBottomNavVisibility(false)
+        (activity as MainActivity).hideBottomNav()
 
-        val mBackBtn = view.findViewById<Button>(R.id.back_icon_orders)
+        /** Handle back navigation **/
+        val backNavIcon = view.findViewById<Button>(R.id.back_icon_orders)
+        backNavIcon.setOnClickListener { (activity as MainActivity).backNavigation() }
 
-        dataList.add(DataModelOrders(resources.getString(R.string.freshyzo_malai_dahi), resources.getString(R.string.size_500_gm), "2", R.drawable.img_dahi, resources.getString(R.string.delivery_by_today_5_pm)))
-        dataList.add(DataModelOrders(resources.getString(R.string.freshyzo_ghee_butter), resources.getString(R.string._1_kg), "1", R.drawable.img_ghee, "Delivered on 23rd April"))
-        dataList.add(DataModelOrders(resources.getString(R.string.milk), resources.getString(R.string.size_500_gm), "2", R.drawable.img_milk, "Delivered on 22nd April"))
+        /** Set up and populate recycler view **/
+
+        dataList.add(DataModelOrders(resources.getString(R.string.freshyzo_malai_dahi), resources.getString(R.string.sample_item_size), "2", R.drawable.img_dahi, resources.getString(R.string.delivery_by_today_5_pm)))
+        dataList.add(DataModelOrders(resources.getString(R.string.freshyzo_ghee_butter), resources.getString(R.string._1_kg), "1", R.drawable.img_ghee, "Delivered, 23rd April"))
+        dataList.add(DataModelOrders(resources.getString(R.string.cow_milk), resources.getString(R.string.sample_item_size), "2", R.drawable.img_milk, "Delivered, 22nd April"))
 
         recyclerView = view.findViewById(R.id.recyclerViewOrders)
         recyclerAdapter = RecyclerAdapterOrders()
@@ -44,24 +47,30 @@ class OrdersFragment : Fragment() {
 
         recyclerAdapter.setDataList(dataList)
         recyclerAdapter.onItemClicked = {
-            val intentOrders = Intent(activity, ProductActivity::class.java)
-            intentOrders.putExtra("product", it)
-            Toast.makeText(context, "Item clicked", Toast.LENGTH_SHORT).show()
-            (activity as MainActivity).startActivity(intentOrders)
-        }
-
-        mBackBtn.setOnClickListener {
-            try {
-//                findNavController().navigate(R.id.action_productFragment_to_homeFragment)
-                (activity as MainActivity).loadFragment(HomeFragment(), false)
+            Toast.makeText(requireContext(), "ITEM TAPPED", Toast.LENGTH_SHORT).show()
+            val bundle = Bundle().apply {
+                putString("orderID","ORDER12345")
             }
-            catch (e: Exception){
-                e.printStackTrace()
-            }
+            OrderDetailsFragment().arguments = bundle
+            (activity as MainActivity).loadFragment(OrderDetailsFragment(), false, null)
         }
-
 
         return view
     }
+
+//    private fun openOrderDetails(order: DataModelOrders) {
+//        val bundle = Bundle().apply {
+//            putString("itemTitle", order.itemTitle)
+//            putString("itemDelivery", order.itemDelivery)
+//            putInt("itemImage", order.itemImage)
+//            putString("itemSize", order.itemSize)
+//            putString("itemQty", order.itemQty)
+//        }
+//        OrderDetailsFragment().arguments = bundle
+//        parentFragmentManager.beginTransaction()
+//            .replace(R.id.fragmentContainerView, OrderDetailsFragment())
+//            .addToBackStack(null)
+//            .commit()
+//    }
 }
 

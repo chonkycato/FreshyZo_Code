@@ -21,17 +21,19 @@ class RecyclerAdapterOrders : RecyclerView.Adapter<RecyclerAdapterOrders.ViewHol
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         var itemTitle: TextView
-        var itemSize: TextView
-        var itemQty: TextView
+//        var itemSize: TextView
+//        var itemQty: TextView
         var itemDelivery: TextView
         var itemImage: ImageView
+        var orderItemDetails : ImageView
 
         init {
-            itemTitle = itemView.findViewById(R.id.orderItemName)
-            itemSize = itemView.findViewById(R.id.orderItemSize)
-            itemQty = itemView.findViewById(R.id.orderItemQty)
-            itemDelivery = itemView.findViewById(R.id.orderItemDelivery)
-            itemImage = itemView.findViewById(R.id.orderItemImage)
+            itemTitle = itemView.findViewById(R.id.orderDetailName)
+//            itemSize = itemView.findViewById(R.id.orderItemSize)
+//            itemQty = itemView.findViewById(R.id.orderItemQty)
+            itemDelivery = itemView.findViewById(R.id.orderItemDeliveryDate)
+            itemImage = itemView.findViewById(R.id.orderDetailImage)
+            orderItemDetails = itemView.findViewById(R.id.orderItemDetails)
         }
 
     }
@@ -52,12 +54,16 @@ class RecyclerAdapterOrders : RecyclerView.Adapter<RecyclerAdapterOrders.ViewHol
         // Set item views based on your views and data model
 
         holder.itemTitle.text = item.itemTitle
-        holder.itemSize.text = item.itemSize
-        holder.itemQty.text = item.itemQty
+//        holder.itemSize.text = item.itemSize
+//        holder.itemQty.text = item.itemQty
         holder.itemDelivery.text = item.itemDelivery
         holder.itemImage.setImageResource(item.itemImage)
 
         holder.itemView.setOnClickListener {
+            onItemClicked?.invoke(item)
+        }
+
+        holder.orderItemDetails.setOnClickListener {
             onItemClicked?.invoke(item)
         }
     }

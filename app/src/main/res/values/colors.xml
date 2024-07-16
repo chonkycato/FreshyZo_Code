@@ -10,21 +10,36 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="off_white">#EEEEEE</color>
-    <color name="background">#FDFDFD</color>
+
+    <color name="background">#fEfEfE</color>
+<!--    <color name="background">#FDFDFD</color>-->
+    <color name="background_dark">#F0F0F0</color>
     <color name="hr_white">#F3EEEE</color>
     <color name="border_white">#E0DBDB</color>
     <color name="heading">#1A1A1A</color>
-    <color name="body">#3E3E3E</color>
+    <color name="body">#3b4044</color>
+<!--    <color name="body">#212427</color>-->
     <color name="text_gray">#625B5B</color>
 
 
-    <color name="primary">#28B256</color>
-    <color name="secondary">#2F2F2F</color>
-    <color name="accent">#52C077</color>
+<!--    <color name="primary">#28B256</color>-->
+<!--    <color name="secondary">#2F2F2F</color> -->
+<!--    <color name="accent">#52C077</color>-->
+
+    <color name="primary">#17AB6F</color>
+    <color name="secondary">#FB6222</color>
+    <color name="secondary_light">#E87240</color>
+    <color name="secondary_lighter">#DF7041</color>
+    <color name="accent">#572D86</color>
     <color name="alert">#D0342C</color>
-    <color name="alert_light">#FF726A</color>
+    <color name="alert_light">#D1433C</color>
     <color name="warning">#EED202</color>
     <color name="disabled">#7E8183</color>
+    <color name="disabled_light">#CECECE</color>
+
+    <color name="orange">#FB6222</color>
+    <color name="green">#17AB6F</color>
+    <color name="purple">#572D86</color>
 
     <color name="item_color_active">#28B256</color>
     <color name="item_color_inactive">#2F2F2F</color>
@@ -33,6 +48,5 @@
     <color name="light_blue_A200">#FF40C4FF</color>
     <color name="light_blue_A400">#FF00B0FF</color>
     <color name="black_overlay">#66000000</color>
-
 
 </resources>

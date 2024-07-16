@@ -49,7 +49,7 @@ class LoginFragment : Fragment() {
                     val mOtpEntered = otpString.toLong()
                     if (mOtpEntered == sampleOTP) {
                         (activity as MainActivity).changeLoginState(true)
-                        (activity as MainActivity).loadFragment(HomeFragment(), true)
+                        (activity as MainActivity).loadFragment(HomeFragment(), true, null)
 //                        findNavController().navigate(R.id.action_loginFragment_to_homeFragment2)
                     } else {
                         Toast.makeText(
@@ -91,7 +91,7 @@ class LoginFragment : Fragment() {
 
         mSignUpInstead.setOnClickListener{
 //            findNavController().navigate(R.id.action_loginFragment_to_signupFragment)
-            (activity as MainActivity).loadFragment(SignupFragment(), false)
+            (activity as MainActivity).loadFragment(SignupFragment(), false, null)
         }
 
 
