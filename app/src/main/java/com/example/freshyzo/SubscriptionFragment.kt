@@ -1,6 +1,7 @@
 package com.example.freshyzo
 
 import android.app.DatePickerDialog
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +19,10 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import java.util.Calendar
 
+
 class SubscriptionFragment : Fragment() {
+
+    private lateinit var view: View
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,14 +30,17 @@ class SubscriptionFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_subscription, container, false)
+        this.view = view
 
         val mDailySubLayout = view.findViewById<ConstraintLayout>(R.id.dailyConstLayout)
         val mWeeklySubLayout = view.findViewById<ConstraintLayout>(R.id.weeklyConstLayout)
         val mMonthlySubLayout = view.findViewById<ConstraintLayout>(R.id.monthlyConstLayout)
+        val mWeeklyQtyLayout  = view.findViewById<LinearLayout>(R.id.weeklyQuantityContainer)
 
         val mDeliveryTypeArray = resources.getStringArray(R.array.DeliveryTypeArray)
         val mSpinner = view.findViewById<Spinner>(R.id.deliveryTypeSpinner)
-        val mDatePickerET = view.findViewById<EditText>(R.id.datePickerET)
+        val mStartDateET = view.findViewById<EditText>(R.id.startDatePickerET)
+        val mEndDateET = view.findViewById<EditText>(R.id.endDatePickerET)
         val mQtyDecrementBtn = view.findViewById<Button>(R.id.quantity_decrement_btn)
         val mQtyIncrementBtn = view.findViewById<Button>(R.id.quantity_increment_btn)
         val mQtyDisplayTV = view.findViewById<TextView>(R.id.quantity_display_tv)
@@ -42,8 +49,20 @@ class SubscriptionFragment : Fragment() {
         val mDailySub = view.findViewById<Button>(R.id.daily_sub)
         val mWeeklySub = view.findViewById<Button>(R.id.weekly_sub)
         val mMonthlySub = view.findViewById<Button>(R.id.monthly_sub)
-        val mDatePickerLayout = view.findViewById<LinearLayout>(R.id.datePickerLayout)
+        val mDatePickerLayout = view.findViewById<LinearLayout>(R.id.startDateLayout)
 
+        //Weekly Sub Layout
+
+        val mSundayBtn = view.findViewById<Button>(R.id.sundayBtn)
+        val mMondayBtn = view.findViewById<Button>(R.id.mondayBtn)
+        val mTuesdayBtn = view.findViewById<Button>(R.id.tuesdayBtn)
+        val mWednesdayBtn = view.findViewById<Button>(R.id.wednesdayBtn)
+        val mThursdayBtn = view.findViewById<Button>(R.id.thursdayBtn)
+        val mFridayBtn = view.findViewById<Button>(R.id.fridayBtn)
+        val mSaturdayBtn = view.findViewById<Button>(R.id.saturdayBtn)
+
+
+        /** Subscription Type **/
 
         mDailySub.setOnClickListener {
             changeButtonStyleDark(mDailySub)
@@ -68,6 +87,8 @@ class SubscriptionFragment : Fragment() {
 
         }
 
+
+        /** Daily Subscription**/
 
         if (mSpinner != null) {
             val spinnerAdapter = ArrayAdapter(
@@ -97,42 +118,20 @@ class SubscriptionFragment : Fragment() {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-            } //End of block
+            } //End of listener
 
-            mDatePickerET.setOnClickListener {
-                val calendar = Calendar.getInstance()
-                val year = calendar.get(Calendar.YEAR)
-                val month = calendar.get(Calendar.MONTH)
-                val date = calendar.get(Calendar.DAY_OF_MONTH)
 
-                calendar.add(Calendar.DAY_OF_MONTH, 1)
-                val nextDate = calendar.get(Calendar.DAY_OF_MONTH)
 
-                val datePickerDialog = context?.let { it1 ->
-                    DatePickerDialog(
-                        // on below line we are passing context.
-                        it1,
-                        { _, year, monthOfYear, dayOfMonth ->
-                            // on below line we are setting
-                            // date to our edit text.
-                            val date = (dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year)
-                            mDatePickerET.setText(date)
-                        },
-                        // on below line we are passing year, month
-                        // and day for the selected date in our date picker.
-                        year,
-                        month,
-                        nextDate
-                    )
-                }
-                datePickerDialog?.datePicker?.minDate = calendar.timeInMillis
-                // at last we are calling show
-                // to display our date picker dialog.
-                datePickerDialog?.show()
+            mStartDateET.setOnClickListener {
+                datePicker(mStartDateET)
+            }
+
+            mEndDateET.setOnClickListener {
+                datePicker(mEndDateET)
             }
 
 
-        } //End of block
+        } //End of if block
 
         var prodQtyCount = 0
 
@@ -146,6 +145,46 @@ class SubscriptionFragment : Fragment() {
         mQtyIncrementBtn.setOnClickListener {
             prodQtyCount += 1
             mQtyDisplayTV.text = prodQtyCount.toString()
+        }
+
+
+        /** Weekly Subscription **/
+
+        val mFlag = arrayOf(true, true, true, true, true, true, true)
+
+        mSundayBtn.setOnClickListener {
+            weekDayOnSelect(mFlag[0], mSundayBtn, "Sunday", 0)
+            mFlag[0] = !mFlag[0]
+        }
+
+        mMondayBtn.setOnClickListener {
+            weekDayOnSelect(mFlag[1], mMondayBtn, "Monday", 1)
+            mFlag[1] = !mFlag[1]
+        }
+
+        mTuesdayBtn.setOnClickListener {
+            weekDayOnSelect(mFlag[2], mTuesdayBtn, "Tuesday", 2)
+            mFlag[2] = !mFlag[2]
+        }
+
+        mWednesdayBtn.setOnClickListener {
+            weekDayOnSelect(mFlag[3], mWednesdayBtn, "Wednesday", 3)
+            mFlag[3] = !mFlag[3]
+        }
+
+        mThursdayBtn.setOnClickListener {
+            weekDayOnSelect(mFlag[4], mThursdayBtn, "Thursday", 4)
+            mFlag[4] = !mFlag[4]
+        }
+
+        mFridayBtn.setOnClickListener {
+            weekDayOnSelect(mFlag[5], mFridayBtn, "Friday", 5)
+            mFlag[5] = !mFlag[5]
+        }
+
+        mSaturdayBtn.setOnClickListener {
+            weekDayOnSelect(mFlag[6], mSaturdayBtn, "Saturday", 6)
+            mFlag[6] = !mFlag[6]
         }
 
         return view
@@ -167,5 +206,77 @@ class SubscriptionFragment : Fragment() {
         mSubLayout.visibility = View.VISIBLE
         mUnSubLayoutOne.visibility = View.GONE
         mUnSubLayoutTwo.visibility = View.GONE
+    }
+
+    private fun weekDayOnSelect(isSelected: Boolean, buttonSelected: Button, weekDay: String, weekDayIndex: Int){
+        val parentLayout = view.findViewById<LinearLayout>(R.id.weeklyQuantityContainer)
+        val inflater = requireActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val rowView: View = inflater.inflate(R.layout.custom_quantity_layout, parentLayout, false)
+        val weeklyIndex : MutableList<String> = ArrayList()
+        val weekDayTV : MutableList<String> = ArrayList()
+        weeklyIndex.add(weekDay)
+
+        if (isSelected){
+            buttonSelected.background = ContextCompat.getDrawable(requireContext(), R.drawable.custom_button_shadow_primary)
+            buttonSelected.setTextColor(ContextCompat.getColor(requireContext(), R.color.background))
+            parentLayout.addView(rowView, parentLayout.childCount + 1)
+            rowView.findViewById<TextView>(R.id.delivery_day_weekly_tv).text = weekDay
+            updateViewIndex(weekDay, false, 0)
+        }
+        else {
+            buttonSelected.background = ContextCompat.getDrawable(requireContext(), R.drawable.custom_button_shadow_light)
+            buttonSelected.setTextColor(ContextCompat.getColor(requireContext(), R.color.disabled))
+            //val indexOfMyView = (parentLayout.parent as ConstraintLayout).indexOfChild(rowView)
+            //Log.d("INDEX", indexOfMyView.toString())
+
+            weeklyIndex.forEachIndexed{ index, _ ->
+                if (weekDayTV[index] == weeklyIndex[index]){
+                    parentLayout.removeViewAt(index)
+                }
+            }
+
+            weeklyIndex.remove(weekDay)
+        }
+    }
+
+    private fun updateViewIndex(weekDayOnTV: String, findIndex: Boolean, returnIndex: Int) : Int{
+        val weekDayTV : MutableList<String> = ArrayList()
+        weekDayTV.add(weekDayOnTV)
+        if(findIndex && returnIndex != 0){
+            // TODO: WEEKDAY
+        }
+        return returnIndex
+    }
+
+    private fun datePicker(datePickerET: EditText){
+
+        val calendar = Calendar.getInstance()
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH)
+
+        calendar.add(Calendar.DAY_OF_MONTH, 1)
+        val nextDate = calendar.get(Calendar.DAY_OF_MONTH)
+
+        val datePickerDialog = context?.let { it1 ->
+            DatePickerDialog(
+                // on below line we are passing context.
+                it1,
+                { _, year, monthOfYear, dayOfMonth ->
+                    // on below line we are setting
+                    // date to our edit text.
+                    val mDate = (dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year)
+                    datePickerET.setText(mDate)
+                },
+                // on below line we are passing year, month
+                // and day for the selected date in our date picker.
+                year,
+                month,
+                nextDate
+            )
+        }
+        datePickerDialog?.datePicker?.minDate = calendar.timeInMillis
+        // at last we are calling show
+        // to display our date picker dialog.
+        datePickerDialog?.show()
     }
 }

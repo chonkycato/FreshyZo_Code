@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.freshyzo.login.LoginFragment
 import com.example.freshyzo.model.BottomNavVisibilityListener
@@ -55,8 +55,8 @@ class HomeFragment : Fragment(), ButtonClickListener {
 
         //Initialize RecyclerView
         recyclerView = view.findViewById(R.id.recyclerViewHome)
-//        recyclerView.layoutManager = GridLayoutManager(context,2)
-        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.layoutManager = GridLayoutManager(context,2)
+//        recyclerView.layoutManager = LinearLayoutManager(context)
         mRecyclerAdapterHome = RecyclerAdapterHome(requireContext(), this)
         recyclerView.adapter = mRecyclerAdapterHome
 

@@ -158,7 +158,7 @@
             android:paddingVertical="8dp"
             android:paddingHorizontal="24dp"
             android:layout_marginEnd="24dp"
-            android:background="@color/secondary"
+            android:background="@color/primary"
             android:text="@string/place_order"
             android:textSize="16sp"
             android:textColor="@color/off_white"

@@ -38,7 +38,7 @@ class RecyclerAdapterHome(var context: Context, val listener : ButtonClickListen
         /* Usually involves inflating a layout from XML and returning the holder */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         // Inflate the custom layout
-        var view = LayoutInflater.from(parent.context).inflate(R.layout.custom_recylcer_row_products_two, parent, false)
+        var view = LayoutInflater.from(parent.context).inflate(R.layout.custom_recylcer_row_products, parent, false)
         return ViewHolder(view)
     }
 

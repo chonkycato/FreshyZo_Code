@@ -70,7 +70,7 @@
     <string name="description">Description</string>
     <string name="quantity">Quantity</string>
     <string name="price">Price</string>
-    <string name="add_to_cart">Add to Cart</string>
+    <string name="buy_once">Buy Once</string>
     <string name="back_icon">Back Button</string>
     <string name="cart_icon">Cart Icon</string>
     <string name="search">Search</string>
@@ -187,6 +187,9 @@
     <string name="days">Days</string>
     <string name="add_delivery_days_title">Add Delivery Days</string>
     <string name="add_quantity">Add Quantity</string>
+    <string name="select_end_date">Select End Date</string>
+    <string name="optional">\ (Optional)</string>
+    <string name="required">(Required)</string>
 
 
     <!-- String Arrays -->

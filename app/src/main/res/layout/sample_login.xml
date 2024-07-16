@@ -110,7 +110,7 @@
                 android:contentDescription="@string/getOTP"
                 android:fontFamily="@font/roboto_bold"
                 android:text="@string/getOTP"
-                android:textColor="@color/secondary"
+                android:textColor="@color/primary"
                 android:textSize="16sp"
                 tools:ignore="RelativeOverlap" />
 
@@ -159,7 +159,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
                     android:text="@string/signup"
-                    android:textColor="@color/secondary"
+                    android:textColor="@color/primary"
                     android:textSize="14sp"/>
 
             </LinearLayout>

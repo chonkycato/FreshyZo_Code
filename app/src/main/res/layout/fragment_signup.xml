@@ -114,7 +114,7 @@
                     android:inputType="numberPassword"
                     android:padding="14dp"
                     android:textSize="15sp"
-                    android:textColor="@color/secondary"
+                    android:textColor="@color/primary"
                     android:textColorHint="@color/disabled"
                     tools:ignore="TextContrastCheck" />
 
@@ -129,7 +129,7 @@
                     android:contentDescription="@string/getOTP"
                     android:fontFamily="@font/roboto_bold"
                     android:text="@string/getOTP"
-                    android:textColor="@color/secondary"
+                    android:textColor="@color/primary"
                     android:textSize="15sp"
                     tools:ignore="RelativeOverlap,TextContrastCheck" />
 
@@ -178,7 +178,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
                     android:text="@string/login"
-                    android:textColor="@color/secondary"
+                    android:textColor="@color/primary"
                     android:textSize="14sp"/>
 
             </LinearLayout>

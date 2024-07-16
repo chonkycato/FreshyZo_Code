@@ -88,7 +88,7 @@
 
         <Button
             android:id="@+id/addtocart_btn_home"
-            android:contentDescription="@string/add_to_cart"
+            android:contentDescription="@string/buy_once"
             android:background="@drawable/custom_rounded_corner_dark_transparent"
             android:layout_width="110dp"
             android:layout_height="36dp"
@@ -98,10 +98,10 @@
             android:paddingVertical="6dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="12dp"
-            android:text="@string/add_to_cart"
+            android:text="@string/buy_once"
             android:textSize="12sp"
             android:textAllCaps="true"
-            android:textColor="@color/secondary"
+            android:textColor="@color/primary"
             android:fontFamily="@font/roboto_medium"
             android:letterSpacing="0.04"
             android:includeFontPadding="false"

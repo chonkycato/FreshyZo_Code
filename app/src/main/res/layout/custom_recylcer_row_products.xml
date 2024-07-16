@@ -62,7 +62,7 @@
 
             <Button
                 android:id="@+id/subscribe_btn"
-                android:contentDescription="@string/add_to_cart"
+                android:contentDescription="@string/buy_once"
                 android:layout_width="140dp"
                 android:layout_height="40dp"
                 android:text="@string/subscribe"
@@ -76,10 +76,10 @@
 
             <Button
                 android:id="@+id/subscribe_btn_home"
-                android:contentDescription="@string/add_to_cart"
+                android:contentDescription="@string/buy_once"
                 android:layout_width="140dp"
                 android:layout_height="40dp"
-                android:text="@string/add_to_cart"
+                android:text="@string/buy_once"
                 android:fontFamily="@font/poppins_semibold"
                 android:includeFontPadding="false"
                 android:textColor="@color/primary"
