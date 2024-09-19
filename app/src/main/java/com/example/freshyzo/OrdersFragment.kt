@@ -1,22 +1,30 @@
 package com.example.freshyzo
 
+import RecyclerAdapterOrders
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.freshyzo.model.DataModelOrders
-import com.example.freshyzo.model.RecyclerAdapterOrders
+import com.example.freshyzo.model.OrdersViewModel
 
 class OrdersFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var recyclerAdapter: RecyclerAdapterOrders
     private var dataList = mutableListOf<DataModelOrders>()
+    // Access the ViewModel shared across the activity (or use "by viewModels()" if it's Fragment-specific)
+    private var ordersViewModel: OrdersViewModel by viewModels<>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,15 +35,15 @@ class OrdersFragment : Fragment() {
 
         (activity as MainActivity).hideBottomNav()
 
+        // Initialize the ViewModel (using ViewModelProvider)
+        ordersViewModel = ViewModelProvider(this).get(OrdersViewModel::class.java)
+
+
+
         /** Handle back navigation **/
         val backNavIcon = view.findViewById<Button>(R.id.back_icon_orders)
         backNavIcon.setOnClickListener { (activity as MainActivity).backNavigation() }
 
-        /** Set up and populate recycler view **/
-
-        dataList.add(DataModelOrders(resources.getString(R.string.freshyzo_malai_dahi), resources.getString(R.string.sample_item_size), "2", R.drawable.img_dahi, resources.getString(R.string.delivery_by_today_5_pm)))
-        dataList.add(DataModelOrders(resources.getString(R.string.freshyzo_ghee_butter), resources.getString(R.string._1_kg), "1", R.drawable.img_ghee, "Delivered, 23rd April"))
-        dataList.add(DataModelOrders(resources.getString(R.string.cow_milk), resources.getString(R.string.sample_item_size), "2", R.drawable.img_milk, "Delivered, 22nd April"))
 
         recyclerView = view.findViewById(R.id.recyclerViewOrders)
         recyclerAdapter = RecyclerAdapterOrders()
@@ -44,6 +52,9 @@ class OrdersFragment : Fragment() {
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = recyclerAdapter
+
+        // Populate the dataList in ViewModel (only if not already populated)
+        ordersViewModel.populateInitialDataList()
 
         recyclerAdapter.setDataList(dataList)
         recyclerAdapter.onItemClicked = {
@@ -55,22 +66,34 @@ class OrdersFragment : Fragment() {
             (activity as MainActivity).loadFragment(OrderDetailsFragment(), false, null)
         }
 
+        // Handle "Mark Undelivered" click
+        recyclerAdapter.onMarkUndeliveredClicked = { order, markUndeliveredView ->
+            markOrderAsUndelivered(order, markUndeliveredView)
+        }
+
         return view
     }
 
-//    private fun openOrderDetails(order: DataModelOrders) {
-//        val bundle = Bundle().apply {
-//            putString("itemTitle", order.itemTitle)
-//            putString("itemDelivery", order.itemDelivery)
-//            putInt("itemImage", order.itemImage)
-//            putString("itemSize", order.itemSize)
-//            putString("itemQty", order.itemQty)
-//        }
-//        OrderDetailsFragment().arguments = bundle
-//        parentFragmentManager.beginTransaction()
-//            .replace(R.id.fragmentContainerView, OrderDetailsFragment())
-//            .addToBackStack(null)
-//            .commit()
-//    }
+    private fun markOrderAsUndelivered(order: DataModelOrders, markUndeliveredView: TextView) {
+        // Update the order's delivery status
+        order.itemDelivery = "Undelivered"
+        recyclerAdapter.notifyDataSetChanged()
+
+        // Change the text to "Marked Undelivered"
+        markUndeliveredView.text = "Marked Undelivered"
+        markUndeliveredView.isEnabled = false // Optional: disable the button after marking
+
+        // Disable the TextView to prevent further taps
+        markUndeliveredView.isEnabled = false
+
+        // Change text color to indicate it's disabled
+        markUndeliveredView.setTextColor(ContextCompat.getColor(requireContext(), R.color.disabled))
+
+        // Remove the click feedback
+        markUndeliveredView.setBackgroundResource(0)
+
+        // Save the change in the database or shared preferences
+        Toast.makeText(requireContext(), "Order marked as Undelivered", Toast.LENGTH_SHORT).show()
+    }
 }
 
