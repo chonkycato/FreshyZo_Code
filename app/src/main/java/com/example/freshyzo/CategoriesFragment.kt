@@ -2,17 +2,17 @@ package com.example.freshyzo
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.freshyzo.adapter.RecyclerAdapterHome
 import com.example.freshyzo.model.DataModelProduct
-import com.example.freshyzo.model.RecyclerAdapterHome
 
 class CategoriesFragment() : Fragment() {
 
@@ -29,12 +29,9 @@ class CategoriesFragment() : Fragment() {
         val view = inflater.inflate(R.layout.fragment_categories, container, false)
         val mCategoryLabel = view.findViewById<TextView>(R.id.categoryLabel)
         val mCategoryItems = view.findViewById<TextView>(R.id.categoryItems)
-        (activity as MainActivity).hideBottomNav()
 
-        /** Handle back navigation **/
-        val backNavIcon = view.findViewById<Button>(R.id.back_icon_prod_categories)
-        backNavIcon.setOnClickListener { (activity as MainActivity).backNavigation() }
-
+        /** Handle top and bottom nav**/
+        (activity as MainActivity).handleNavigationToolbar("Categories", false)
 
         /** Category search **/
         var bundleMsg = ""
@@ -46,11 +43,11 @@ class CategoriesFragment() : Fragment() {
 
 
         // TODO: (sort and display by product category)
-        allProdList.add(DataModelProduct("Milk Products","FreshyZo Ghee Butter", "100% Pure desi ghee","250 gms","₹350",R.drawable.img_ghee))
-        allProdList.add(DataModelProduct("Milk","FreshyZo Cow Milk", "100% pure desi cow milk","200 ml","₹25",R.drawable.img_milk))
-        allProdList.add(DataModelProduct("Milk","FreshyZo Buffalo Milk", "100% pure buffalo milk","200 ml","₹25",R.drawable.img_milk_buff))
-        allProdList.add(DataModelProduct("Milk Products","FreshyZo Malai Dahi", "Fresh and creamy malai dahi","250 ml","₹35",R.drawable.img_dahi))
-        allProdList.add(DataModelProduct("Milk Products","FreshyZo Paneer", "Fresh and soft paneer","250 gms","₹250",R.drawable.img_paneer))
+        allProdList.add(DataModelProduct("Milk Products","FreshyZo Ghee Butter", "100% Pure desi ghee","2","250 gms","₹350",R.drawable.img_ghee))
+        allProdList.add(DataModelProduct("Milk","FreshyZo Cow Milk", "100% pure desi cow milk","3","250gms","₹25",R.drawable.img_milk))
+        allProdList.add(DataModelProduct("Milk","FreshyZo Buffalo Milk", "100% pure buffalo milk","1","250gms","₹25",R.drawable.img_milk_buff))
+        allProdList.add(DataModelProduct("Milk Products","FreshyZo Malai Dahi", "Fresh and creamy malai dahi","2","250gms","₹35",R.drawable.img_dahi))
+        allProdList.add(DataModelProduct("Milk Products","FreshyZo Paneer", "Fresh and soft paneer","1", "250gms","₹250",R.drawable.img_paneer))
 
         mRecyclerView = view.findViewById(R.id.recylerViewCategories)
         mRecyclerView.layoutManager = GridLayoutManager(context, 2)
@@ -59,7 +56,7 @@ class CategoriesFragment() : Fragment() {
 
         mRecyclerAdapter.onItemClick = {
             val intentHome = Intent(activity, ProductActivity::class.java)
-            intentHome.putExtra("product", it)
+            intentHome.putExtra("product", it as Parcelable)
             Toast.makeText(context, bundleMessage.toString(), Toast.LENGTH_SHORT).show()
             (activity as MainActivity).startActivity(intentHome)
         }
@@ -84,7 +81,5 @@ class CategoriesFragment() : Fragment() {
         filteredList.clear()
         filteredList.addAll(filterList)
     }
-
-
 
 }

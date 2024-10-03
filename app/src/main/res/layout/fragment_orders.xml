@@ -54,7 +54,7 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- Search Bar (optional) -->
+    <!-- Search Bar -->
     <EditText
         android:id="@+id/orders_search"
         android:layout_width="0dp"

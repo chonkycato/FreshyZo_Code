@@ -16,8 +16,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="130dp"
-        android:paddingBottom="500dp"
+        android:paddingTop="100dp"
         android:paddingHorizontal="32dp"
         android:gravity="center_horizontal">
 
@@ -45,9 +44,6 @@
             android:paddingHorizontal="40dp"
             android:paddingVertical="32dp">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="12dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -66,38 +62,72 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="24dp"/>
+                android:layout_height="18dp"/>
 
+
+            <!-- Name Input Field -->
             <EditText
-                android:id="@+id/nameInput"
+                android:id="@+id/fullNameInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="14dp"
                 android:autofillHints="name"
                 android:background="@drawable/custom_edittext_background"
                 android:hint="@string/full_name"
-                android:inputType="textPersonName"
-                android:padding="14dp"
+                android:inputType="textCapWords"
+                android:paddingVertical="12dp"
+                android:paddingHorizontal="12dp"
                 android:textSize="15sp"
                 android:textColor="@color/heading"
                 android:textColorHint="@color/disabled"
+                android:fontFamily="@font/roboto_regular"
                 tools:ignore="TextContrastCheck" />
 
+            <!-- Phone Input Field -->
             <EditText
                 android:id="@+id/phoneInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="14dp"
                 android:autofillHints="phone"
                 android:background="@drawable/custom_edittext_background"
                 android:hint="@string/phoneHint"
-                android:inputType="phone"
+                android:inputType="text|number"
                 android:maxLength="10"
-                android:padding="14dp"
+                android:paddingVertical="12dp"
+                android:paddingHorizontal="12dp"
                 android:textColor="@color/heading"
                 android:textColorHint="@color/disabled"
                 android:textSize="15sp"
+                android:fontFamily="@font/roboto_regular"
                 tools:ignore="TextContrastCheck" />
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custom_edittext_background"
+                android:drawableRight="@drawable/icon_drop_down_arrow"
+                android:drawableTint="@color/body"
+                android:layout_marginBottom="14dp">
+
+                <Spinner
+                    android:id="@+id/areaSelectionSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:spinnerMode="dropdown"
+                    android:padding="0dp"
+                    android:defaultFocusHighlightEnabled="true"
+                    android:contentDescription="@string/delivery_type"
+                    android:textColor="@color/heading"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/roboto_regular"
+                    tools:ignore="ButtonStyle,TouchTargetSizeCheck"/>
+
+            </FrameLayout>
+            <!-- Area Selection Field -->
+
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -112,9 +142,11 @@
                     android:background="@drawable/custom_edittext_background"
                     android:hint="@string/otpHint"
                     android:inputType="numberPassword"
-                    android:padding="14dp"
+                    android:paddingVertical="12dp"
+                    android:paddingHorizontal="12dp"
                     android:textSize="15sp"
-                    android:textColor="@color/primary"
+                    android:maxLength="6"
+                    android:textColor="@color/heading"
                     android:textColorHint="@color/disabled"
                     tools:ignore="TextContrastCheck" />
 
@@ -137,14 +169,14 @@
 
             <View
                 android:layout_width="wrap_content"
-                android:layout_height="28dp" />
+                android:layout_height="18dp" />
 
             <Button
                 android:id="@+id/signupButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/custom_rounded_corner_primary"
+                android:background="@drawable/custom_small_rounded_corner_primary"
                 android:contentDescription="@string/signup"
                 android:fontFamily="@font/roboto_medium"
                 android:paddingHorizontal="40dp"
@@ -156,7 +188,7 @@
 
             <View
                 android:layout_width="wrap_content"
-                android:layout_height="28dp" />
+                android:layout_height="18dp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -185,7 +217,7 @@
 
             <View
                 android:layout_width="wrap_content"
-                android:layout_height="48dp" />
+                android:layout_height="28dp" />
 
         </LinearLayout>
 

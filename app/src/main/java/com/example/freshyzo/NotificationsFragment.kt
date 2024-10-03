@@ -6,13 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.freshyzo.model.BottomNavVisibilityListener
+import com.example.freshyzo.adapter.RecyclerAdapterNot
 import com.example.freshyzo.model.DataModelNotification
-import com.example.freshyzo.model.RecyclerAdapterNot
 
 @Suppress("DEPRECATION")
 class NotificationsFragment : Fragment() {
@@ -26,12 +24,16 @@ class NotificationsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+
+        /** Handle top and bottom nav**/
+        (activity as MainActivity).handleNavigationToolbar("Notifications", true)
+
+
         //Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_notifications, container, false)
-        (activity as BottomNavVisibilityListener).setBottomNavVisibility(true)
 
         val mBackIcon = view.findViewById<Button>(R.id.back_icon_not)
-        val mSearchView = view.findViewById<SearchView>(R.id.searchView_not)
+//        val mSearchView = view.findViewById<SearchView>(R.id.searchView_not)
         val mCartIcon = view.findViewById<ImageView>(R.id.cart_icon_not)
 
         mBackIcon.setOnClickListener{
@@ -42,10 +44,6 @@ class NotificationsFragment : Fragment() {
         return view
     }
 
-    override fun onResume() {
-        super.onResume()
-        (activity as BottomNavVisibilityListener).setBottomNavVisibility(true)
-    }
 
     private fun setRecyclerView(view: View){
         dataList.add(DataModelNotification("1 day ago", "Hurray!", resources.getString(R.string.notification_body)))

@@ -104,7 +104,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/custom_rounded_corner_primary"
+                android:background="@drawable/custom_small_rounded_corner_primary"
                 android:clickable="true"
                 android:contentDescription="@string/signupButton"
                 android:focusable="true"

@@ -1,5 +1,3 @@
-package com.example.freshyzo
-
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
@@ -8,6 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.freshyzo.HomeFragment
+import com.example.freshyzo.MainActivity
+import com.example.freshyzo.R
 import com.example.freshyzo.login.LoginFragment
 import com.example.freshyzo.onboarding.ViewPagerFragment
 
@@ -17,41 +18,30 @@ class SplashFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        (activity as MainActivity).hideBottomNav()
-        val mainActivity: MainActivity = requireActivity() as MainActivity
+        (activity as MainActivity).handleNavigationToolbar(null, false)
 
-        do {
+        val mainActivity = requireActivity() as MainActivity
 
-            Handler(Looper.getMainLooper()).postDelayed({
+        Handler(Looper.getMainLooper()).postDelayed({
 
-                if (!onBoardingFinished()) {
-                    (mainActivity).loadFragment(ViewPagerFragment(), true, null)
-                } else {
-
-                    if ((mainActivity).isLoggedIn()) {
-                        (mainActivity).loadFragment(HomeFragment(), true, null)
-                        // findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
-                    } else if (!mainActivity.isLoggedIn()) {
-                        (mainActivity).loadFragment(LoginFragment(), true, null)
-                        //  findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
-                    }
+            when {
+                !onBoardingFinished() -> {
+                    mainActivity.loadFragment(ViewPagerFragment(), clearBackStack = true, searchQuery = null)
                 }
-            }, 1000)
+                mainActivity.isLoggedIn() -> {
+                    mainActivity.loadFragment(HomeFragment(), clearBackStack = true, searchQuery = null)
+                }
+                else -> {
+                    mainActivity.loadFragment(LoginFragment(), clearBackStack = true, searchQuery = null)
+                }
+            }
+        }, 300)
 
-            mainActivity.unInitialise()
-
-            // Inflate the layout for this fragment
-            return inflater.inflate(R.layout.fragment_splash, container, false)
-
-        } while (mainActivity.isInitialized())
-
+        return inflater.inflate(R.layout.fragment_splash, container, false)
     }
-
 
     private fun onBoardingFinished(): Boolean {
         val sharedPref = requireActivity().getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
-        return sharedPref.getBoolean("Finished", false)
+        return sharedPref!!.getBoolean("Finished", false)
     }
-
-
 }

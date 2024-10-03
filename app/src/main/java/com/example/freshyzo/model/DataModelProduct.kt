@@ -2,10 +2,12 @@ package com.example.freshyzo.model
 
 import android.os.Parcel
 import android.os.Parcelable
+import java.io.Serializable
 
-class DataModelProduct(var category: String, var title: String, var description: String, var quantity: String, var price: String, var image: Int) : Parcelable {
+class DataModelProduct(var category: String, var title: String, var description: String, var quantity: String, var size: String, var price: String, var image: Int) : Parcelable, Serializable {
 
     constructor(parcel: Parcel) : this(
+        parcel.readString()!!,
         parcel.readString()!!,
         parcel.readString()!!,
         parcel.readString()!!,
@@ -20,6 +22,7 @@ class DataModelProduct(var category: String, var title: String, var description:
         parcel.writeString(title)
         parcel.writeString(description)
         parcel.writeString(quantity)
+        parcel.writeString(size)
         parcel.writeString(price)
         parcel.writeInt(image)
     }

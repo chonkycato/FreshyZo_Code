@@ -6,7 +6,7 @@ import android.os.Parcelable
 
 class DataModelPausedSub (
     var prodImg: Int, var productTitle: String, var productPrice: String,
-    var startDate: String, var pauseDate: String, var subStatus: String,
+    var pauseStartDate: String, var pauseEndDate: String, var subStatus: String,
 //    var deliveryLocation: String
 ) : Parcelable{
     constructor(parcel: Parcel) : this(
@@ -24,8 +24,8 @@ class DataModelPausedSub (
         parcel.writeInt(prodImg)
         parcel.writeString(productTitle)
         parcel.writeString(productPrice)
-        parcel.writeString(startDate)
-        parcel.writeString(pauseDate)
+        parcel.writeString(pauseStartDate)
+        parcel.writeString(pauseEndDate)
         parcel.writeString(subStatus)
 //        parcel.writeString(deliveryLocation)
     }

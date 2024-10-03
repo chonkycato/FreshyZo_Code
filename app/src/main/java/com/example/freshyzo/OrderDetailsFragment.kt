@@ -5,11 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.freshyzo.adapter.RecyclerAdapterOrderDetails
 import com.example.freshyzo.model.DataModelOrderDetails
-import com.example.freshyzo.model.RecyclerAdapterOrderDetails
 
 class OrderDetailsFragment : Fragment() {
 
@@ -23,8 +25,13 @@ class OrderDetailsFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_order_details, container, false)
 
+        /** Handle top and bottom nav**/
+        (activity as MainActivity).handleNavigationToolbar("Order Details", false)
+
         // Retrieve passed order details
         val orderID = arguments?.getString("orderID")
+        Toast.makeText(requireContext(), orderID.toString(), Toast.LENGTH_SHORT).show()
+
 
         // Display the order details in the UI
         view.findViewById<TextView>(R.id.order_id).text = orderID
@@ -43,6 +50,17 @@ class OrderDetailsFragment : Fragment() {
         recyclerAdapter.setDataList(dataList)
 
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // This will pop the back stack and navigate back to OrderFragment
+                parentFragmentManager.popBackStack("OrderFragment", 0)
+            }
+        })
     }
 
 }

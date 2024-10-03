@@ -50,27 +50,29 @@
                 app:layout_constraintStart_toEndOf="@id/back_icon_product"
                 />
 
-            <FrameLayout
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/cart_icon"
-                android:theme="@style/ToolbarAppearanceOverlay">
+            <!-- Search View -->
 
-                <android.widget.SearchView
-                    android:id="@+id/searchView_not"
-                    android:contentDescription="@string/search_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:outlineAmbientShadowColor="@color/primary"
-                    android:padding="4dp"
-                    android:queryHint="Search"
-                    android:iconifiedByDefault="true"
-                    android:searchIcon="@drawable/icon_search"
-                    android:theme="@style/ToolbarAppearanceOverlay"/>                  />
-            </FrameLayout>
+<!--            <FrameLayout-->
+<!--                android:layout_width="250dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toStartOf="@id/cart_icon"-->
+<!--                android:theme="@style/ToolbarAppearanceOverlay">-->
+
+<!--                <android.widget.SearchView-->
+<!--                    android:id="@+id/searchView_not"-->
+<!--                    android:contentDescription="@string/search_icon"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="right"-->
+<!--                    android:outlineAmbientShadowColor="@color/primary"-->
+<!--                    android:padding="4dp"-->
+<!--                    android:queryHint="Search"-->
+<!--                    android:iconifiedByDefault="true"-->
+<!--                    android:searchIcon="@drawable/icon_search"-->
+<!--                    android:theme="@style/ToolbarAppearanceOverlay"/>                  />-->
+<!--            </FrameLayout>-->
 
             <ImageView
                 android:id="@+id/cart_icon"
@@ -182,7 +184,7 @@
                     android:background="@drawable/custom_transparent_round_btn_disabled"
                     android:includeFontPadding="false"
                     android:paddingHorizontal="2dp"
-                    android:text="@string/_500_gm"
+                    android:text="@string/size_numbers"
                     android:textAllCaps="false"
                     android:textColor="@color/disabled"
                     tools:ignore="TouchTargetSizeCheck" />
@@ -389,7 +391,7 @@
             android:layout_weight="1"
             android:layout_marginStart="6dp"
             style="?android:attr/buttonBarButtonStyle"
-            android:background="@drawable/custom_rounded_corner_primary"
+            android:background="@drawable/custom_small_rounded_corner_primary"
             android:text="@string/subscribe"
             android:textColor="@color/off_white"
             android:textSize="14sp"

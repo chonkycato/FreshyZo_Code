@@ -9,8 +9,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.freshyzo.adapter.RecyclerAdapterSubPaused
 import com.example.freshyzo.model.DataModelPausedSub
-import com.example.freshyzo.model.RecyclerAdapterSubPaused
 import java.util.Calendar
 
 class SubPausedFragment : Fragment() {
@@ -26,6 +26,8 @@ class SubPausedFragment : Fragment() {
     ): View? {
 
         view = inflater.inflate(R.layout.fragment_subscriptions_paused, container, false)
+
+
 
         dataList.add(
             DataModelPausedSub(
@@ -110,6 +112,12 @@ class SubPausedFragment : Fragment() {
             requireContext(),
             { _, year, month, dayOfMonth ->
                 val resumeDate = "$dayOfMonth/${month + 1}/$year"
+
+                // Update the pauseDate field in DataModelPausedSub
+                it.pauseEndDate = resumeDate
+
+                // Notify the adapter that data has changed
+                recyclerAdapter.notifyDataSetChanged()
 
                 // Store resume date (in model or to the server)
                 storeResumeDate(it, resumeDate)

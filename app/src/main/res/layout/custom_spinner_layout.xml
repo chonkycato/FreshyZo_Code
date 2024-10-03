@@ -1,9 +1,9 @@
-<TextView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="12dp"
     android:textColor="@color/body"
-    android:textSize="16sp"
+    android:textColorHint="@color/disabled"
+    android:paddingVertical="4dp"
     android:fontFamily="@font/roboto_regular"
-    android:includeFontPadding="false"/>
+    android:includeFontPadding="false"
+    android:background="@color/background"/>

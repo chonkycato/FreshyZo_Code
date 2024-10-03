@@ -7,6 +7,7 @@
     </string-array>
 
 <string-array name="area_name">
+    <item>Select Your Area</item>
     <item>Adarsh Nagar</item>
     <item>Daldal Seoni / Mowa</item>
     <item>Devendra Nagar</item>

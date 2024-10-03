@@ -22,6 +22,9 @@ class OnboardingScreen : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_onboarding, container, false)
 
+        /** Handle top and bottom nav**/
+        (activity as MainActivity).handleNavigationToolbar(null, false)
+
         val imageViewGIF = view.findViewById<ImageView>(R.id.imageView_gif)
         val imageViewBG = view.findViewById<ImageView>(R.id.green_background)
         val backTv = view.findViewById<TextView>(R.id.back)

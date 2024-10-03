@@ -36,7 +36,6 @@ class PaymentStatus : AppCompatActivity() {
         imageView.startAnimation(scaleAnimation)
 
 
-
         val intent = Intent(this, MainActivity::class.java)
         intent.putExtra("returned", "home")
         startActivity(intent)

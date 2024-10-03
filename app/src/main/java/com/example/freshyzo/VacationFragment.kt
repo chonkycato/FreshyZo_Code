@@ -34,6 +34,9 @@ class VacationFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_vacation, container, false)
 
+        /** Handle top and bottom nav**/
+        (activity as MainActivity).handleNavigationToolbar("Vacation", false)
+
         val mStartVacationDateET = view.findViewById<EditText>(R.id.start_date)
         val mEndVacationDateOptET = view.findViewById<EditText>(R.id.end_date_opt)
         val mEndVacationDateReqET = view.findViewById<EditText>(R.id.end_date_req)

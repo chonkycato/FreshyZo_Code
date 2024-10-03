@@ -25,7 +25,9 @@ class ReferEarnFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_refer_earn, container, false)
-        (activity as MainActivity).hideBottomNav()
+
+        /** Handle top and bottom nav**/
+        (activity as MainActivity).handleNavigationToolbar("Refer & Earn", false)
 
         refCodeTextView = view.findViewById(R.id.referral_code)
         copyCodeTextView = view.findViewById(R.id.copyCodeTV)

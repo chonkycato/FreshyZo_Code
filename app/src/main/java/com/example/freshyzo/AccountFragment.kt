@@ -6,14 +6,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
+import android.widget.Button
 import android.widget.LinearLayout
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import com.example.freshyzo.model.BottomNavVisibilityListener
-import com.example.freshyzo.model.LocaleHelper
+import com.example.freshyzo.helper.LocaleHelper
+import com.example.freshyzo.login.LoginFragment
 
 class AccountFragment : Fragment() {
+
+    private lateinit var mLogOutButton: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,7 +25,8 @@ class AccountFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_account, container, false)
 
-        (activity as MainActivity).showBottomNav()
+        /** Handle top and bottom nav**/
+        (activity as MainActivity).handleNavigationToolbar("Account", true)
 
         val ordersLL = view.findViewById<LinearLayout>(R.id.my_orders)
         val subscriptionLL = view.findViewById<LinearLayout>(R.id.subscriptions)
@@ -40,132 +43,73 @@ class AccountFragment : Fragment() {
         val policyLL = view.findViewById<LinearLayout>(R.id.privacy_policy)
         val returnLL = view.findViewById<LinearLayout>(R.id.returns)
 
-        val backNavIcon = view.findViewById<ImageView>(R.id.back_icon_account)
+        mLogOutButton = view.findViewById(R.id.logout_button)
 
 
-
-        /** Set-up back navigation **/
-        backNavIcon.setOnClickListener { (activity as MainActivity).backNavigation() }
-
-        /** New fragment **/
 
         ordersLL.setOnClickListener {
-            try {
-                (activity as MainActivity).loadFragment(OrdersFragment(), false, null)
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
+            loadFragment(OrdersFragment())
         }
 
         subscriptionLL.setOnClickListener {
-            try {
-                val intent = Intent(requireActivity(), SubscriptionsActivity::class.java)
-                (activity as MainActivity).startActivity(intent)
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
+            val intent = Intent(requireActivity(), SubscriptionsActivity::class.java)
+            startActivity(intent)
         }
 
         vacationLL.setOnClickListener{
-            try{
-                (activity as MainActivity).loadFragment(VacationFragment(), false, null)
-            } catch (e: Exception){
-                e.printStackTrace()
-            }
+            loadFragment(VacationFragment())
         }
 
         walletLL.setOnClickListener {
-            try {
-                (activity as MainActivity).loadFragment(WalletFragment(), false, null)
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
+            loadFragment(WalletFragment())
         }
 
         profileLL.setOnClickListener {
-            try {
-                (activity as MainActivity).loadFragment(ProfileFragment(), false, null)
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
+            loadFragment(ProfileFragment())
         }
 
         addressesLL.setOnClickListener {
-            try {
-                (activity as MainActivity).loadFragment(AddressFragment(), false, null)
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
+            loadFragment(AddressFragment())
         }
 
         referLL.setOnClickListener {
-            try {
-                (activity as MainActivity).loadFragment(ReferEarnFragment(), false, null)
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
+            loadFragment(ReferEarnFragment())
         }
 
-
-        /** Pop-up dialogs **/
-
+        /** Language Selection **/
         languageLL.setOnClickListener{
             languageSelectionDialog()
         }
 
-        /** URLs to be opened in browser **/
 
+        /** URLs to be opened in browser **/
         termsLL.setOnClickListener {
-            try{
-                val url = "https://freshyzo.com/view/terms_and_conditions.html"
-                openInBrowser(url)
-            }
-            catch (e: Exception){
-                e.printStackTrace()
-            }
+            val url = "terms_and_conditions.html"
+            openInBrowser(url)
         }
 
         policyLL.setOnClickListener {
-            try{
-                val url = "https://freshyzo.com/view/privacy_policy.html"
-                openInBrowser(url)
-            }
-            catch (e: Exception){
-                e.printStackTrace()
-            }
+            val url = "privacy_policy.html"
+            openInBrowser(url)
         }
 
         returnLL.setOnClickListener {
-            try{
-                val url = "https://freshyzo.com/view/refund_and_cancellation.html"
-                openInBrowser(url)
-            }
-            catch (e: Exception){
-                e.printStackTrace()
-            }
+            val url = "refund_and_cancellation.html"
+            openInBrowser(url)
         }
 
         aboutLL.setOnClickListener {
-            try{
-                val url = "https://freshyzo.com/view/about.html"
-                openInBrowser(url)
-            }
-            catch (e: Exception){
-                e.printStackTrace()
-            }
+            val url = "about.html"
+            openInBrowser(url)
+        }
+
+        mLogOutButton.setOnClickListener {
+            logOut()
         }
 
         return view
     }
 
-    override fun onResume() {
-        super.onResume()
-        (activity as BottomNavVisibilityListener).setBottomNavVisibility(true)
-    }
-
-    override fun onPause() {
-        super.onPause()
-    }
 
     private fun languageSelectionDialog() {
         val items = arrayOf("English (IN)", "Hindi")
@@ -195,13 +139,23 @@ class AccountFragment : Fragment() {
 
     }
 
-    private fun openInBrowser(url: String){
-        val url = url
+    private fun openInBrowser(urlEndpoint: String){
+        val url = "https://freshyzo.com/view/$urlEndpoint"
         val urlIntent = Intent(
             Intent.ACTION_VIEW,
             Uri.parse(url)
         )
         startActivity(urlIntent)
+    }
+
+    private fun logOut(){
+        (activity as MainActivity).changeLoginState(false)
+        (activity as MainActivity).clearBackStack()
+        loadFragment(LoginFragment())
+    }
+
+    private fun loadFragment(fragment: Fragment){
+        (activity as MainActivity).loadFragment(fragment, false, null)
     }
 
 }

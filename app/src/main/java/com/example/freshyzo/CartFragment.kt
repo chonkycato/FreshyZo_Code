@@ -6,19 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.freshyzo.model.BottomNavVisibilityListener
-import com.example.freshyzo.model.DataModelCart
-import com.example.freshyzo.model.RecyclerAdapterCart
+import com.example.freshyzo.adapter.RecyclerAdapterCart
+import com.example.freshyzo.helper.CartManager
 
 class CartFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var recyclerAdapter: RecyclerAdapterCart
-    private var dataList = mutableListOf<DataModelCart>()
+    private var dataList = mutableListOf<com.example.freshyzo.model.Cart>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,25 +27,34 @@ class CartFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_cart, container, false)
 
-        (activity as MainActivity).hideBottomNav()
+        /** Handle top and bottom nav**/
+        (activity as MainActivity).handleNavigationToolbar("Cart", true)
 
         val mSubscriptions = view.findViewById<Button>(R.id.subscription_cart)
+        val mChangeAddressButton = view.findViewById<TextView>(R.id.changeAddressButton)
 
-        val cartProd = (activity as MainActivity).displayCartItems()
+        // Retrieve cart products from Cart object
+        val cartProd = CartManager.getCartItems()
 
-        /** Handle back navigation **/
-        val backNavIcon = view.findViewById<Button>(R.id.back_icon_cart)
-        backNavIcon.setOnClickListener { (activity as MainActivity).backNavigation() }
+        // Map cart products to DataModelCart (adjust according to your actual model)
+        dataList.clear()
+        cartProd.forEach { product ->
+            dataList.add(
+                com.example.freshyzo.model.Cart(
+                    title = product.title,
+                    itemDetail =  product.description,
+                    itemPrice = product.price.toString(),
+                    itemSize = product.size,
+                    itemQty = product.quantity.toString(),
+                    image = product.image
+                )
+            )
+        }
 
         /** Navigate to subscriptions **/
-        mSubscriptions.setOnClickListener { startActivity(Intent(activity, SubscriptionsActivity::class.java)) }
-
-
-        
-        //add data
-        dataList.add(DataModelCart(resources.getString(R.string.freshyzo_ghee_butter), resources.getString(R.string._100_pure_desi_ghee), resources.getString(R.string.itemPrice), resources.getString(R.string._1_kg), resources.getString(R.string.quantity), R.drawable.img_ghee))
-        dataList.add(DataModelCart(resources.getString(R.string.freshyzo_ghee_butter), resources.getString(R.string._100_pure_desi_ghee), resources.getString(R.string.itemPrice), resources.getString(R.string._1_kg), resources.getString(R.string.quantity), R.drawable.img_ghee))
-        dataList.add(DataModelCart(resources.getString(R.string.freshyzo_ghee_butter), resources.getString(R.string._100_pure_desi_ghee), resources.getString(R.string.itemPrice), resources.getString(R.string._1_kg), resources.getString(R.string.quantity), R.drawable.img_ghee))
+        mSubscriptions.setOnClickListener {
+            startActivity(Intent(activity, SubscriptionsActivity::class.java))
+        }
 
         recyclerView = view.findViewById(R.id.recyclerViewCart)
         recyclerAdapter = RecyclerAdapterCart()
@@ -64,12 +73,11 @@ class CartFragment : Fragment() {
             (activity as MainActivity).startActivity(intentCart)
         }
 
-        return view
-    }
+        mChangeAddressButton.setOnClickListener {
+            (activity as MainActivity).loadFragment(AddressFragment(), false, null)
+        }
 
-    override fun onResume() {
-        super.onResume()
-        (activity as BottomNavVisibilityListener).setBottomNavVisibility(true)
+        return view
     }
 
     override fun onPause() {

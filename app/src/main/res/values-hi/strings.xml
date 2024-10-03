@@ -69,7 +69,7 @@
     <string name="title">शीर्षक</string>
     <string name="description">विवरण</string>
     <string name="quantity">मात्रा</string>
-    <string name="price">मूल्य</string>
+    <string name="price_title">मूल्य</string>
     <string name="buy_once">एक बार खरीदें</string>
     <string name="back_icon">पीछे बटन</string>
     <string name="cart_icon">कार्ट आइकन</string>
@@ -81,7 +81,7 @@
     <string name="selected_size">चयनित आकार - 250 ग्राम</string>
     <string name="quantity_selected">250 ग्राम</string>
     <string name="_1_kg">1 किग्रा</string>
-    <string name="_500_gm">500 ग्राम</string>
+    <string name="size_numbers">500 ग्राम</string>
     <string name="product_details">उत्पाद विवरण</string>
     <string name="nutritional_value">पोषण मूल्य</string>
 
@@ -260,6 +260,7 @@
     <string name="delivered">वितरित</string>
 
     <string-array name="DeliveryTypeArray">
+        <item>Select an option</item>
         <item>हर दिन</item>
         <item>हर दिन 1 दिन बाद</item>
         <item>हर दिन 2 दिन बाद</item>

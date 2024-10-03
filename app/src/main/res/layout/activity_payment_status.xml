@@ -48,7 +48,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="32dp"
-        android:background="@drawable/custom_rounded_corner_primary"
+        android:background="@drawable/custom_small_rounded_corner_primary"
         android:textColor="@color/background"
         android:text="@string/go_back"
         android:fontFamily="@font/roboto_medium"

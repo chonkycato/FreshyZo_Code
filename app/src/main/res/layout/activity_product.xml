@@ -7,6 +7,23 @@
     tools:context=".ProductActivity"
     android:background="@color/background">
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/productFragmentContainerView"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layoutDescription="@layout/layout_blank"
+        android:visibility="visible"
+        android:elevation="10dp"/>
+
+    <FrameLayout
+        android:id="@+id/productFragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/topNav_prod"
         android:layout_width="match_parent"
@@ -33,6 +50,7 @@
                 android:id="@+id/back_icon_product"
                 android:contentDescription="@string/back_button"
                 android:background="@drawable/icon_pointer"
+                android:backgroundTint="@color/primary"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -48,46 +66,29 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/back_icon_product"
+                android:visibility="gone"
                 />
 
-            <FrameLayout
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/cart_icon"
-                android:theme="@style/ToolbarAppearanceOverlay">
-
-                <android.widget.SearchView
-                    android:id="@+id/searchView_not"
-                    android:contentDescription="@string/search_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:outlineAmbientShadowColor="@color/primary"
-                    android:padding="4dp"
-                    android:queryHint="Search"
-                    android:iconifiedByDefault="true"
-                    android:searchIcon="@drawable/icon_search"
-                    android:theme="@style/ToolbarAppearanceOverlay"/>                  />
-            </FrameLayout>
-
-            <ImageView
-                android:id="@+id/cart_icon"
-                android:contentDescription="@string/cart_icon"
-                android:src="@drawable/icon_cart"
+            <TextView
+                android:id="@+id/sub_title"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/back_icon_product"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginHorizontal="18dp"
-                android:padding="4dp"/>
+                android:layout_marginStart="20dp"
+                android:text="@string/product"
+                android:textSize="18sp"
+                android:textColor="@color/body"
+                android:fontFamily="@font/roboto_medium"
+                android:includeFontPadding="false"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
+
+
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -95,7 +96,7 @@
         android:layout_height="0dp"
         android:fillViewport="true"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@id/addToCartLayout"
+        app:layout_constraintBottom_toTopOf="@id/callToActionLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/topNav_prod"
@@ -345,10 +346,8 @@
 
     </ScrollView>
 
-
-
     <LinearLayout
-        android:id="@+id/addToCartLayout"
+        android:id="@+id/callToActionLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -359,7 +358,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            app:layout_constraintBottom_toTopOf="@id/addToCartLayout"
+            app:layout_constraintBottom_toTopOf="@id/callToActionLayout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:background="@color/background_dark"/>
@@ -395,7 +394,7 @@
                 android:layout_weight="1"
                 android:layout_marginStart="6dp"
                 style="?android:attr/buttonBarButtonStyle"
-                android:background="@drawable/custom_rounded_corner_primary"
+                android:background="@drawable/custom_small_rounded_corner_primary"
                 android:text="@string/subscribe"
                 android:textColor="@color/off_white"
                 android:textSize="14sp"

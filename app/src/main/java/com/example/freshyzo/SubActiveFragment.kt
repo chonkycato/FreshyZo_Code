@@ -11,8 +11,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.freshyzo.model.DataModelActiveSub
-import com.example.freshyzo.model.RecyclerAdapterSubActive
+import com.example.freshyzo.model.ActiveSubscription
+import com.example.freshyzo.adapter.RecyclerAdapterSubActive
 import java.util.Calendar
 
 class SubActiveFragment : Fragment() {
@@ -20,7 +20,7 @@ class SubActiveFragment : Fragment() {
     private lateinit var view: View
     private lateinit var recyclerView: RecyclerView
     private lateinit var recyclerAdapter: RecyclerAdapterSubActive
-    private var dataList = mutableListOf<DataModelActiveSub>()
+    private var dataList = mutableListOf<ActiveSubscription>()
     private lateinit var selectedStartDate: String
     private lateinit var selectedEndDate: String
 
@@ -32,7 +32,7 @@ class SubActiveFragment : Fragment() {
         this.view = view
 
         dataList.add(
-            DataModelActiveSub(
+            ActiveSubscription(
                 R.drawable.img_milk_buff, resources.getString(R.string.buffalo_milk), resources.getString(R.string.itemPrice),
                 resources.getString(R.string.sample_start_date), resources.getString(R.string.sample_start_date), resources.getString(R.string.active)
 //                , resources.getString(R.string.address_body)
@@ -40,7 +40,7 @@ class SubActiveFragment : Fragment() {
         )
 
         dataList.add(
-            DataModelActiveSub(
+            ActiveSubscription(
                 R.drawable.img_ghee, resources.getString(R.string.ghee), resources.getString(R.string.itemPrice),
                 resources.getString(R.string.sample_start_date), resources.getString(R.string.sample_start_date), resources.getString(R.string.active)
 //                , resources.getString(R.string.address_body)
@@ -66,7 +66,7 @@ class SubActiveFragment : Fragment() {
         return view
     }
 
-    private fun showPauseDialog(it: DataModelActiveSub) {
+    private fun showPauseDialog(it: ActiveSubscription) {
         val calendar = Calendar.getInstance()
         val currentHour = calendar.get(Calendar.HOUR_OF_DAY)
 
@@ -105,7 +105,7 @@ class SubActiveFragment : Fragment() {
         alertDialogBuilder.create().show() // Show the prompt first
     }
 
-    private fun showEndDatePicker(it: DataModelActiveSub, startDate: String, startYear: Int, startMonth: Int, startDay: Int) {
+    private fun showEndDatePicker(it: ActiveSubscription, startDate: String, startYear: Int, startMonth: Int, startDay: Int) {
         // Calendar instance for the end date
         val endDateCalendar = Calendar.getInstance()
         endDateCalendar.set(startYear, startMonth, startDay)
@@ -145,7 +145,7 @@ class SubActiveFragment : Fragment() {
 
 
     // Store the selected dates and show a confirmation toast
-    private fun storePauseSubscription(it: DataModelActiveSub, startDate: String, endDate: String?) {
+    private fun storePauseSubscription(it: ActiveSubscription, startDate: String, endDate: String?) {
         // Here you can save startDate and endDate to your model or database
         Toast.makeText(
             requireContext(),
@@ -158,7 +158,7 @@ class SubActiveFragment : Fragment() {
         recyclerAdapter.notifyDataSetChanged()
     }
 
-    private fun showCancelDatePicker(it: DataModelActiveSub) {
+    private fun showCancelDatePicker(it: ActiveSubscription) {
         val calendar = Calendar.getInstance()
         val datePickerDialog = DatePickerDialog(
             requireContext(),
@@ -180,7 +180,7 @@ class SubActiveFragment : Fragment() {
         datePickerDialog.show()
     }
 
-    private fun showAlertDialog(alertTitle: String, it: DataModelActiveSub) {
+    private fun showAlertDialog(alertTitle: String, it: ActiveSubscription) {
         val productTitle = it.productTitle
         val alertDialogBuilder = AlertDialog.Builder(requireContext(), R.style.CustomAlertDialogStyle)
         val title = view.findViewById<TextView>(resources.getIdentifier("alertTitle", "id", "android"))
@@ -200,14 +200,14 @@ class SubActiveFragment : Fragment() {
         alertDialogBuilder.create().show()
     }
 
-    private fun storeSubscriptionDates(it: DataModelActiveSub) {
+    private fun storeSubscriptionDates(it: ActiveSubscription) {
         // Storing the dates (in model, shared preferences, or sending to the server)
 
         // Show success dialog after the dates have been stored or sent
         showSuccessDialog(selectedStartDate, selectedEndDate)
     }
 
-    private fun storeCancelDate(it: DataModelActiveSub, cancelDate: String) {
+    private fun storeCancelDate(it: ActiveSubscription, cancelDate: String) {
         // Logic to store the selected cancel date (could be local or send to server)
         // For example, update your item in the list with the new cancel date
     }
@@ -222,7 +222,7 @@ class SubActiveFragment : Fragment() {
         alertDialogBuilder.create().show()
     }
 
-    private fun removeItemFromList(item: DataModelActiveSub) {
+    private fun removeItemFromList(item: ActiveSubscription) {
         val position = dataList.indexOf(item)
         if (position != -1) {
             dataList.removeAt(position)

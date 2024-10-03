@@ -151,7 +151,7 @@
             android:hint="@string/enter_your_address"
             android:inputType="textPostalAddress"
             android:padding="12dp"
-            android:background="@drawable/custom_edittext_border"
+            android:background="@drawable/custom_outline_lighter"
             android:fontFamily="@font/roboto_regular"
             android:textSize="16sp"
             android:textColorHint="@color/disabled"
@@ -170,15 +170,24 @@
             android:layout_marginVertical="22dp"/>
 
         <!-- Area Selection Field -->
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_outline_lighter"
+            android:drawableRight="@drawable/icon_drop_down_arrow"
+            android:drawableTint="@color/body"
+            android:layout_marginBottom="16dp">
+
         <Spinner
             android:id="@+id/area_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="12dp"
+            android:paddingHorizontal="12dp"
             android:fontFamily="@font/roboto_regular"
-            android:textSize="16sp"
-            android:background="@drawable/custom_edittext_border" />
+            android:textSize="16sp"/>
 
+        </FrameLayout>
 
         <!-- Submit Button -->
         <Button
@@ -186,12 +195,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:background="@drawable/custom_rounded_corner_primary"
+            android:background="@drawable/custom_small_rounded_corner_primary"
             android:text="@string/save"
             android:fontFamily="@font/roboto_medium"
             android:textSize="16sp"
             android:textColor="@android:color/white"
-            android:paddingHorizontal="16dp"
+            android:paddingHorizontal="30dp"
             android:layout_gravity="center_horizontal"/>
 
     </LinearLayout>

@@ -59,21 +59,23 @@
                 android:padding="2dp"/>
 
 
-            <android.widget.SearchView
-                android:id="@+id/searchView_cat"
-                android:contentDescription="@string/search_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/cart_icon_cat"
-                android:outlineAmbientShadowColor="@color/primary"
-                android:padding="4dp"
-                android:queryHint="Search"
-                android:iconifiedByDefault="true"
-                android:searchIcon="@drawable/icon_search"
-                android:theme="@style/ToolbarAppearanceOverlay"/>
+                <!-- Search View -->
+
+<!--            <android.widget.SearchView-->
+<!--                android:id="@+id/searchView_cat"-->
+<!--                android:contentDescription="@string/search_icon"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="right"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toStartOf="@id/cart_icon_cat"-->
+<!--                android:outlineAmbientShadowColor="@color/primary"-->
+<!--                android:padding="4dp"-->
+<!--                android:queryHint="Search"-->
+<!--                android:iconifiedByDefault="true"-->
+<!--                android:searchIcon="@drawable/icon_search"-->
+<!--                android:theme="@style/ToolbarAppearanceOverlay"/>-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

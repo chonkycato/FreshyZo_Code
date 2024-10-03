@@ -4,29 +4,28 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
-import com.example.freshyzo.model.BannerAdapter
-import com.example.freshyzo.model.BottomNavVisibilityListener
-import com.example.freshyzo.model.ButtonClickListener
+import com.example.freshyzo.adapter.BannerAdapter
+import com.example.freshyzo.adapter.RecyclerAdapterHome
+import com.example.freshyzo.api.ApiHandler
+import com.example.freshyzo.login.SignupFragment
 import com.example.freshyzo.model.DataModelProduct
-import com.example.freshyzo.model.RecyclerAdapterHome
-
-//import com.synnapps.carouselview.CarouselView
-//import com.synnapps.carouselview.ImageListener
 
 
-class HomeFragment : Fragment(), ButtonClickListener {
+class HomeFragment : Fragment() {
 
     private lateinit var viewPager2: ViewPager2
     private lateinit var bannerAdapter: BannerAdapter
@@ -40,31 +39,16 @@ class HomeFragment : Fragment(), ButtonClickListener {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
-        (activity as MainActivity).showBottomNav()
+
+        /** Bottom and top nav activities **/
+        (activity as MainActivity).handleNavigationToolbar(null, true)
+        val cartIcon = view.findViewById<ImageView>(R.id.cart_icon)
+        cartIcon.setOnClickListener {
+            (activity as MainActivity).loadFragment(CartFragment(), false, null)
+        }
 
         /** Carousel View **/
-
-        viewPager2 = view.findViewById(R.id.banner_carousel)
-        val bannerImages = listOf(
-            R.drawable.carousel_one,
-            R.drawable.carousel_two,
-            R.drawable.carousel_three,
-            R.drawable.carousel_four
-        )
-
-        bannerAdapter = BannerAdapter(bannerImages)
-        viewPager2.adapter = bannerAdapter
-
-        //Automatic sliding carousel
-        val handler = Handler(Looper.getMainLooper())
-        val runnable = object : Runnable {
-            override fun run() {
-                val currentItem = viewPager2.currentItem
-                viewPager2.currentItem = (currentItem + 1) % bannerImages.size
-                handler.postDelayed(this, 3000)
-            }
-        }
-        handler.post(runnable)
+        //fetchBannerImages()
 
         /** Values and variables **/
 
@@ -78,6 +62,8 @@ class HomeFragment : Fragment(), ButtonClickListener {
         val mCategoryBread = view.findViewById<LinearLayout>(R.id.categoryBread)
         val mbackToTopButton = view.findViewById<LinearLayout>(R.id.backToTop)
         val mNestedScrollView = view.findViewById<NestedScrollView>(R.id.nestedScrollView)
+
+        viewPager2 = view.findViewById(R.id.banner_carousel)
 
 
         /**Back to top**/
@@ -120,11 +106,12 @@ class HomeFragment : Fragment(), ButtonClickListener {
         }
 
         /** Add data to recyclerView **/
-        productDataList.add(DataModelProduct("Ghee","FreshyZo Ghee Butter", "100% Pure desi ghee","250 gms","₹350",R.drawable.img_ghee))
-        productDataList.add(DataModelProduct("Milk","FreshyZo Cow Milk", "100% pure desi cow milk","200 ml","₹25",R.drawable.img_milk))
-        productDataList.add(DataModelProduct("Milk","FreshyZo Buffalo Milk", "100% pure buffalo milk","200 ml","₹25",R.drawable.img_milk_buff))
-        productDataList.add(DataModelProduct("Dahi","FreshyZo Malai Dahi", "Fresh and creamy malai dahi","250 ml","₹35",R.drawable.img_dahi))
-        productDataList.add(DataModelProduct("Paneer","FreshyZo Paneer", "Fresh and soft paneer","250 gms","₹250",R.drawable.img_paneer))
+        productDataList.add(DataModelProduct("Ghee","FreshyZo Ghee Butter", "100% Pure desi ghee","2","250gms","₹350",R.drawable.img_ghee))
+        productDataList.add(DataModelProduct("Milk","FreshyZo Cow Milk", "100% pure desi cow milk","1","250gms","₹350",R.drawable.img_milk))
+        productDataList.add(DataModelProduct("Milk","FreshyZo Buffalo Milk", "100% pure buffalo milk","2","250gms","₹350",R.drawable.img_milk_buff))
+        productDataList.add(DataModelProduct("Dahi","FreshyZo Malai Dahi", "Fresh and creamy malai dahi","4","250gms","₹350",R.drawable.img_dahi))
+        productDataList.add(DataModelProduct("Paneer","FreshyZo Paneer", "Fresh and soft paneer","2","250gms","₹350",R.drawable.img_paneer))
+
 
         /** Initialize recyclerView **/
         recyclerView = view.findViewById(R.id.recyclerViewHome)
@@ -135,7 +122,7 @@ class HomeFragment : Fragment(), ButtonClickListener {
 
         mRecyclerAdapterHome.onItemClick = {
             val intentHome = Intent(activity, ProductActivity::class.java)
-            intentHome.putExtra("product", it)
+            intentHome.putExtra("product", it as Parcelable)
             (activity as MainActivity).startActivity(intentHome)
         }
 
@@ -148,22 +135,47 @@ class HomeFragment : Fragment(), ButtonClickListener {
 
         mLogOutButton.setOnClickListener{
 //            (activity as MainActivity).changeLoginState(false)
-////            findNavController().navigate(R.id.action_homeFragment_to_productFragment)
-//            (activity as MainActivity).loadFragment(LoginFragment(), false, null)
-            val intent = Intent(requireContext(), PaymentActivity::class.java)
-//            intent.putExtra("status", "failure")
-            (activity as MainActivity).startActivity(intent)
+//            findNavController().navigate(R.id.action_homeFragment_to_productFragment)
+            (activity as MainActivity).loadFragment(SignupFragment(), false, null)
+//            val intent = Intent(requireContext(), PaymentActivity::class.java)
+////            intent.putExtra("status", "failure")
+//            (activity as MainActivity).startActivity(intent)
         }
         return view
     }
 
-    override fun onButtonClicked(position : Int, data: DataModelProduct){
-        Log.d("Position", position.toString())
+    /** Fetch banner images **/
+    private fun fetchBannerImages() {
+        val apiHandler = ApiHandler()
+        apiHandler.fetchBannerImages(object : ApiHandler.BannerListCallback {
+            override fun onSuccess(images: List<String>) {
+                if (isAdded) { // Check if the fragment is currently added to its activity
+                    setupViewPager(images)
+                }
+            }
+            override fun onFailure(errorMessage: String) {
+                if (isAdded) { // Check if the fragment is currently added to its activity
+                    Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
     }
 
-    override fun onResume() {
-        super.onResume()
-        (activity as BottomNavVisibilityListener).setBottomNavVisibility(true)
+
+    private fun setupViewPager(imageUrls: List<String>) {
+        bannerAdapter = BannerAdapter(imageUrls)
+        viewPager2.adapter = bannerAdapter
+
+        // Automatic sliding carousel
+        val handler = Handler(Looper.getMainLooper())
+        val runnable = object : Runnable {
+            override fun run() {
+                val currentItem = viewPager2.currentItem
+                viewPager2.currentItem = (currentItem + 1) % imageUrls.size
+                handler.postDelayed(this, 3000)
+            }
+        }
+        handler.post(runnable)
     }
 
     private fun onSwitchActivity(){
@@ -172,5 +184,5 @@ class HomeFragment : Fragment(), ButtonClickListener {
         (activity as MainActivity).startActivity(intentHome)
     }
 
-//    private var imageListener = ImageListener { position, imageView -> imageView.setImageResource(carouselArray[position]) }
+    //    private var imageListener = ImageListener { position, imageView -> imageView.setImageResource(carouselArray[position]) }
 }

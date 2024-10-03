@@ -1,0 +1,10 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/subscribeProductFragment">
+
+    <fragment
+        android:id="@+id/subscribeProductFragment"
+        android:name="com.example.freshyzo.SubscribeProductFragment"
+        tools:layout="@layout/fragment_subscribe_product" />
+</navigation>

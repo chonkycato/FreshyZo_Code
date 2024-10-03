@@ -7,10 +7,10 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.freshyzo.model.PaytmRequest
+import com.example.freshyzo.api.PaytmRequest
+import com.example.freshyzo.api.TransactionStatusResponse
 import com.example.freshyzo.model.PaytmResponse
-import com.example.freshyzo.model.RetrofitClient
-import com.example.freshyzo.model.TransactionStatusResponse
+import com.example.freshyzo.network.RetrofitClient
 import com.paytm.pgsdk.PaytmOrder
 import com.paytm.pgsdk.PaytmPaymentTransactionCallback
 import com.paytm.pgsdk.TransactionManager
@@ -44,6 +44,17 @@ class PaymentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_payment)
 
+        val rechargeAmount = intent.getStringExtra("rechargeAmount")
+        val customerID = intent.getStringExtra("customerID")
+
+        Log.d("INTENT DATA", "$customerID $rechargeAmount")
+
+        if(rechargeAmount!=null && customerID!=null){
+            amount = rechargeAmount
+        } else{
+            amount = "5.00"
+        }
+
         /** Initialize progress bar **/
         progressBar = findViewById(R.id.progressBar)
         progressBar.isIndeterminate
@@ -53,20 +64,13 @@ class PaymentActivity : AppCompatActivity() {
         statusTV.text = getString(R.string.processing)
 
         mID = "qzWFll53703123606941"
-//        mID = "SWKBaq01791611191993"
-        amount = "1.00"
         randomNumber = Random.nextInt(111111, 999999)
         orderId = "ORDER$randomNumber"
         Log.e("ORDER ID:", "$orderId")
         host = "https://securegw.paytm.in/"
-//        host = "https://securegw-stage.paytm.in/"
         callbackURL = host + "theia/paytmCallback?ORDER_ID=$orderId"
+        prepareParams(orderId, amount, callbackURL)
 
-        /** Handle Button Click **/
-//        paymentButton = findViewById(R.id.payment_button)
-//        paymentButton.setOnClickListener{
-            prepareParams(orderId, amount, callbackURL)
-//        }
 
     }
 
@@ -96,7 +100,7 @@ class PaymentActivity : AppCompatActivity() {
             INDUSTRY_TYPE_ID = params["INDUSTRY_TYPE_ID"]!!
         )
 
-        val call = RetrofitClient.apiService.initiateTransaction(request)
+        val call = RetrofitClient.paytmApiService.initiateTransaction(request)
         call.enqueue(object : Callback<PaytmResponse> {
             override fun onResponse(
                 call: Call<PaytmResponse>,
@@ -235,7 +239,7 @@ class PaymentActivity : AppCompatActivity() {
         params["ORDERID"] = orderId
         // Add other required parameters
 
-        val call = RetrofitClient.apiService.checkTransactionStatus(params)
+        val call = RetrofitClient.paytmApiService.checkTransactionStatus(params)
         call.enqueue(object : Callback<TransactionStatusResponse> {
             override fun onResponse(
                 call: Call<TransactionStatusResponse>,

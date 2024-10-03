@@ -61,7 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:background="@drawable/custom_rounded_corner_primary"
+        android:background="@drawable/custom_small_rounded_corner_primary"
         android:text="@string/submit"
         android:fontFamily="@font/roboto_medium"
         android:textSize="16sp"
