@@ -1,19 +1,19 @@
 package com.example.freshyzo.helper
 
-import com.example.freshyzo.model.DataModelProduct
+import com.example.freshyzo.model.ProductResponse
 
 object CartManager {
-    private val cartItems = mutableListOf<DataModelProduct>()
+    private val cartItems = mutableListOf<ProductResponse>()
 
-    fun addProduct(product: DataModelProduct) {
+    fun addProduct(product: ProductResponse) {
         cartItems.add(product)
     }
 
-    fun removeProduct(product: DataModelProduct) {
+    fun removeProduct(product: ProductResponse) {
         cartItems.remove(product)
     }
 
-    fun getCartItems(): List<DataModelProduct> {
+    fun getCartItems(): List<ProductResponse> {
         return cartItems
     }
 

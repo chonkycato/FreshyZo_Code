@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id ("kotlin-parcelize")
 }
 
 android {
@@ -54,27 +55,28 @@ android {
 dependencies {
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("androidx.core:core-ktx:1.13.1")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.4")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.6")
     implementation ("com.android.support:support-v4:28.0.0")
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.20")
 
     //Paytm
     implementation ("com.paytm.appinvokesdk:appinvokesdk:1.6.15")
     //implementation ("com.paytm.pgplus:pgplus-sdk:1.6.4")
 
     //Navigation and Fragment
-    implementation("androidx.fragment:fragment-ktx:1.8.2")
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
+    implementation("androidx.fragment:fragment-ktx:1.8.4")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.8.3")
+    implementation("androidx.navigation:navigation-ui-ktx:2.8.3")
 
     //GIF
     implementation("com.github.bumptech.glide:glide:4.9.0")
     implementation("com.google.android.material:material:1.12.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("com.android.car.ui:car-ui-lib:2.6.0")
-    implementation("androidx.activity:activity-ktx:1.9.1")
+    implementation("androidx.activity:activity-ktx:1.9.3")
     implementation("com.google.androidbrowserhelper:billing:1.0.0-alpha11")
-    implementation("androidx.activity:activity:1.9.1")
+    implementation("androidx.activity:activity:1.9.3")
     annotationProcessor("com.github.bumptech.glide:compiler:4.11.0")
 
     //Image View Rounded Corners
@@ -99,13 +101,13 @@ dependencies {
     implementation ("androidx.cardview:cardview:1.0.0")
 
     //Compose
-    implementation("androidx.activity:activity-compose:1.9.1")
-    implementation(platform("androidx.compose:compose-bom:2024.08.00"))
+    implementation("androidx.activity:activity-compose:1.9.3")
+    implementation(platform("androidx.compose:compose-bom:2024.10.00"))
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
-    androidTestImplementation(platform("androidx.compose:compose-bom:2024.08.00"))
+    androidTestImplementation(platform("androidx.compose:compose-bom:2024.10.00"))
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")

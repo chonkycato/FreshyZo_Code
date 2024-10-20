@@ -62,7 +62,7 @@ class CategoriesFragment() : Fragment() {
         }
 
         filterProductList(bundleMsg, allProdList)
-        mRecyclerAdapter.setDataList(filteredList)
+       // mRecyclerAdapter.setDataList(filteredList)
         val text = filteredList.size.toString() + " products found."
         mCategoryItems.text = text
 

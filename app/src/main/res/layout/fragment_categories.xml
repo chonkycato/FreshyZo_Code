@@ -104,7 +104,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:text="@string/all_products"
+                android:text="@string/all_products_newline"
                 android:textSize="24sp"
                 android:textColor="@color/body"
                 android:fontFamily="@font/roboto_medium"

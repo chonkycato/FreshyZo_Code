@@ -38,18 +38,18 @@ class CartFragment : Fragment() {
 
         // Map cart products to DataModelCart (adjust according to your actual model)
         dataList.clear()
-        cartProd.forEach { product ->
-            dataList.add(
-                com.example.freshyzo.model.Cart(
-                    title = product.title,
-                    itemDetail =  product.description,
-                    itemPrice = product.price.toString(),
-                    itemSize = product.size,
-                    itemQty = product.quantity.toString(),
-                    image = product.image
-                )
-            )
-        }
+//        cartProd.forEach { product ->
+//            dataList.add(
+//                //com.example.freshyzo.model.Cart(
+////                    title = product.title,
+////                    itemDetail =  product.description,
+////                    itemPrice = product.price.toString(),
+////                    itemSize = product.size,
+////                    itemQty = product.quantity.toString(),
+////                    image = product.image
+//                )
+//            )
+//        }
 
         /** Navigate to subscriptions **/
         mSubscriptions.setOnClickListener {

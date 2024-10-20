@@ -13,7 +13,22 @@
         android:orientation="vertical"
         android:background="@drawable/custom_rounded_corner_light_transparent"
         android:paddingHorizontal="10dp"
-        android:paddingVertical="20dp">
+        android:paddingTop="4dp"
+        android:paddingBottom="20dp">
+
+        <TextView
+            android:id="@+id/productSubscriptionStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="4dp"
+            android:text="@string/active"
+            android:textColor="@color/primary"
+            android:textSize="12sp"
+            android:fontFamily="@font/roboto_medium"
+            android:includeFontPadding="false"
+            android:textAllCaps="true"
+            android:visibility="visible"
+            />
 
         <ImageView
             android:id="@+id/productItemIv"
@@ -59,11 +74,11 @@
 
         <TextView
             android:id="@+id/price_text"
-            android:text="@string/price_title"
+            android:text="@string/price_string"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            android:textSize="13sp"
+            android:textSize="12sp"
             android:textColor="@color/body"
             android:fontFamily="@font/roboto_medium"
             android:includeFontPadding="false"

@@ -110,14 +110,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun showProgressBar() {
-        progressBar.visibility = View.VISIBLE
-    }
-
-    private fun hideProgressBar() {
-        progressBar.visibility = View.GONE
-    }
-
     private fun unInitialise(){
         getSharedPreferences("initialized", Context.MODE_PRIVATE).edit()
             .putBoolean("isInitialized", false).apply()

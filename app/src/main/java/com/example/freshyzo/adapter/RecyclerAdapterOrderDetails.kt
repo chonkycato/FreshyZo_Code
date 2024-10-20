@@ -26,10 +26,10 @@ class RecyclerAdapterOrderDetails : RecyclerView.Adapter<RecyclerAdapterOrderDet
         var itemImage: ImageView
 
         init {
-            itemTitle = itemView.findViewById(R.id.orderDetailName)
-            itemSize = itemView.findViewById(R.id.orderDetailSize)
-            itemQty = itemView.findViewById(R.id.orderDetailQuantity)
-            itemImage = itemView.findViewById(R.id.orderDetailImage)
+            itemTitle = itemView.findViewById(R.id.orderProductName)
+            itemSize = itemView.findViewById(R.id.orderProductSize)
+            itemQty = itemView.findViewById(R.id.orderProductQuantity)
+            itemImage = itemView.findViewById(R.id.orderImage)
         }
 
     }

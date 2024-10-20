@@ -69,7 +69,7 @@
     <string name="title">शीर्षक</string>
     <string name="description">विवरण</string>
     <string name="quantity">मात्रा</string>
-    <string name="price_title">मूल्य</string>
+    <string name="price_string">₹%1$s</string>
     <string name="buy_once">एक बार खरीदें</string>
     <string name="back_icon">पीछे बटन</string>
     <string name="cart_icon">कार्ट आइकन</string>
@@ -124,7 +124,7 @@
     <string name="subscribe_button">सदस्यता बटन</string>
     <string name="add_to_cart_button">कार्ट में जोड़ें बटन</string>
 
-    <string name="welcome_user">स्वागत है, उपयोगकर्ता!</string>
+    <string name="welcome_user">स्वागत है, %s!</string>
     <string name="orders_icon">ऑर्डर आइकन</string>
     <string name="my_orders">मेरे ऑर्डर</string>
     <string name="subscriptions">सदस्यताएँ</string>
@@ -220,7 +220,7 @@
     <string name="forward">आगे भेजें</string>
     <string name="total_products">9 उत्पाद</string>
     <string name="all">सभी</string>
-    <string name="all_products">सभी उत्पाद</string>
+    <string name="all_products_newline">सभी उत्पाद</string>
     <string name="end_of_results">परिणामों का अंत</string>
     <string name="back_to_top">ऊपर वापस जाएं</string>
     <string name="wallet">वॉलेट</string>

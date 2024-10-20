@@ -1,5 +1,6 @@
 package com.example.freshyzo
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.freshyzo.helper.LocaleHelper
@@ -16,6 +18,7 @@ import com.example.freshyzo.login.LoginFragment
 class AccountFragment : Fragment() {
 
     private lateinit var mLogOutButton: Button
+    private lateinit var customerName: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,7 +37,6 @@ class AccountFragment : Fragment() {
         val walletLL = view.findViewById<LinearLayout>(R.id.payments_wallet)
 
         val profileLL = view.findViewById<LinearLayout>(R.id.profile)
-        val addressesLL = view.findViewById<LinearLayout>(R.id.saved_addresses)
         val referLL = view.findViewById<LinearLayout>(R.id.refer_earn)
         val languageLL = view.findViewById<LinearLayout>(R.id.language_pref)
         val aboutLL = view.findViewById<LinearLayout>(R.id.about)
@@ -43,9 +45,11 @@ class AccountFragment : Fragment() {
         val policyLL = view.findViewById<LinearLayout>(R.id.privacy_policy)
         val returnLL = view.findViewById<LinearLayout>(R.id.returns)
 
+        val userGreeting = view.findViewById<TextView>(R.id.greetUser)
         mLogOutButton = view.findViewById(R.id.logout_button)
 
-
+        customerName = requireActivity().getSharedPreferences("user_data", Context.MODE_PRIVATE).getString("customer_name", "").toString()
+        userGreeting.text = getString(R.string.welcome_user, customerName)
 
         ordersLL.setOnClickListener {
             loadFragment(OrdersFragment())
@@ -66,10 +70,6 @@ class AccountFragment : Fragment() {
 
         profileLL.setOnClickListener {
             loadFragment(ProfileFragment())
-        }
-
-        addressesLL.setOnClickListener {
-            loadFragment(AddressFragment())
         }
 
         referLL.setOnClickListener {
@@ -149,9 +149,13 @@ class AccountFragment : Fragment() {
     }
 
     private fun logOut(){
-        (activity as MainActivity).changeLoginState(false)
-        (activity as MainActivity).clearBackStack()
-        loadFragment(LoginFragment())
+        val mainActivity = activity as? MainActivity
+
+        mainActivity?.apply {
+            changeLoginState(false)
+            clearBackStack()  // Clear all fragments from the backstack
+            loadFragment(LoginFragment(), true, null)  // Load LoginFragment and don't add it to the backstack
+        }
     }
 
     private fun loadFragment(fragment: Fragment){

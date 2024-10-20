@@ -4,26 +4,31 @@
     <item
         android:id="@+id/home_icon"
         android:title="@string/home"
-        android:icon="@drawable/icon_home"/>
+        android:icon="@drawable/icon_home"
+        android:titleTextAppearance="@style/BottomNavTextAppearance"/>
 
     <item
         android:id="@+id/notification_icon"
         android:title="@string/notifications"
-        android:icon="@drawable/icon_notification" />
+        android:icon="@drawable/icon_notification"
+        android:titleTextAppearance="@style/BottomNavTextAppearance"/>
 
     <item
         android:id="@+id/wallet_icon"
         android:title="@string/wallet"
-        android:icon="@drawable/icon_wallet"/>
+        android:icon="@drawable/icon_wallet"
+        android:titleTextAppearance="@style/BottomNavTextAppearance"/>
 
     <item
         android:id="@+id/account_icon"
         android:title="@string/account"
-        android:icon="@drawable/icon_account"/>
+        android:icon="@drawable/icon_account"
+        android:titleTextAppearance="@style/BottomNavTextAppearance"/>
 
     <item
         android:id="@+id/cart_icon"
         android:title="@string/cart"
-        android:icon="@drawable/icon_cart"/>
+        android:icon="@drawable/icon_cart"
+        android:titleTextAppearance="@style/BottomNavTextAppearance"/>
 
 </menu>

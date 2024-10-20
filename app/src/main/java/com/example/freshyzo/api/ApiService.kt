@@ -1,12 +1,21 @@
 package com.example.freshyzo.api
 
 import com.example.freshyzo.model.BannerResponse
+import com.example.freshyzo.model.CategoryResponse
 import com.example.freshyzo.model.ColonyListResponse
+import com.example.freshyzo.model.CustomerRequest
+import com.example.freshyzo.model.CustomerResponse
 import com.example.freshyzo.model.LoginRequest
 import com.example.freshyzo.model.LoginResponse
 import com.example.freshyzo.model.OneTimePasswordRequest
+import com.example.freshyzo.model.OrderResponse
+import com.example.freshyzo.model.ProductRequest
+import com.example.freshyzo.model.ProductResponse
+import com.example.freshyzo.model.ProfileUpdateRequest
+import com.example.freshyzo.model.RechargeHistoryResponse
 import com.example.freshyzo.model.SignUpRequest
 import com.example.freshyzo.model.SignUpResponse
+import com.example.freshyzo.model.WalletResponse
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.Body
@@ -29,71 +38,42 @@ interface ApiService {
     @POST("admin/Customer_App_Api/signup")
     fun registerUser(@Body params: SignUpRequest): Call<SignUpResponse>
 
+    /** Wallet Balance **/
+    @POST("admin/Customer_App_Api/get_balance")
+    fun getWalletBalance(@Body params: CustomerRequest): Call<List<WalletResponse>>
+
+    /** Product List **/
+    @POST("admin/Customer_App_Api/fetch_product")
+    fun getProducts(@Body params: ProductRequest): Call<List<ProductResponse>>
+
+    /** Categories List **/
+    @GET("admin/Customer_App_Api/product_category_list")
+    fun getCategories(): Call<List<CategoryResponse>>
+
     /** Colony List **/
     @GET("admin/Customer_App_Api/get_all_colony")
     fun getColonies(): Call<ColonyListResponse>
 
     /** Carousel Banner **/
     @GET("admin/Customer_App_Api/banner_list")
-    fun getBanners(): Call<BannerResponse>
+    fun getBanners(): Call<List<BannerResponse>>
+
+    /** Customer Details **/
+    @POST("admin/Customer_App_Api/profile_data") // Replace with the actual endpoint
+    fun getCustomerDetails(@Body params: CustomerRequest): Call<List<CustomerResponse>>
+
+    /** Update Customer Details **/
+    @POST("admin/Customer_App_Api/update_profile")
+    fun updateCustomerProfile(@Body params: ProfileUpdateRequest): Call<ResponseBody>
+
+    /** Fetch Recharge History **/
+    @POST("admin/Customer_App_Api/fetch_recharges")
+    fun getRechargeHistory(@Body params: CustomerRequest): Call<List<RechargeHistoryResponse>>
+
+    /** Fetch Order History **/
+    @POST("admin/Customer_App_Api/fetch_orders")
+    fun fetchOrders(@Body params: CustomerRequest): Call<List<OrderResponse>>
+
 }
 
-//@POST("admin/paytm_appbase/transaction_request.php")
-//fun initiateTransaction(@Body params: PaytmRequest): Call<PaytmResponse>
-//
-//@POST("admin/paytm_appbase/transaction_status.php")
-//fun checkTransactionStatus(@Body params: Map<String, String>): Call<TransactionStatusResponse>
-//
 
-/** OTP Generation
-//https://freshyzo.com/admin/Customer_App_Api/send_otp
-//{
-//    "mobile_no": "7047112327"
-//    "method": "signup" //login for login
-//} **/
-
-/** Login Authentication
-//for otp authentication-post method
-//https://freshyzo.com/admin/Customer_App_Api/auth
-//{
-//    "mobile_no": "7047112327",
-//    "otp":"237552"
-//
-//}
-//server response-{"customer_id":"745","customer_role":"customers"} **/
-
-/** for user registration
-//method: "post",
-// url: https://freshyzo.com/admin/Customer_App_Api/signup
-//payload-first_name, last_name, mobile_no, colony, otp
-//response-
-//"Invalid or expired OTP."
-//'failed'
-//{
-//    'ragistration_id' => $ragistration_id,
-//    'customer_role' => 'ragister_customer',
-//}; **/
-
-/** Area api
-
-//url: https://freshyzo.com/admin/Customer_App_Api/get_all_colony
-//data: {
-//    "colony": [
-//        {
-//            "colony_id": "2",
-//            "colony_name": "Adarsh nagar"
-//        }, ...
-//      ]
-//  } **/
-
-/** Carousel banner API*
-api link- https://freshyzo.com/admin/Customer_App_Api/banner_list
-response - {"banner_list":
-                [
-                    {
-                        "offer_banner_id":"1",
-                        "img_name":"214071727963239318d32f4.jpeg"
-                    }
-                ]
-            }
-https://freshyzo.com/admin/uploads/offer_banner_image/214071727963239318d32f4.jpeg **/

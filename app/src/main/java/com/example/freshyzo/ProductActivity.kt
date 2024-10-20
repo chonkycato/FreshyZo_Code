@@ -9,13 +9,9 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.example.freshyzo.helper.CartManager
-import com.example.freshyzo.model.DataModelProduct
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
-import java.net.HttpURLConnection
-import java.net.URL
+import com.example.freshyzo.model.ProductResponse
 
 class ProductActivity : AppCompatActivity() {
 
@@ -26,8 +22,8 @@ class ProductActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product)
 
-        // Get the product from the intent
-        val product = intent.getSerializableExtra("product") as? DataModelProduct
+        // Get the product from the intent (now using Parcelable)
+        val product = intent.getParcelableExtra<ProductResponse>("product")
         mCalltoActionLayout = findViewById(R.id.callToActionLayout)
 
         // Show product details on the UI
@@ -35,29 +31,18 @@ class ProductActivity : AppCompatActivity() {
             updateProductDetailsUI(it)
         }
 
-        if (isInternetAvailable()) {
-            Toast.makeText(this, "INTERNET IS WORKING", Toast.LENGTH_SHORT).show()
-        } else {
-            Toast.makeText(this, "NO INTERNET", Toast.LENGTH_SHORT).show()
-        }
-
         // Handle UI components
         val addToCartBtn = findViewById<Button>(R.id.addToCartBtnProduct)
         val subscribeButton = findViewById<Button>(R.id.subscribeBtnProduct)
-        val productIntent = intent.getParcelableExtra<DataModelProduct>("product")
-        val cartIntent = intent.getParcelableExtra<com.example.freshyzo.model.Cart>("cart")
 
         try {
-            if (productIntent != null) {
-                updateProductDetailsUI(productIntent)
+            if (product != null) {
+                updateProductDetailsUI(product)
 
-                // Only add DataModelProduct to cart
+                // Only add com.example.freshyzo.model.ProductResponse to cart
                 addToCartBtn.setOnClickListener {
-                    addToCart(productIntent)
+                    addToCart(product)
                 }
-            } else if (cartIntent != null) {
-                updateCartDetailsUI(cartIntent)
-                Toast.makeText(this, "Can't add a cart item directly to the cart", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show()
             }
@@ -76,9 +61,9 @@ class ProductActivity : AppCompatActivity() {
         val subscribeFragment = SubscribeProductFragment()
 
         // Pass product details via arguments
-        val currentProduct = intent.getSerializableExtra("product")
+        val currentProduct = intent.getParcelableExtra<ProductResponse>("product")
         val bundle = Bundle().apply {
-            putSerializable("productDetails", currentProduct)
+            putParcelable("productDetails", currentProduct)
         }
         subscribeFragment.arguments = bundle
 
@@ -98,40 +83,20 @@ class ProductActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateProductDetailsUI(product: DataModelProduct) {
+    private fun updateProductDetailsUI(product: ProductResponse) {
         val productImageView = findViewById<ImageView>(R.id.productImageIv)
         val productTitle = findViewById<TextView>(R.id.product_title_tv)
-        productTitle.text = product.title
-        productImageView.setImageResource(product.image)
+        productTitle.text = product.productName
+
+        // Load the image using Glide
+        Glide.with(this)
+            .load("https://freshyzo.com/admin/uploads/product_image/${product.productImage}")
+            .into(productImageView)
     }
 
-    private fun updateCartDetailsUI(cart: com.example.freshyzo.model.Cart) {
-        val productImageView = findViewById<ImageView>(R.id.productImageIv)
-        val productTitle = findViewById<TextView>(R.id.product_title_tv)
-        productTitle.text = cart.title
-        productImageView.setImageResource(cart.image)
-    }
-
-    private fun addToCart(product: DataModelProduct) {
+    private fun addToCart(product: ProductResponse) {
         CartManager.addProduct(product)
         Toast.makeText(this, "Product added to cart", Toast.LENGTH_SHORT).show()
-        Log.d("ProductActivity", "Product added to cart: ${product.title}")
-    }
-
-    private fun isInternetAvailable(): Boolean {
-        return runBlocking {
-            withContext(Dispatchers.IO) {
-                try {
-                    val url = URL("https://www.google.com")
-                    val connection = url.openConnection() as HttpURLConnection
-                    connection.connectTimeout = 3000
-                    connection.connect()
-                    connection.responseCode == 200
-                } catch (e: Exception) {
-                    Log.d("ERROR INTERNET", e.toString())
-                    false
-                }
-            }
-        }
+        Log.d("ProductActivity", "Product added to cart: ${product.productName}")
     }
 }

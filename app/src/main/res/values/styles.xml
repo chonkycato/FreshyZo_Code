@@ -11,6 +11,14 @@
         <item name="materialCalendarTheme">@style/MaterialCalendarTheme</item>
     </style>
 
+    <!-- Bottom Nav Text Appearance  -->
+    <style name="BottomNavTextAppearance">
+        <item name="android:textSize">8sp</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textColor">@color/body</item>
+    </style>
+
+
     <!-- Define custom material calendar theme -->
     <style name="MaterialCalendarTheme" parent="Theme.MaterialComponents.Light.Dialog">
         <!-- Customize your material calendar styling if needed -->

@@ -25,12 +25,12 @@ class RecyclerAdapterCart : RecyclerView.Adapter<RecyclerAdapterCart.ViewHolder>
 
     // Provide a direct reference to each of the views with data items
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var title: TextView = itemView.findViewById(R.id.orderDetailName)
+        var title: TextView = itemView.findViewById(R.id.orderProductName)
         var itemDetail: TextView = itemView.findViewById(R.id.orderItemDetails)
         var itemPrice: TextView = itemView.findViewById(R.id.orderItemPrice)
         var itemSize: TextView = itemView.findViewById(R.id.orderItemSize)
         var itemQty: TextView = itemView.findViewById(R.id.orderItemQty)
-        var itemImage: ImageView = itemView.findViewById(R.id.orderDetailImage)
+        var itemImage: ImageView = itemView.findViewById(R.id.orderImage)
         var deleteCartItem: ImageView = itemView.findViewById(R.id.deleteCartItem)
     }
 

@@ -24,7 +24,7 @@
             android:layout_marginHorizontal="4dp">
 
             <ImageView
-                android:id="@+id/orderDetailImage"
+                android:id="@+id/orderImage"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:contentDescription="@string/image"
@@ -42,11 +42,11 @@
                 android:gravity="center_vertical"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/orderDetailImage"
+                app:layout_constraintStart_toEndOf="@id/orderImage"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:id="@+id/orderDetailName"
+                    android:id="@+id/orderProductName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
@@ -57,13 +57,14 @@
                     android:textSize="14sp" />
 
                 <LinearLayout
+                    android:id="@+id/sizeQuantityLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:layout_marginTop="4dp">
 
                     <TextView
-                        android:id="@+id/orderDetailSize"
+                        android:id="@+id/orderProductSize"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Size: 500ml"
@@ -74,7 +75,7 @@
                         android:layout_marginEnd="12dp"/>
 
                     <TextView
-                        android:id="@+id/orderDetailQuantity"
+                        android:id="@+id/orderProductQuantity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Quantity: 2"
@@ -85,7 +86,6 @@
                         android:layout_marginEnd="2dp"/>
 
                 </LinearLayout>
-
 
             </LinearLayout>
 

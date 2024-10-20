@@ -56,7 +56,7 @@
         android:layout_height="match_parent"
         android:visibility="visible"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/my_nav" />
+        app:navGraph="@navigation/my_nav"/>
 
     <FrameLayout
         android:id="@+id/container"
@@ -79,12 +79,12 @@
         android:layout_alignParentBottom="true"
         android:background="@color/background"
         app:menu="@menu/bottom_nav"
-        app:itemTextColor="@color/bottom_nav_item_color"
-        app:itemIconTint="@color/bottom_nav_item_color"
-        app:itemIconSize="22dp"
-        app:itemTextAppearanceActive="@font/roboto_medium"
+        app:itemTextColor="@color/bottom_nav_text_color"
+        app:itemIconTint="@color/bottom_nav_icon_color"
+        app:itemIconSize="24dp"
+        app:itemTextAppearanceActive="@font/roboto_regular"
         app:itemTextAppearanceInactive="@font/roboto_regular"
-        app:itemTextAppearanceActiveBoldEnabled="true"
+        app:itemTextAppearanceActiveBoldEnabled="false"
         app:labelVisibilityMode="labeled"
         android:soundEffectsEnabled="false"
         />

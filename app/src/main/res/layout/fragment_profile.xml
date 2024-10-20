@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="fill_parent"
     android:background="@color/background"
     tools:context=".ProfileFragment">
 
@@ -83,7 +83,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginTop="70dp">
 
             <ImageView
@@ -94,7 +94,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="64dp"
+                android:layout_marginTop="36dp"
                 android:scaleType="centerCrop"
                 android:contentDescription="@string/milk"
                 android:layout_gravity="center_horizontal"
@@ -145,10 +145,7 @@
                 android:inputType="textPersonName"
                 android:autofillHints="name"
                 android:textColor="@color/body"
-                android:textColorHint="@color/disabled"
-                android:hint="@string/first_name"
                 android:textSize="15sp"
-                android:text="@string/sample_first_name"
                 android:fontFamily="@font/roboto_regular"
                 android:includeFontPadding="false"
                 />
@@ -180,10 +177,7 @@
                 android:inputType="textPersonName"
                 android:autofillHints="name"
                 android:textColor="@color/body"
-                android:textColorHint="@color/disabled"
-                android:hint="@string/last_name"
                 android:textSize="15sp"
-                android:text="@string/sample_last_name"
                 android:fontFamily="@font/roboto_regular"
                 android:includeFontPadding="false"
                 />
@@ -215,33 +209,30 @@
                 android:inputType="phone"
                 android:autofillHints="phone"
                 android:textColor="@color/body"
-                android:textColorHint="@color/disabled"
-                android:hint="@string/phone"
                 android:textSize="15sp"
-                android:text="@string/sample_phone_num"
                 android:fontFamily="@font/roboto_regular"
                 android:includeFontPadding="false"
                 />
 
             <TextView
-                android:id="@+id/label_email"
+                android:id="@+id/label_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/phone_number"
-                app:layout_constraintBottom_toTopOf="@id/email_address"
+                app:layout_constraintBottom_toTopOf="@id/address"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="16dp"
                 android:paddingBottom="4dp"
-                android:text="@string/email"
+                android:text="@string/address"
                 android:textColor="@color/disabled"
                 android:textSize="12sp" />
 
             <EditText
-                android:id="@+id/email_address"
+                android:id="@+id/address"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                app:layout_constraintTop_toBottomOf="@id/label_email"
+                app:layout_constraintTop_toBottomOf="@id/label_address"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginHorizontal="24dp"
@@ -250,36 +241,67 @@
                 android:inputType="textEmailAddress"
                 android:autofillHints="emailAddress"
                 android:textColor="@color/body"
-                android:textColorHint="@color/disabled"
-                android:hint="@string/email"
                 android:textSize="15sp"
-                android:text="@string/sample_email"
                 android:fontFamily="@font/roboto_regular"
                 android:includeFontPadding="false"
                 />
 
+            <TextView
+                android:id="@+id/label_colony"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/address"
+                app:layout_constraintBottom_toTopOf="@id/frameLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="16dp"
+                android:paddingBottom="4dp"
+                android:text="@string/colony"
+                android:textColor="@color/disabled"
+                android:textSize="12sp" />
+
+            <FrameLayout
+                android:id="@+id/frameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/label_colony"
+                android:background="@drawable/custom_edittext_border"
+                android:drawableEnd="@drawable/icon_drop_down_arrow"
+                android:drawableTint="@color/body"
+                android:layout_marginBottom="16dp"
+                android:layout_marginHorizontal="24dp">
+
+                <Spinner
+                    android:id="@+id/colonySpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="12dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textSize="16sp"/>
+
+            </FrameLayout>
+
             <Button
                 android:id="@+id/submitBtnProfile"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/email_address"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="64dp"
-                android:paddingHorizontal="40dp"
-                android:paddingVertical="16dp"
+                android:layout_height="44dp"
+                android:layout_marginVertical="32dp"
                 android:background="@drawable/custom_small_rounded_corner_primary"
-                android:text="@string/submit"
-                android:textSize="15sp"
-                android:textColor="@color/off_white"
                 android:fontFamily="@font/roboto_medium"
-                android:includeFontPadding="false"/>
+                android:includeFontPadding="false"
+                android:paddingHorizontal="32dp"
+                android:text="@string/save"
+                android:textColor="@color/off_white"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/frameLayout" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
 
     </ScrollView>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

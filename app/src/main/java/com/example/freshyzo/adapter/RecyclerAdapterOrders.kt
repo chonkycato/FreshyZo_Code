@@ -22,9 +22,9 @@ class RecyclerAdapterOrders : RecyclerView.Adapter<RecyclerAdapterOrders.ViewHol
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var itemTitle: TextView = itemView.findViewById(R.id.orderDetailName)
+        var itemTitle: TextView = itemView.findViewById(R.id.orderProductName)
         var itemDelivery: TextView = itemView.findViewById(R.id.orderItemDeliveryDate)
-        var itemImage: ImageView = itemView.findViewById(R.id.orderDetailImage)
+        var itemImage: ImageView = itemView.findViewById(R.id.orderImage)
         var orderItemDetails: ImageView = itemView.findViewById(R.id.orderItemDetails)
         var markUndelivered: TextView = itemView.findViewById(R.id.mark_undelivered)
     }

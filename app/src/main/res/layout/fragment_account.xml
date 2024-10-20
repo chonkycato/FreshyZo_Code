@@ -115,9 +115,9 @@
                 <ImageView
                     android:src="@drawable/icon_orders"
                     android:contentDescription="@string/orders_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"/>
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center_vertical" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -161,11 +161,11 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:contentDescription="@string/orders_icon"
                     android:src="@drawable/icon_subscription"
-                    android:layout_gravity="center_vertical" />
+                    android:layout_gravity="center_vertical"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -210,8 +210,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:contentDescription="@string/orders_icon"
                     android:src="@drawable/icon_vacation"
                     android:layout_gravity="center_vertical" />
@@ -261,8 +261,8 @@
                 <ImageView
                     android:src="@drawable/icon_wallet"
                     android:contentDescription="@string/orders_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_gravity="center_vertical"/>
 
                 <LinearLayout
@@ -310,8 +310,8 @@
                 <ImageView
                     android:src="@drawable/icon_account"
                     android:contentDescription="@string/orders_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_gravity="center_vertical"/>
 
                 <LinearLayout
@@ -349,54 +349,54 @@
                 app:layout_constraintTop_toBottomOf="@id/account_settings"
                 android:layout_marginVertical="16dp"/>
 
-            <LinearLayout
-                android:id="@+id/saved_addresses"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="4dp"
-                android:orientation="horizontal">
+<!--            <LinearLayout-->
+<!--                android:id="@+id/saved_addresses"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:paddingVertical="4dp"-->
+<!--                android:orientation="horizontal">-->
 
-                <ImageView
-                    android:src="@drawable/icon_address"
-                    android:contentDescription="@string/orders_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"/>
+<!--                <ImageView-->
+<!--                    android:src="@drawable/icon_address"-->
+<!--                    android:contentDescription="@string/orders_icon"-->
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="20dp"-->
+<!--                    android:layout_gravity="center_vertical"/>-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="32dp"
-                    android:orientation="vertical">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginHorizontal="32dp"-->
+<!--                    android:orientation="vertical">-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_medium"
-                        android:letterSpacing="0.025"
-                        android:text="@string/saved_addresses"
-                        android:textColor="@color/body"
-                        android:textSize="14sp" />
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:fontFamily="@font/roboto_medium"-->
+<!--                        android:letterSpacing="0.025"-->
+<!--                        android:text="@string/saved_addresses"-->
+<!--                        android:textColor="@color/body"-->
+<!--                        android:textSize="14sp" />-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_regular"
-                        android:text="@string/manage_your_saved_addresses"
-                        android:textColor="@color/disabled"
-                        android:textSize="13sp"
-                        android:layout_marginTop="2dp"/>
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:fontFamily="@font/roboto_regular"-->
+<!--                        android:text="@string/manage_your_saved_addresses"-->
+<!--                        android:textColor="@color/disabled"-->
+<!--                        android:textSize="13sp"-->
+<!--                        android:layout_marginTop="2dp"/>-->
 
-                </LinearLayout>
+<!--                </LinearLayout>-->
 
-            </LinearLayout>
+<!--            </LinearLayout>-->
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/off_white"
-                app:layout_constraintTop_toBottomOf="@id/account_settings"
-                android:layout_marginVertical="16dp"/>
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="1dp"-->
+<!--                android:background="@color/off_white"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/account_settings"-->
+<!--                android:layout_marginVertical="16dp"/>-->
 
             <LinearLayout
                 android:id="@+id/refer_earn"
@@ -408,8 +408,8 @@
                 <ImageView
                     android:src="@drawable/icon_refer"
                     android:contentDescription="@string/orders_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_gravity="center_vertical"/>
 
                 <LinearLayout
@@ -454,8 +454,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:contentDescription="@string/orders_icon"
                     android:src="@drawable/icon_language"
                     android:layout_gravity="center_vertical"/>
@@ -507,8 +507,8 @@
                 <ImageView
                     android:src="@drawable/icon_about"
                     android:contentDescription="@string/orders_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_gravity="center_vertical"/>
 
                 <LinearLayout

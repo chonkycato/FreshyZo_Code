@@ -189,6 +189,7 @@ class LoginFragment : Fragment() {
                 if (response.isSuccessful) {
                     val loginResponse = response.body()
                     if (loginResponse != null) {
+                        Log.d("Saved Login Data: ", " ${response.body()}")
                         saveLoginData(loginResponse)
                         (activity as MainActivity).changeLoginState(true)
                         (activity as MainActivity).clearBackStack()
@@ -212,7 +213,8 @@ class LoginFragment : Fragment() {
     private fun saveLoginData(loginResponse: LoginResponse) {
         val sharedPref = requireActivity().getSharedPreferences("user_data", Context.MODE_PRIVATE)
         with(sharedPref.edit()) {
-            putInt("customer_id", loginResponse.customerID)
+            Log.d("Saved Login Data: ${loginResponse.customerID} ", "${loginResponse.customerRole}")
+            putString("customer_id", loginResponse.customerID)
             putString("customer_role", loginResponse.customerRole)
             apply()
         }

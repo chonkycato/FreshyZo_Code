@@ -17,7 +17,7 @@
     <color name="hr_white">#F3EEEE</color>
     <color name="border_white">#E0DBDB</color>
     <color name="heading">#1A1A1A</color>
-    <color name="body">#3b4044</color>
+    <color name="body">#444444</color>
 <!--    <color name="body">#212427</color>-->
     <color name="text_gray">#625B5B</color>
 
@@ -27,6 +27,7 @@
 <!--    <color name="accent">#52C077</color>-->
 
     <color name="primary">#17AB6F</color>
+    <color name="primary_tint">#73cca8</color>
     <color name="secondary">#FB6222</color>
     <color name="secondary_light">#E87240</color>
     <color name="secondary_lighter">#DF7041</color>
@@ -34,8 +35,15 @@
     <color name="alert">#D0342C</color>
     <color name="alert_light">#D1433C</color>
     <color name="warning">#EED202</color>
-    <color name="disabled">#7E8183</color>
-    <color name="disabled_light">#CECECE</color>
+    <color name="disabled">#808885</color>
+    <color name="disabled_light">#B0B2B4</color>
+    <color name="disabled_lighter">#E5E7E6</color>
+
+    <color name="primary_tint_light">#E7F6F0</color>
+    <color name="secondary_tint_light">#FEEFE8</color>
+    <color name="accent_tint_light">#EEE9F2</color>
+    <color name="alert_tint_light">#FAEAE9</color>
+    <color name="primary_tint_lighter">#F5FBF9</color>
 
     <color name="orange">#FB6222</color>
     <color name="green">#17AB6F</color>

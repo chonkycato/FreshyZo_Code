@@ -60,18 +60,17 @@
     <string name="hvs_item_text_2">Ghee</string>
     <string name="hvs_item_text_3">Buffalo Milk</string>
     <string name="hvs_item_text_4">Paneer</string>
-    <string name="milk">Milk</string>
+    <string name="milk">Milk\ \ \ \ \ \ \  </string>
     <string name="cow_milk">FreshyZo Cow Milk</string>
     <string name="buffalo_milk">FreshyZo Buffalo Milk</string>
     <string name="paneer">FreshyZo Paneer</string>
-    <string name="ghee">FreshyZo Desi
-        Ghee</string>
+    <string name="ghee">FreshyZo Desi Ghee</string>
     <string name="categories">Categories</string>
     <string name="popular_items">Popular Items</string>
     <string name="title">Title</string>
     <string name="description">Description</string>
-    <string name="quantity">Quantity</string>
-    <string name="price_title">Price</string>
+    <string name="quantity">Quantity: %s</string>
+    <string name="price_string">₹%1$s</string>
     <string name="buy_once">Buy Once</string>
     <string name="back_icon">Back Button</string>
     <string name="cart_icon">Cart Icon</string>
@@ -126,7 +125,7 @@
     <string name="add_to_cart_button">Add To Cart Button</string>
 
 
-    <string name="welcome_user">Welcome, user!</string>
+    <string name="welcome_user">Welcome, %s!</string>
     <string name="orders_icon">orders icon</string>
     <string name="my_orders">My Orders</string>
     <string name="subscriptions">Subscriptions</string>
@@ -222,7 +221,7 @@
     <string name="forward">Forward</string>
     <string name="total_products">9 products</string>
     <string name="all">All</string>
-    <string name="all_products">All Products</string>
+    <string name="all_products_newline">All\nProducts</string>
     <string name="end_of_results">End of results</string>
     <string name="back_to_top">Back To Top</string>
     <string name="wallet">Wallet</string>
@@ -231,7 +230,7 @@
     <string name="mark_undelivered">Mark Undelivered</string>
     <string name="remark">Remark</string>
     <string name="delivered">Delivered</string>
-    <string name="size">Size </string>
+    <string name="size">Size: %s</string>
     <string name="continue_str">Continue</string>
     <string name="sample_size">\ - 250gm</string>
     <string name="payment_successful">Payment Successful!</string>
@@ -277,21 +276,35 @@
     <string name="product_name">Product Name</string>
     <string name="subscription_type">Subscription Type</string>
     <string name="total_price_string">Total Price</string>
-    <string name="price">₹%1$s</string>
+    <string name="money">₹%1$s</string>
     <string name="_2">2</string>
     <string name="wallet_balance">Wallet Balance</string>
     <string name="confirm_subscription">Confirm Subscription</string>
     <string name="recharge_wallet">Recharge Wallet</string>
     <string name="one">1</string>
     <string name="price_per_unit_string">Price Per Unit</string>
-    <string name="enter_amount">Enter Amount</string>
-    <string name="_1000">1000</string>
-    <string name="_5000">5000</string>
-    <string name="_3000">3000</string>
-    <string name="_2000">2000</string>
+    <string name="enter_amount">Enter amount</string>
+    <string name="amount_thousand">₹1,000</string>
+    <string name="amount_two_thousand">₹2,000</string>
+    <string name="amount_three_thousand">₹3,000</string>
+    <string name="amount_five_thousand">₹5,000</string>
     <string name="product">Product</string>
     <string name="resendOTP">Resend OTP</string>
-
+    <string name="shop_by_category">Shop By Category</string>
+    <string name="product_count">%s products</string>
+    <string name="milk_products">Milk\nProducts</string>
+    <string name="colony">Colony</string>
+    <string name="not_available">N/A</string>
+    <string name="recommended">Recommended</string>
+    <string name="freshyzo_wallet">FreshyZo Wallet</string>
+    <string name="all_products">All Products</string>
+    <string name="recharge_id">Recharge ID: %s</string>
+    <string name="no_recent_transactions">No recent transactions</string>
+    <string name="recharge_history">Recharge History</string>
+    <string name="available_balance">Available Balance</string>
+    <string name="freshyzo_string">FreshyZo %s</string>
+    <string name="delivered_string">Delivered, %s</string>
+    <string name="order_date">Order Date: %s</string>
     <!-- String Arrays -->
 
     <string-array name="DeliveryTypeArray">
